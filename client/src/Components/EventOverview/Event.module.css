@@ -1,0 +1,143 @@
+/* ================================
+   PROFESSIONAL EVENT OVERVIEW
+================================ */
+
+.section {
+  background: #ffffff;
+  padding: 5rem 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1450px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ================================
+   TEXT
+================================ */
+
+.left {
+  padding-right: 1rem;
+}
+
+.heading {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.heading span {
+  color: #A6223C;
+}
+
+.text {
+  font-size: 1.12rem;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+  font-weight: 400;
+}
+
+/* ================================
+   RIGHT SIDE MEDIA
+================================ */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* MAIN LOGO */
+.logoBox {
+  width: 100%;
+  background: #ffffff;
+  padding: 1.7rem;
+  border-radius: 14px;
+  border: 2px solid #A6223C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logoBox img {
+  width: 260px;
+  height: auto;
+}
+
+.logoBox:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* GRID OF 3 IMAGES */
+.gridImages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.smallImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #A6223C;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.smallImage:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 1100px) {
+  .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .left {
+    padding-right: 0;
+  }
+
+  .gridImages {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .gridImages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .gridImages {
+    grid-template-columns: 1fr;
+  }
+
+  .smallImage {
+    height: 200px;
+  }
+}

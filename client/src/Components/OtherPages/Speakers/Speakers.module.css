@@ -1,0 +1,635 @@
+/* ===================================================
+   SPEAKERS PAGE — ENHANCED STYLESHEET
+   Colors & class names preserved exactly.
+   Enhancements: typography, spacing, shadows,
+   animations, card polish, micro-interactions.
+   =================================================== */
+
+/* ---------- PAGE WRAPPER ---------- */
+.speakersPageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 55px;
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/Gallery/Gallery11.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: heroZoom 18s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  0%   { transform: scale(1.08); }
+  100% { transform: scale(1);    }
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.57) 0%,
+    rgba(166, 34, 60, 0.54) 50%,
+    rgba(166, 34, 60, 0.47) 100%
+  );
+  z-index: 1;
+}
+
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.72) 0%,
+    rgba(166, 34, 60, 0.62) 100%
+  );
+}
+
+.heroOverlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.18));
+  z-index: 1;
+}
+
+.heroContentWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 80px 20px;
+}
+
+.heroMainTitle {
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin: 0 0 24px 0;
+  letter-spacing: -3px;
+  line-height: 1.05;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.heroLetter {
+  display: inline-block;
+  background: #ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: speakersLetterFloat 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px) rotate(-4deg);
+}
+
+@keyframes speakersLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.heroMainSubtitle {
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 28px 0;
+  letter-spacing: 0.5px;
+  animation: speakersHeroFadeUp 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.heroDividerLine {
+  width: 80px;
+  height: 3px;
+  background: #ffffff;
+  margin: 0 auto;
+  border-radius: 50px;
+  animation: speakersHeroDividerExpand 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+@keyframes speakersHeroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes speakersHeroDividerExpand {
+  to { transform: scaleX(1); }
+}
+
+/* ==================== SPEAKERS SECTION ==================== */
+.speakersSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 70px 24px 90px;
+  position: relative;
+}
+
+.speakersSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #A6223C, transparent);
+}
+
+.speakersContainer {
+  max-width: 1560px;
+  margin: 0 auto;
+}
+
+/* ==================== SECTION HEADER ==================== */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 72px;
+  animation: speakersSectionHeaderFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes speakersSectionHeaderFade {
+  0%   { opacity: 0; transform: translateY(-24px); }
+  100% { opacity: 1; transform: translateY(0);     }
+}
+
+.sectionTitle {
+  font-size: 3.6rem;
+  font-weight: 900;
+  color: #A6223C;
+  margin: 0 0 16px 0;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.sectionHighlight {
+  background: #102147;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionSubtitle {
+  font-size: 1.15rem;
+  color: #2d3748;
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* ==================== SPEAKERS GRID ==================== */
+.speakersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  animation: speakersGridFadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@keyframes speakersGridFadeIn {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+
+/* ==================== SPEAKER CARD ==================== */
+.speakerCard {
+  background: #ffffff;
+  border: 1.5px solid #A6223C;
+  border-radius: 22px;
+  padding: 26px 24px 28px;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: speakerCardSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  box-shadow: 0 2px 12px rgba(39, 50, 114, 0.06);
+}
+
+@keyframes speakerCardSlideUp {
+  0%   { opacity: 0; transform: translateY(36px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+
+.speakerCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 107, 53, 0.04) 0%,
+    rgba(247, 147, 30, 0.03) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.speakerCard:hover {
+  transform: translateY(-14px);
+  border-color: rgba(255, 107, 53, 0.55);
+  box-shadow: 0 18px 48px rgba(39, 50, 114, 0.1),
+              0  6px 16px rgba(255, 107, 53, 0.12);
+}
+
+.speakerCard:hover::before {
+  opacity: 1;
+}
+
+/* ---------- top-edge accent bar ---------- */
+.cardDecoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+ background: linear-gradient(90deg, #A6223C, #D93F63);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 0 2px 2px 0;
+}
+
+.speakerCard:hover .cardDecoration {
+  transform: scaleX(1);
+}
+
+/* ==================== SPEAKER IMAGE ==================== */
+.speakerImageWrapper {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.speakerImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2.5px solid #A6223C;
+  transition: border-color 0.4s ease,
+              box-shadow   0.4s ease;
+  box-shadow: 0 4px 18px rgba(39, 50, 114, 0.08);
+}
+
+.speakerCard:hover .speakerImageContainer {
+  border-color: rgba(255, 107, 53, 0.7);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.2);
+}
+
+.speakerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter   0.5s ease;
+  filter: grayscale(18%) brightness(0.96);
+}
+
+.speakerCard:hover .speakerImage {
+  transform: scale(1.07);
+  filter: grayscale(0%) brightness(1);
+}
+
+.speakerImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 107, 53, 0.15) 0%,
+    rgba(247, 147, 30, 0.12) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.speakerCard:hover .speakerImageOverlay {
+  opacity: 1;
+}
+
+/* ==================== LINKEDIN BUTTON — ALWAYS VISIBLE ==================== */
+.linkedinButton {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              box-shadow 0.3s ease,
+              background  0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.35);
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* keeps it stable when card is hovered */
+.speakerCard:hover .linkedinButton {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.linkedinButton:hover {
+  transform: scale(1.14);
+  box-shadow: 0 10px 30px rgba(0, 119, 181, 0.55);
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+}
+
+.linkedinButton:active {
+  transform: scale(0.94);
+}
+
+.linkedinIcon {
+  width: 26px;
+  height: 26px;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.linkedinButton:hover .linkedinIcon {
+  transform: rotate(8deg) scale(1.05);
+}
+
+/* ==================== SPEAKER INFO ==================== */
+.speakerInfo {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-top: 4px;
+}
+
+.speakerName {
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  transition: color 0.35s ease;
+}
+
+.speakerCard:hover .speakerName {
+  color: #A6223C;
+}
+
+/* thin separator under name on hover */
+.speakerName::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, #A6223C, #D93F63);
+  margin: 10px auto 0;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.speakerCard:hover .speakerName::after {
+  transform: scaleX(1);
+}
+
+.speakerDesignation {
+  font-size: 0.92rem;
+  color: #1f2937;
+  font-weight: 600;
+  margin: 0 0 7px 0;
+  line-height: 1.45;
+  letter-spacing: 0.1px;
+  transition: color 0.3s ease;
+}
+
+/* ==================== COMPANY — no dots ==================== */
+.speakerCompany {
+  font-size: 0.9rem;
+  color: #2d3748;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.15px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* --- 1400px --- */
+@media (max-width: 1400px) {
+  .speakersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+  }
+}
+
+/* --- 1200px --- */
+@media (max-width: 1200px) {
+  .speakersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+    gap: 26px;
+  }
+}
+
+/* --- 1024px --- */
+@media (max-width: 1024px) {
+  .heroMainTitle {
+    font-size: 4rem;
+    letter-spacing: -2px;
+  }
+
+  .sectionTitle {
+    font-size: 3rem;
+  }
+
+  .speakersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 24px;
+  }
+}
+
+/* --- 768px --- */
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 40vh;
+    margin-top: 5px;
+  }
+
+  .heroMainTitle {
+    font-size: 3rem;
+    letter-spacing: -1.5px;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1.15rem;
+  }
+
+  .speakersSection {
+    padding: 56px 16px 72px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 56px;
+  }
+
+  .sectionTitle {
+    font-size: 2.4rem;
+    letter-spacing: -1px;
+  }
+
+  .sectionSubtitle {
+    font-size: 1.05rem;
+  }
+
+  .speakersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px;
+  }
+
+  .speakerCard {
+    padding: 22px 20px 24px;
+  }
+
+  .speakerImageWrapper {
+    margin-bottom: 18px;
+  }
+
+  .linkedinButton {
+    width: 48px;
+    height: 48px;
+    bottom: 11px;
+    right: 11px;
+  }
+
+  .linkedinIcon {
+    width: 23px;
+    height: 23px;
+  }
+
+  .speakerName {
+    font-size: 1.25rem;
+  }
+
+  .speakerDesignation {
+    font-size: 0.9rem;
+  }
+
+  .speakerCompany {
+    font-size: 0.87rem;
+  }
+}
+
+/* --- 640px --- */
+@media (max-width: 640px) {
+  .speakersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* --- 480px --- */
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1rem;
+  }
+
+  .speakersSection {
+    padding: 40px 14px 56px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 42px;
+  }
+
+  .sectionTitle {
+    font-size: 1.9rem;
+    letter-spacing: -0.8px;
+  }
+
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .speakersGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .speakerCard {
+    padding: 20px 18px 22px;
+  }
+
+  .speakerImageWrapper {
+    margin-bottom: 16px;
+  }
+
+  .speakerImageContainer {
+    border-width: 2px;
+  }
+
+  .linkedinButton {
+    width: 46px;
+    height: 46px;
+    border-width: 2px;
+    bottom: 9px;
+    right: 9px;
+  }
+
+  .linkedinIcon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .speakerName {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .speakerDesignation {
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+  }
+
+  .speakerCompany {
+    font-size: 0.84rem;
+  }
+}

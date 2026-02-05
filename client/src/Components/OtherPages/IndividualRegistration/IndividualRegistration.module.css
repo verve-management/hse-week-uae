@@ -1,0 +1,705 @@
+/* Individual Registration Page Wrapper */
+.individualRegistrationWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #0a0e27;
+}
+
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/HeroImages/10.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 14, 39, 0.80) 0%,
+    rgba(26, 31, 58, 0.74) 50%,
+    rgba(10, 14, 39, 0.80) 100%
+  );
+  z-index: 1;
+}
+
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(247, 147, 30, 0.08) 0%, transparent 50%);
+}
+
+.heroContentWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 80px 20px;
+}
+
+.heroMainTitle {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: #ff6b35;
+}
+
+.heroLetter {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: individualLetterFloat 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes individualLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroDividerLine {
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  margin: 0 auto;
+  border-radius: 50px;
+  animation: individualDividerExpand 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+@keyframes individualDividerExpand {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ==================== PLAN SECTION ==================== */
+.planSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 150px 20px 50px;
+  position: relative;
+}
+
+.planContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.planCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(20px);
+  border: 2px solid #ff6b35;
+  border-radius: 12px;
+  padding: 50px 45px;
+  animation: individualPlanCardFadeIn 0.8s ease-out both;
+  position: relative;
+  overflow: hidden;
+}
+
+.planCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
+  opacity: 1;
+}
+
+@keyframes individualPlanCardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Plan Header */
+.planHeader {
+  text-align: center;
+  margin-bottom: 45px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+  border-bottom: 2px solid #ff6b35;
+}
+
+.planTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #273272;
+  margin: 0 0 30px 0;
+  letter-spacing: -1px;
+}
+
+.planPriceWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 5px;
+}
+
+.planCurrency {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 10px;
+}
+
+.planPrice {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.planVatNote {
+  font-size: 1rem;
+  color: #2d3748;
+  font-weight: 500;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Plan Body */
+.planBody {
+  margin-bottom: 45px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+  border-bottom: 2px solid #ff6b35;
+}
+
+.includesTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ff6b35;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.includesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.includesItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  color: #2d3748;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.checkIcon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  color: #ff6b35;
+  margin-top: 2px;
+}
+
+/* Plan Footer */
+.planFooter {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.helpTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ff6b35;
+  margin: 0 0 25px 0;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #2d3748;
+  font-size: 1.05rem;
+}
+
+.contactIcon {
+  width: 20px;
+  height: 20px;
+  color: #ff6b35;
+}
+
+.contactUsButton {
+  padding: 16px 45px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.contactUsButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
+}
+
+/* ==================== FORM SECTION ==================== */
+.formSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.formContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.formWrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid #ff6b35;
+  border-radius: 24px;
+  padding: 50px 45px;
+  animation: individualFormFadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes individualFormFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.formTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #273272;
+  margin: 0 0 15px 0;
+  letter-spacing: -1px;
+}
+
+.formSubtitle {
+  font-size: 1.15rem;
+  color: #2d3748;
+  margin: 0;
+  font-weight: 400;
+}
+
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGroupFull {
+  grid-column: 1 / -1;
+}
+
+.formLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  letter-spacing: 0.5px;
+}
+
+.formInput,
+.formSelect {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ff6b35;
+  border-radius: 12px;
+  color: #2d3748;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.formInput:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: #ff6b35;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.formInput::placeholder {
+  color: #64748b;
+}
+
+.formSelect {
+  cursor: pointer;
+}
+
+.formSelect option {
+  background: #ffffff !important;
+  color: #2d3748 !important;
+}
+
+.submitButton {
+  padding: 20px 50px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 20px;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
+}
+
+.submitButton:active {
+  transform: translateY(-1px);
+}
+
+.submitButtonText {
+  flex: 1;
+  text-align: center;
+}
+
+.submitButtonIcon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.submitButton:hover .submitButtonIcon {
+  transform: translateX(5px);
+}
+
+/* ==================== BOOK SEAT SECTION ==================== */
+.bookSeatSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.bookSeatContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bookSeatContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  animation: individualBookSeatFadeIn 0.8s ease-out 0.3s both;
+}
+
+@keyframes individualBookSeatFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Book Seat Info */
+.bookSeatInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.bookSeatBadge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.15));
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 50px;
+}
+
+.bookSeatBadge span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ff6b35;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bookSeatTitle {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #273272;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.bookSeatHighlight {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff985c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bookSeatDescription {
+  font-size: 1.1rem;
+  color: #2d3748;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Book Seat Image */
+.bookSeatImage {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.seatImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.bookSeatImage:hover .seatImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bookSeatImage:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .heroMainTitle {
+    font-size: 4rem;
+  }
+
+  .planTitle {
+    font-size: 2.2rem;
+  }
+
+  .formTitle {
+    font-size: 2.5rem;
+  }
+
+  .bookSeatContent {
+    gap: 50px;
+  }
+
+  .bookSeatTitle {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 40vh;
+  }
+
+  .heroMainTitle {
+    font-size: 3rem;
+  }
+
+  .planSection,
+  .formSection,
+  .bookSeatSection {
+    padding: 60px 15px;
+  }
+
+  .planCard,
+  .formWrapper {
+    padding: 40px 30px;
+  }
+
+  .planTitle {
+    font-size: 2rem;
+  }
+
+  .planPrice {
+    font-size: 4rem;
+  }
+
+  .formTitle {
+    font-size: 2.2rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bookSeatContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bookSeatTitle {
+    font-size: 2.2rem;
+  }
+
+  .bookSeatDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 2.2rem;
+  }
+
+  .planSection,
+  .formSection,
+  .bookSeatSection {
+    padding: 40px 15px;
+  }
+
+  .planCard,
+  .formWrapper {
+    padding: 30px 20px;
+  }
+
+  .planTitle {
+    font-size: 1.6rem;
+  }
+
+  .planCurrency {
+    font-size: 2rem;
+  }
+
+  .planPrice {
+    font-size: 3.5rem;
+  }
+
+  .includesTitle,
+  .helpTitle {
+    font-size: 1.4rem;
+  }
+
+  .includesItem,
+  .contactItem {
+    font-size: 0.95rem;
+  }
+
+  .formTitle {
+    font-size: 1.8rem;
+  }
+
+  .formSubtitle {
+    font-size: 1rem;
+  }
+
+  .formInput,
+  .formSelect {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .submitButton {
+    padding: 16px 40px;
+    font-size: 1rem;
+  }
+
+  .bookSeatTitle {
+    font-size: 1.8rem;
+  }
+
+  .bookSeatDescription {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}

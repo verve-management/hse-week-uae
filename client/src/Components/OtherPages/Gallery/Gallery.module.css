@@ -1,0 +1,851 @@
+/* Gallery Page Wrapper */
+.galleryPageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #0a0e27;
+}
+
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/Gallery/Gallery7.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.57) 0%,
+    rgba(166, 34, 60, 0.54) 50%,
+    rgba(166, 34, 60, 0.47) 100%
+  );
+  z-index: 1;
+}
+
+.heroOverlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.72) 0%,
+    rgba(166, 34, 60, 0.62) 100%
+  );
+}
+
+
+.heroContentWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 80px 20px;
+}
+
+.heroMainTitle {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.heroLetter {
+  display: inline-block;
+  background: #ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: galleryLetterFloat 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes galleryLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroMainSubtitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 25px 0;
+  animation: galleryHeroFadeUp 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.heroDividerLine {
+  width: 100px;
+  height: 3px;
+  background: #ffffff;
+  margin: 0 auto;
+  border-radius: 50px;
+  animation: galleryHeroDividerExpand 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+@keyframes galleryHeroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes galleryHeroDividerExpand {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ==================== GALLERY SECTION ==================== */
+.gallerySection {
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.galleryContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.galleryHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: galleryHeaderFade 0.8s ease-out both;
+}
+
+@keyframes galleryHeaderFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.galleryTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #A6223C;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.galleryHighlight {
+  background: #102147;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gallerySubtitle {
+  font-size: 1.1rem;
+  color: #2d3748;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* ==================== TAB SELECTOR ==================== */
+.yearSelectorWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  animation: galleryYearSelectorFade 0.8s ease-out 0.2s both;
+}
+
+@keyframes galleryYearSelectorFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.yearSelector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50px;
+  padding: 6px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.yearSelectorBtn {
+  position: relative;
+  z-index: 2;
+  padding: 16px 50px;
+  background: transparent;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.yearBtnLabel {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.yearBtnCount {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.yearSelectorBtn.active .yearBtnLabel {
+  color: #ffffff;
+}
+
+.yearSelectorBtn.active .yearBtnCount {
+  color: #ffffff;
+}
+
+.yearSelectorSlider {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(50% - 6px);
+  height: calc(100% - 12px);
+  background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
+
+  border-radius: 50px;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  z-index: 1;
+}
+
+/* ==================== GALLERY GRID ==================== */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  animation: galleryGridFadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes galleryGridFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.galleryItem {
+  animation: galleryItemSlideUp 0.6s ease-out both;
+  cursor: pointer;
+}
+
+@keyframes galleryItemSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.galleryImageWrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.galleryItem:hover .galleryImageWrapper {
+  border-color: rgba(255, 107, 53, 0.5);
+  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+  transform: translateY(-5px);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.1);
+}
+
+.galleryOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(166, 34, 60, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
+}
+
+.galleryOverlayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.expandIcon {
+  width: 48px;
+  height: 48px;
+  animation: galleryExpandBounce 0.6s ease infinite;
+}
+
+@keyframes galleryExpandBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.viewText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==================== TESTIMONIALS GRID ==================== */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  animation: galleryGridFadeIn 0.8s ease-out 0.4s both;
+}
+
+.testimonialCard {
+  animation: galleryItemSlideUp 0.6s ease-out both;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.testimonialCard:hover {
+  border-color: rgba(255, 107, 53, 0.5);
+  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.25);
+  transform: translateY(-6px);
+}
+
+/* Video frame – shared aspect-ratio container */
+.videoFrame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.videoPlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.videoThumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.videoPlaceholder:hover .videoThumbnail {
+  transform: scale(1.05);
+}
+
+.playButtonWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.playButton {
+  width: 80px;
+  height: 80px;
+ background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
+  transition: all 0.3s ease;
+  animation: galleryPlayPulse 2s ease-in-out infinite;
+}
+
+@keyframes galleryPlayPulse {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 10px 60px rgba(255, 107, 53, 0.8);
+  }
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
+}
+
+
+.playIcon {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  margin-left: 4px;
+}
+
+.videoIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* Card text block below each video */
+.testimonialInfo {
+  padding: 18px 20px 20px;
+  background: #ffffff;
+}
+
+.testimonialTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #273272;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.testimonialSpeaker {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #A6223C;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==================== LIGHTBOX ==================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: galleryLightboxFadeIn 0.3s ease;
+}
+
+@keyframes galleryLightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.lightboxClose:hover {
+  background: rgba(255, 107, 53, 0.9);
+  border-color: #A6223C;
+  transform: rotate(90deg);
+}
+
+.lightboxClose svg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+}
+
+.lightboxNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.lightboxNav:hover {
+  background: rgba(255, 107, 53, 0.9);
+  border-color: #A6223C;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightboxNav svg {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+}
+
+.lightboxPrev {
+  left: 30px;
+}
+
+.lightboxNext {
+  right: 30px;
+}
+
+.lightboxContent {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: galleryLightboxZoomIn 0.4s ease;
+}
+
+@keyframes galleryLightboxZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightboxCaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.lightboxTitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.lightboxCounter {
+  font-size: 0.95rem;
+  color: #A6223C;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1400px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .testimonialsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroMainTitle {
+    font-size: 4rem;
+  }
+
+  .galleryTitle {
+    font-size: 3rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 40vh;
+    margin-top: 60px;
+  }
+
+  .heroMainTitle {
+    font-size: 3rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .gallerySection {
+    padding: 60px 15px;
+  }
+
+  .galleryTitle {
+    font-size: 2.5rem;
+  }
+
+  .gallerySubtitle {
+    font-size: 1rem;
+  }
+
+  .yearSelector {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .yearSelectorBtn {
+    padding: 14px 30px;
+    min-width: auto;
+    flex: 1;
+  }
+
+  .yearBtnLabel {
+    font-size: 1.3rem;
+  }
+
+  .yearBtnCount {
+    font-size: 0.75rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .playButton {
+    width: 70px;
+    height: 70px;
+  }
+
+  .playIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .lightboxClose,
+  .lightboxNav {
+    width: 45px;
+    height: 45px;
+  }
+
+  .lightboxClose {
+    top: 15px;
+    right: 15px;
+  }
+
+  .lightboxNav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1rem;
+  }
+
+  .gallerySection {
+    padding: 40px 15px;
+  }
+
+  .galleryTitle {
+    font-size: 2rem;
+  }
+
+  .gallerySubtitle {
+    font-size: 0.95rem;
+  }
+
+  .yearSelector {
+    padding: 4px;
+  }
+
+  .yearSelectorBtn {
+    padding: 12px 20px;
+  }
+
+  .yearBtnLabel {
+    font-size: 1.2rem;
+  }
+
+  .yearBtnCount {
+    font-size: 0.7rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .expandIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .viewText {
+    font-size: 1rem;
+  }
+
+  .playButton {
+    width: 60px;
+    height: 60px;
+  }
+
+  .playIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lightboxClose {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .lightboxClose svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .lightboxCaption {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 15px;
+  }
+
+  .lightboxTitle {
+    font-size: 0.95rem;
+  }
+
+  .lightboxCounter {
+    font-size: 0.85rem;
+  }
+
+  .testimonialInfo {
+    padding: 14px 16px 18px;
+  }
+
+  .testimonialTitle {
+    font-size: 0.95rem;
+  }
+
+  .testimonialSpeaker {
+    font-size: 0.82rem;
+  }
+}

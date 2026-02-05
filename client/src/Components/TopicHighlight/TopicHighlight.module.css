@@ -1,0 +1,114 @@
+/* SECTION */
+.section {
+  background: #ffffff;
+  padding: 1px 2rem 6rem;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* TITLE */
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #273272;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.heading span{
+  color: #ff6b35;
+}
+/* GRID CONTAINER */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* EACH COLUMN */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* CARD BASE STYLE */
+.card {
+  border: 2px solid #273272;
+  border-radius: 6px;
+  padding: 0.2rem 1.8rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* NUMBER */
+.number {
+  font-weight: 800;
+  font-size: 1.2rem;
+  min-width: 32px;
+}
+
+/* TEXT */
+.text {
+  flex: 1;
+}
+
+/* WHITE CARD */
+.white {
+  background: #ffffff;
+  color: #102142;
+}
+
+.white .number {
+  color: #273272;
+}
+
+/* ORANGE CARD */
+.orange {
+  background: #273272;
+  color: #ffffff;
+}
+
+.orange .number {
+  color: #ffffff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  .number {
+    font-size: 1.05rem;
+  }
+.section {
+  padding: 1px 2rem 1rem;
+}
+
+}

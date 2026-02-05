@@ -1,0 +1,639 @@
+/* Schedule Page Wrapper */
+.schedulePageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 50px;
+   background: #ffffff; 
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/Gallery/Gallery15.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.57) 0%,
+    rgba(166, 34, 60, 0.54) 50%,
+    rgba(166, 34, 60, 0.47) 100%
+  );
+  z-index: 1;
+}
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(166, 34, 60, 0.72) 0%,
+    rgba(166, 34, 60, 0.62) 100%
+  );
+}
+
+.heroContentWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 60px 20px;
+}
+
+.heroMainTitle {
+  font-size: 5.2rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.heroLetter {
+  display: inline-block;
+  background: #ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: scheduleLetterFloat 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes scheduleLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroMainSubtitle {
+  font-size: 1.6rem;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0 0 30px 0;
+  animation: scheduleHeroFadeUp 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.heroDividerLine {
+  width: 120px;
+  height: 3px;
+  background: #ffffff;
+  margin: 0 auto 30px auto;
+  border-radius: 50px;
+  animation: scheduleHeroDividerExpand 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+@keyframes scheduleHeroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scheduleHeroDividerExpand {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ==================== SCHEDULE CONTENT SECTION ==================== */
+.scheduleContentSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 20px 100px 20px;
+  position: relative;
+}
+
+.scheduleContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== DAY TABS ==================== */
+.dayTabsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
+  animation: scheduleTabsFadeIn 0.8s ease-out both;
+}
+
+@keyframes scheduleTabsFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dayTab {
+  background: #ffffff;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 16px;
+  padding: 25px 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dayTab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dayTab:hover {
+  border-color: #ff6b35;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+}
+
+.dayTab:hover::before {
+  opacity: 1;
+}
+
+.dayTab.active {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.08));
+  border-color: #ff6b35;
+  box-shadow: 0 10px 35px rgba(255, 107, 53, 0.2);
+}
+
+.dayTab.active::before {
+  opacity: 1;
+}
+
+.dayNumber {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.dayTab.active .dayNumber {
+  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dayLabel {
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.dayTab.active .dayLabel {
+  color: #334155;
+}
+
+/* ==================== SCHEDULE TIMELINE ==================== */
+.scheduleTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ==================== SCHEDULE ITEMS ==================== */
+.scheduleItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  animation: scheduleItemSlideIn 0.6s ease-out both;
+  height: 220px;
+}
+
+@keyframes scheduleItemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scheduleItem:hover {
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Image Container */
+.scheduleImageContainer {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.scheduleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.scheduleItem:hover .scheduleImage {
+  transform: scale(1.05);
+}
+
+.scheduleImageOverlay {
+  position: absolute;
+  inset: 0;
+background: linear-gradient(
+  135deg,
+  rgba(39, 50, 114, 0.75) 0%,
+  rgba(39, 50, 114, 0.55) 50%,
+  rgba(39, 50, 114, 0.40) 100%
+);
+
+  transition: opacity 0.4s ease;
+}
+
+.scheduleItem:hover .scheduleImageOverlay {
+  opacity: 0.85;
+}
+
+.scheduleTimeOverlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #ff6b35;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Content Box */
+.scheduleContentBox {
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  height: 220px;
+  overflow: hidden;
+}
+
+.sessionTypeBadge {
+  display: inline-block;
+  background: #ff6b35;
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+.scheduleItem:hover .sessionTypeBadge {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.sessionTypeBadge.panel {
+  background: #8b5cf6;
+}
+
+.sessionTypeBadge.fireside {
+  background: #f59e0b;
+}
+
+.sessionTypeBadge.break {
+  background: #06b6d4;
+}
+
+.sessionTypeBadge.awards {
+  background: #10b981;
+}
+
+.sessionTypeBadge.keynote {
+  background: #ef4444;
+}
+
+.scheduleItemTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scheduleItem:hover .scheduleItemTitle {
+  color: #ff6b35;
+}
+
+.schedulePointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.schedulePointItem {
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scheduleItem:hover .schedulePointItem {
+  color: #334155;
+  padding-left: 22px;
+}
+
+.schedulePointItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: #ff6b35;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.scheduleItem:hover .schedulePointItem::before {
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.6);
+}
+
+/* Alternate Layout */
+.scheduleItem.imageRight {
+  grid-template-columns: 1fr 1fr;
+}
+
+.scheduleItem.imageRight .scheduleImageContainer {
+  order: 2;
+}
+
+.scheduleItem.imageRight .scheduleContentBox {
+  order: 1;
+}
+
+.scheduleItem.imageLeft {
+  grid-template-columns: 1fr 1fr;
+}
+
+.scheduleItem.imageLeft .scheduleImageContainer {
+  order: 1;
+}
+
+.scheduleItem.imageLeft .scheduleContentBox {
+  order: 2;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .heroMainTitle {
+    font-size: 4rem;
+  }
+
+  .scheduleItem {
+    height: 200px;
+  }
+
+  .scheduleImageContainer {
+    height: 200px;
+  }
+
+  .scheduleContentBox {
+    padding: 20px 25px;
+    height: 200px;
+  }
+
+  .scheduleItemTitle {
+    font-size: 1.1rem;
+  }
+
+  .schedulePointItem {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 50vh;
+    margin-top: 100px;
+  }
+
+  .heroMainTitle {
+    font-size: 3rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1.3rem;
+  }
+
+  .scheduleContentSection {
+    padding: 60px 15px 80px 15px;
+  }
+
+  .dayTabsWrapper {
+    gap: 15px;
+    margin-bottom: 50px;
+  }
+
+  .dayTab {
+    padding: 20px 35px;
+  }
+
+  .dayNumber {
+    font-size: 1.6rem;
+  }
+
+  .dayLabel {
+    font-size: 0.85rem;
+  }
+
+  .scheduleTimeline {
+    gap: 25px;
+  }
+
+  .scheduleItem {
+    grid-template-columns: 1fr !important;
+    height: auto;
+  }
+
+  .scheduleItem.imageRight .scheduleImageContainer,
+  .scheduleItem.imageLeft .scheduleImageContainer {
+    order: 1 !important;
+  }
+
+  .scheduleItem.imageRight .scheduleContentBox,
+  .scheduleItem.imageLeft .scheduleContentBox {
+    order: 2 !important;
+  }
+
+  .scheduleImageContainer {
+    height: 200px;
+  }
+
+  .scheduleContentBox {
+    padding: 25px 20px;
+    height: auto;
+    min-height: 180px;
+  }
+
+  .scheduleItemTitle {
+    font-size: 1.15rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .schedulePointItem {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .scheduleContentSection {
+    padding: 40px 15px 60px 15px;
+  }
+
+  .dayTabsWrapper {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .dayTab {
+    padding: 18px 30px;
+    width: 100%;
+  }
+
+  .dayNumber {
+    font-size: 1.5rem;
+  }
+
+  .dayLabel {
+    font-size: 0.8rem;
+  }
+
+  .scheduleTimeline {
+    gap: 20px;
+  }
+
+  .scheduleImageContainer {
+    height: 180px;
+  }
+
+  .scheduleTimeOverlay {
+    top: 15px;
+    left: 15px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .scheduleContentBox {
+    padding: 20px 18px;
+    min-height: 160px;
+  }
+
+  .sessionTypeBadge {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
+
+  .scheduleItemTitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .schedulePointItem {
+    font-size: 0.75rem;
+    padding-left: 16px;
+    gap: 5px;
+  }
+
+  .schedulePointItem::before {
+    width: 5px;
+    height: 5px;
+    top: 6px;
+  }
+
+  .scheduleItem:hover .schedulePointItem::before {
+    width: 7px;
+    height: 7px;
+  }
+}

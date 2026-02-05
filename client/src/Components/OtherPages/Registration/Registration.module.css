@@ -1,0 +1,826 @@
+/* Registration Page Wrapper */
+.registrationPageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+   background: #f5f7fa;
+  color: #1a1a1a; /* Default dark text */
+}
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top:60px;
+}
+
+.heroBgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('/HeroImages/12.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 14, 39, 0.80) 0%,
+    rgba(26, 31, 58, 0.74) 50%,
+    rgba(10, 14, 39, 0.75) 100%
+  );
+  z-index: 1;
+}
+
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(247, 147, 30, 0.08) 0%, transparent 50%);
+}
+
+.heroContentWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 80px 20px;
+}
+
+.heroMainTitle {
+  font-size: 5rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: #273272;
+}
+
+.heroLetter {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: registrationLetterFloat 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes registrationLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroMainSubtitle {
+  font-size: 1.5rem;
+  color: #e2e8f0;
+  font-weight: 300;
+  margin: 0 0 25px 0;
+  animation: registrationHeroFadeUp 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.heroDividerLine {
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  margin: 0 auto;
+  border-radius: 50px;
+  animation: registrationHeroDividerExpand 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+@keyframes registrationHeroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes registrationHeroDividerExpand {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ==================== DELEGATE SECTION ==================== */
+.delegateSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 150px 20px 50px;
+  position: relative;
+}
+
+.delegateContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+  animation: registrationSectionHeaderFade 0.8s ease-out both;
+}
+
+@keyframes registrationSectionHeaderFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionTitle {
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: #273272;
+  margin: 0 0 15px 0;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.sectionHighlight {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff985c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==================== PRICING GRID ==================== */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 80px auto;
+  animation: registrationPricingFadeIn 0.8s ease-out 0.3s both;
+}
+
+@keyframes registrationPricingFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== PRICING CARD ==================== */
+.pricingCard {
+   background: rgba(255, 255, 255, 0.15) !important; /* Transparent glass */
+  backdrop-filter: blur(20px);
+  border: 2px solid #ff6b35;
+  border-radius: 24px;
+  padding: 45px 40px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricingCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.pricingCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 107, 53, 0.4);
+}
+
+.pricingCard:hover::before {
+  opacity: 1;
+}
+
+.pricingCard::before {
+  display: none !important;
+}
+
+.featureItem {
+  color: #374151 !important;
+}
+
+.pricingCard:hover .featureItem {
+  color: #111827 !important;
+}
+/* Group Card Special Styling */
+.groupCard {
+  border-color: #ff6b35;
+}
+
+.groupCard::before {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(247, 147, 30, 0.08));
+  opacity: 1;
+}
+
+/* Exclusive Badge */
+.exclusiveBadge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  padding: 10px 30px;
+  border-radius: 0 24px 0 24px;
+  z-index: 2;
+}
+
+.exclusiveBadge span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Card Header */
+.cardHeader {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.passType {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.passIcon {
+  width: 28px;
+  height: 28px;
+  color: #ff6b35;
+}
+
+.passType span {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ff6b35;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.currency {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.quoteText {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.vatNote {
+  font-size: 0.95rem;
+  color: #2d3748;
+  font-weight: 500;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Card Body */
+.cardBody {
+  flex: 1;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 1;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.pricingCard:hover .featureItem {
+  color: #e2e8f0;
+}
+
+.checkIcon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  color: #ff6b35;
+  margin-top: 2px;
+}
+
+/* Card Footer */
+.cardFooter {
+  position: relative;
+  z-index: 1;
+}
+
+.buyButton {
+  width: 100%;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.buyButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
+}
+
+.buyButton:active {
+  transform: translateY(-1px);
+}
+
+.buttonText {
+  flex: 1;
+  text-align: center;
+}
+
+.buttonIcon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.buyButton:hover .buttonIcon {
+  transform: translateX(5px);
+}
+
+/* ==================== CONTACT PROMPT ==================== */
+.contactPrompt {
+  text-align: center;
+  animation: registrationContactFadeIn 0.8s ease-out 0.5s both;
+}
+
+@keyframes registrationContactFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contactText {
+  font-size: 1.15rem;
+  color: #2d3748;
+  margin: 0 0 25px 0;
+  line-height: 1.6;
+}
+
+.contactButton {
+  padding: 16px 45px;
+  background: rgba(255, 255, 255, 0.05);
+  /* backdrop-filter: blur(10px); */
+  border: 2px solid #ff6b35;
+  border-radius: 12px;
+  color: #ff6b35;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contactButton:hover {
+  background: rgba(255, 107, 53, 0.1);
+  border-color: #ff6b35;
+  transform: translateY(-3px);
+}
+
+.contactIcon {
+  width: 20px;
+  height: 20px;
+  color: #ff6b35;
+}
+
+/* ==================== BOOK SEAT SECTION ==================== */
+.bookSeatSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 100px 20px;
+  position: relative;
+}
+
+.bookSeatContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bookSeatContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  animation: registrationBookSeatFadeIn 0.8s ease-out both;
+}
+
+@keyframes registrationBookSeatFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Book Seat Image */
+.bookSeatImage {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.seatImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.bookSeatImage:hover .seatImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bookSeatImage:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* Book Seat Info */
+.bookSeatInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.bookSeatBadge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.15));
+  border: 2px solid #ff6b35;
+  border-radius: 50px;
+}
+
+.bookSeatBadge span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ff6b35;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bookSeatTitle {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.bookSeatHighlight {
+  background: #273272;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bookSeatDescription {
+  font-size: 1.1rem;
+  color: #2d3748;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.registerButton {
+  align-self: flex-start;
+  padding: 20px 50px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.registerButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
+}
+
+.registerButton:active {
+  transform: translateY(-1px);
+}
+
+.registerButtonText {
+  text-align: center;
+}
+
+.registerButtonIcon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.registerButton:hover .registerButtonIcon {
+  transform: translateX(5px);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .heroMainTitle {
+    font-size: 4rem;
+  }
+
+  .sectionTitle {
+    font-size: 3.2rem;
+  }
+
+  .pricingGrid {
+    gap: 35px;
+  }
+
+  .bookSeatContent {
+    gap: 50px;
+  }
+
+  .bookSeatTitle {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: 40vh;
+  }
+  .exclusiveBadge {
+  padding: 10px 15px;
+
+}
+
+  .heroMainTitle {
+    font-size: 3rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .delegateSection,
+  .bookSeatSection {
+    padding: 60px 15px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 60px;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1.05rem;
+  }
+
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .pricingCard {
+    padding: 40px 35px;
+  }
+
+  .price {
+    font-size: 4rem;
+  }
+
+  .quoteText {
+    font-size: 1.7rem;
+  }
+
+  .bookSeatContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bookSeatTitle {
+    font-size: 2.2rem;
+  }
+
+  .bookSeatDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 2.2rem;
+  }
+
+  .heroMainSubtitle {
+    font-size: 1rem;
+  }
+
+  .delegateSection,
+  .bookSeatSection {
+    padding: 40px 15px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 45px;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .pricingCard {
+    padding: 35px 25px;
+  }
+
+  .passType {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .passIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .passType span {
+    font-size: 1rem;
+  }
+
+  .currency {
+    font-size: 2rem;
+  }
+
+  .price {
+    font-size: 3.5rem;
+  }
+
+  .quoteText {
+    font-size: 1.5rem;
+  }
+
+  .vatNote {
+    font-size: 0.85rem;
+  }
+
+  .featureItem {
+    font-size: 0.95rem;
+    gap: 12px;
+  }
+
+  .checkIcon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+  }
+
+  .buyButton {
+    padding: 16px 30px;
+    font-size: 1rem;
+  }
+
+  .contactText {
+    font-size: 1rem;
+  }
+
+  .contactButton {
+    padding: 14px 35px;
+    font-size: 0.95rem;
+  }
+
+  .bookSeatTitle {
+    font-size: 1.8rem;
+  }
+
+  .bookSeatDescription {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .registerButton {
+    padding: 16px 40px;
+    font-size: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,317 @@
+/* ===============================
+   NAVBAR BASE
+================================ */
+.navbar {
+  --navbar-height: 88px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 1000;
+  background: #ffffff;
+  backdrop-filter: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.navbar.scrolled {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* ===============================
+   CONTAINER
+================================ */
+.navContainer {
+  max-width: 1450px;
+  height: 100%;
+  margin: auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===============================
+   LOGO
+================================ */
+.navLogo img {
+  height: 82px;
+  transition: height 0.3s ease;
+}
+
+.navbar.scrolled .navLogo img {
+  height: 70px;
+}
+
+/* ===============================
+   MENU
+================================ */
+.navMenu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navMenu a {
+  color: #A5223D;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.navMenu a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #A6223C;
+  transition: width 0.3s ease;
+}
+
+.navMenu a:hover::after {
+  width: 100%;
+}
+
+/* ===============================
+   NAV LINK
+================================ */
+.navLink {
+  color: #A5223D;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  position: relative;
+}
+
+/* ACTIVE PAGE */
+.navLink.active {
+  color: #A6223C;
+}
+
+/* underline visible on active page */
+.navLink.active::after {
+  width: 100%;
+}
+
+/* ===============================
+   CTA
+================================ */
+.navCta {
+  background: linear-gradient(135deg, #A6223C 0%, #A6223C 100%);
+
+  border: none;
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ===============================
+   HAMBURGER
+================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #ff6b35;
+}
+
+/* ===============================
+   DROPDOWN
+================================ */
+/* Dropdown Wrapper */
+.navDropdown {
+  position: relative;
+}
+
+/* Hide dropdown by default */
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 200px;
+  padding: 10px 0;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  list-style: none;
+}
+
+/* Show on hover (desktop) */
+.navDropdown:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown links */
+.dropdownLink {
+  display: block;
+  padding: 10px 20px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdownLink:hover {
+  background: rgba(255, 107, 53, 0.15);
+  color: #ff6b35;
+}
+
+.dropdownLink.active {
+  color: #ff6b35;
+}
+
+.dropdownToggle {
+  cursor: pointer;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 1080px) {
+  .navbar {
+    --navbar-height: 76px;
+  }
+.navLogo img {
+  height: 72px;
+}
+  .navMenu {
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 2rem 0;
+    display: none;
+  }
+
+  .navMenu.open {
+    display: flex;
+  }
+
+  .navCta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+/* Align Awards + Arrow */
+.dropdownToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Default arrow state (down) */
+.arrow {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+
+/* Desktop hover (arrow rotates up) */
+@media (min-width: 1081px) {
+  .navDropdown:hover .arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* Dropdown open (mobile click behavior) */
+.navDropdown .dropdownMenu:global(.show) ~ .dropdownToggle .arrow,
+.navDropdown.active .arrow {
+  transform: rotate(180deg);
+}
+/* CTA Group Wrapper */
+.navCtaGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Book a Booth Button */
+.boothBtn {
+  background: transparent;
+  border: 2px solid #A5223D;
+  color: #A5223D;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+@media (max-width: 1080px) {
+  .boothBtn{
+    display: none;
+  }
+}
+.boothBtn:hover {
+  background: #A5223D;
+  color: #ffffff;
+}
+/* ========================================
+   PERFECT NAVBAR FIX FOR 1100PX–1300PX
+======================================== */
+@media (min-width: 1100px) and (max-width: 1300px) {
+
+  .navContainer {
+    padding: 0 1.5rem;
+  }
+
+  .navLogo img {
+    height: 70px;
+  }
+
+  .navMenu {
+    gap: 1.4rem; /* default 2.2rem was too big */
+  }
+
+  .navLink,
+  .navMenu a {
+    font-size: 0.9rem;
+  }
+
+  .navCtaGroup {
+    gap: 0.7rem;
+  }
+
+  .navCta,
+  .boothBtn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .dropdownMenu {
+    min-width: 180px;
+  }
+}

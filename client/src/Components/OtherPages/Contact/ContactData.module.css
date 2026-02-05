@@ -1,0 +1,485 @@
+/* Contact Data Wrapper */
+.contactDataWrapper {
+  width: 100%;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ==================== CONTACT SECTION ==================== */
+.contactSection {
+  width: 100%;
+  padding: 80px 20px;
+  background: #ffffff;
+  position: relative;
+}
+
+.contactContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  overflow: hidden;
+  animation: contactFadeIn 0.8s ease-out;
+}
+
+@keyframes contactFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== IMAGE SECTION ==================== */
+.imageSection {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.contactImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.contactContainer:hover .contactImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.5) 0%,
+    rgba(247, 147, 30, 0.4) 100%
+  );
+  transition: opacity 0.4s ease;
+}
+
+.contactContainer:hover .imageOverlay {
+  opacity: 0.7;
+}
+
+/* ==================== INFO SECTION ==================== */
+.infoSection {
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  background: #ffffff;
+  position: relative;
+}
+
+.infoSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(247, 147, 30, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.infoContent {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ff6b35;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+  animation: contactLabelSlide 0.6s ease-out 0.2s both;
+}
+
+@keyframes contactLabelSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mainHeading {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #2b3674;
+  margin: 0 0 50px 0;
+  line-height: 1.1;
+  animation: contactHeadingSlide 0.6s ease-out 0.3s both;
+}
+
+@keyframes contactHeadingSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==================== CONTACT DETAILS GRID ==================== */
+.contactDetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+}
+
+.contactItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  animation: contactItemFadeIn 0.6s ease-out both;
+}
+
+.contactItem:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.contactItem:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.contactItem:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.contactItem:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+@keyframes contactItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contactItem:hover {
+  background: rgba(255, 107, 53, 0.05);
+  border-color: rgba(255, 107, 53, 0.3);
+  transform: translateX(5px);
+  box-shadow: 0 5px 20px rgba(255, 107, 53, 0.1);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.contactItem:hover .iconWrapper {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  transform: rotate(5deg) scale(1.05);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #ff6b35;
+  transition: color 0.4s ease;
+}
+
+.contactItem:hover .icon {
+  color: #ffffff;
+}
+
+.contactText {
+  flex: 1;
+}
+
+.contactTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2b3674;
+  margin: 0 0 8px 0;
+  transition: color 0.3s ease;
+}
+
+.contactItem:hover .contactTitle {
+  color: #ff6b35;
+}
+
+.contactDetail {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.contactItem:hover .contactDetail {
+  color: #475569;
+}
+
+.contactLink {
+  font-size: 0.95rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.contactLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  transition: width 0.3s ease;
+}
+
+.contactLink:hover {
+  color: #ff6b35;
+}
+
+.contactLink:hover::after {
+  width: 100%;
+}
+
+/* ==================== MAP SECTION ==================== */
+.mapSection {
+  width: 100%;
+  background: #f8fafc;
+  padding: 0;
+  position: relative;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(20%);
+  transition: filter 0.4s ease;
+}
+
+.mapContainer:hover .map {
+  filter: grayscale(0%);
+}
+
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 107, 53, 0.05) 0%,
+    transparent 50%,
+    rgba(247, 147, 30, 0.05) 100%
+  );
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.mapContainer:hover .mapOverlay {
+  opacity: 0.3;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1200px) {
+  .infoSection {
+    padding: 50px;
+  }
+
+  .mainHeading {
+    font-size: 3rem;
+  }
+
+  .contactDetailsGrid {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contactSection {
+    padding: 60px 20px;
+  }
+
+  .contactContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .imageSection {
+    min-height: 400px;
+    order: 1;
+  }
+
+  .infoSection {
+    order: 2;
+    padding: 50px 40px;
+  }
+
+  .mainHeading {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+  }
+
+  .mapContainer {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 50px 15px;
+  }
+
+  .imageSection {
+    min-height: 350px;
+  }
+
+  .infoSection {
+    padding: 40px 30px;
+  }
+
+  .mainHeading {
+    font-size: 2.3rem;
+    margin-bottom: 35px;
+  }
+
+  .contactDetailsGrid {
+    gap: 25px;
+  }
+
+  .contactItem {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .iconWrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contactTitle {
+    font-size: 1rem;
+  }
+
+  .contactDetail,
+  .contactLink {
+    font-size: 0.9rem;
+  }
+
+  .mapContainer {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 40px 15px;
+  }
+
+  .imageSection {
+    min-height: 300px;
+  }
+
+  .infoSection {
+    padding: 35px 25px;
+  }
+
+  .sectionLabel {
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .mainHeading {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .contactDetailsGrid {
+    gap: 20px;
+  }
+
+  .contactItem {
+    padding: 18px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contactTitle {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .contactDetail,
+  .contactLink {
+    font-size: 0.85rem;
+  }
+
+  .mapContainer {
+    height: 350px;
+  }
+}
