@@ -91,16 +91,17 @@ const Industries = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>INDUSTRIES <span>COVERED</span></h2>
-          <p className={styles.subtitle}>Procure. Innovate</p>
+          {/* <p className={styles.subtitle}>Procure. Innovate</p> */}
         </div>
 
         <div className={styles.grid}>
-          {industries.map((industry) => {
+          {industries.map((industry, index) => {
             const Icon = industry.icon
             return (
               <div 
                 key={industry.id} 
-                className={`${styles.card} ${activeCard === industry.id ? styles.active : ""}`}
+                className={`${styles.card} ${isVisible ? styles.cardVisible : ""}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
                 onMouseEnter={() => setActiveCard(industry.id)}
                 onMouseLeave={() => setActiveCard(null)}
               >

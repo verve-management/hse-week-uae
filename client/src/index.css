@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+/* ==================== IMPORTS - PREMIUM FONTS ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
+/* ==================== GLOBAL FIX ==================== */
 :root {
-  --font-heading: 'Sora', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Libre Baskerville', serif;
+  --font-body: 'Work Sans', sans-serif;
 }
-
 body {
   font-family: var(--font-body);
 }

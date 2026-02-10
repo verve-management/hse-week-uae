@@ -1,0 +1,358 @@
+:root {
+  --primary-orange: #A6223C;
+  --primary-yellow: #A6223C;
+  --bg-dark: #0a0e27;
+  --bg-dark-secondary: #1a1f3a;
+  
+  /* Clock specific variables */
+  --frame-orange-start: #A6223C;
+  --frame-orange-end: #A6223C;
+  --inner-bg: #1a1f3a;
+  --card-bg: #2a2f4a;
+  --number-orange: #A6223C;
+  --divider-color: rgba(0, 0, 0, 0.3);
+  --hinge-start: #d4d4d8;
+  --hinge-end: #71717a;
+  --pin-color: #a1a1aa;
+  --pin-highlight: #ffffff;
+}
+
+/* Main container */
+.clockContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Outer orange frame with gradient */
+.clockFrame {
+  background: linear-gradient(180deg, var(--frame-orange-start) 0%, var(--frame-orange-end) 100%);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15),
+              inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+/* Inner dark background */
+.clockInner {
+  background: var(--inner-bg);
+  border-radius: 12px;
+  padding: 28px 32px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Units wrapper with spacing */
+.unitsWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Unit container */
+.unitContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.digitsContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Flip card container */
+.flipCard {
+  position: relative;
+  width: 70px;
+  height: 92px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+/* Card container with 3D transforms */
+.cardContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Static top half */
+.cardTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--card-bg);
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.cardTopInner {
+  position: relative;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+/* Static bottom half */
+.cardBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--card-bg);
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.cardBottomInner {
+  position: relative;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transform: translateY(-50%);
+  padding-top: 8px;
+}
+
+/* Animated flipping top card */
+.cardFlip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--card-bg);
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  z-index: 3;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+.cardFlip.flipping {
+  animation: flipDown 0.42s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+@keyframes flipDown {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+.cardFlipInner {
+  position: relative;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+/* Animated revealing bottom card */
+.cardReveal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--card-bg);
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  transform-origin: top;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  z-index: 3;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.cardReveal.revealing {
+  animation: flipUp 0.42s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+@keyframes flipUp {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.cardRevealInner {
+  position: relative;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transform: translateY(-50%);
+  padding-top: 8px;
+}
+
+/* Number typography */
+.digitText {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--number-orange);
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Horizontal divider line */
+.dividerLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--divider-color);
+  transform: translateY(-0.5px);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Metallic center hinge bar */
+.hingeBar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 12px;
+  background: linear-gradient(180deg, var(--hinge-start) 0%, var(--hinge-end) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    inset 0 0 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+/* Side pins/rivets */
+.leftPin,
+.rightPin {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, var(--pin-highlight) 0%, var(--pin-color) 70%);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 6;
+}
+
+.leftPin {
+  left: -16px;
+}
+
+.rightPin {
+  right: -16px;
+}
+
+/* Add depth and shadow to the entire card */
+.flipCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Responsive scaling */
+@media (max-width: 1024px) {
+  .clockContainer {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .clockContainer {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .clockContainer {
+    transform: scale(0.5);
+    transform-origin: center;
+  }
+}
+@media (max-width: 480px) {
+  .unitContainer:first-child .digitsContainer {
+    transform: scale(0.9);
+  }
+}
+.separator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 12px;
+  padding-bottom:30px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #ffb703; /* use your theme color */
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 183, 3, 0.6);
+}
+@media (max-width: 768px) {
+  .separator {
+    margin: 0 6px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+}

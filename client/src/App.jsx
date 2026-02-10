@@ -1,4 +1,7 @@
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
 import HomePage from "./Pages/HomePage";
 import SpeakersPage from "./Pages/SpeakersPage";
 import GalleryPage from "./Pages/GalleryPage";
@@ -15,11 +18,13 @@ import GroupRegistrationPage from "./Pages/GroupRegistrationPage";
 import PostEventForm from "./Components/OtherPages/PostEventForm"
 
 function App() {
+  const location = useLocation(); 
   return (
     <>
       <ScrollToTop />  {/* ✅ VALID POSITION */}
+        <AnimatePresence mode="wait">
 
-      <Routes>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/speakers" element={<SpeakersPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
@@ -34,6 +39,7 @@ function App() {
 
 
       </Routes>
+      </AnimatePresence>
  <PostEventForm />
 
     </>

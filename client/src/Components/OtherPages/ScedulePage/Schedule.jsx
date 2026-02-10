@@ -303,22 +303,29 @@ const Schedule = () => {
   return (
     <div className={styles.schedulePageWrapper}>
       <UpdateSoon></UpdateSoon>
-      {/* <section className={styles.heroSection}>
-        <div className={styles.heroBgImage}></div>
-        <div className={styles.heroOverlay}></div>
-        
-        <div className={styles.heroContentWrapper}>
-          <h1 className={styles.heroMainTitle} ref={heroTextRef}>
-            Event Schedule
-          </h1>
-          <p className={styles.heroMainSubtitle}>
-            Two Days of Innovation, Insights & Networking
-          </p>
-          <div className={styles.heroDividerLine}></div>
-        </div>
-      </section> */}
-{/* 
-      <section className={styles.scheduleContentSection}>
+     {/* <section className={styles.heroSection}>
+  <div className={styles.heroBgImage}></div>
+  <div className={styles.heroOverlay}></div>
+
+  <div className={styles.heroContentWrapper}>
+
+    <div className={styles.heroDecoLine}></div>
+
+    <h1 className={styles.heroMainTitle}>
+      <span ref={heroTextRef}>Event Schedule</span>
+    </h1>
+
+    <p className={styles.heroMainSubtitle}>
+      Two Days of Innovation, Insights & Networking
+    </p>
+
+    <div className={styles.heroDecoLine}></div>
+
+  </div>
+</section> */}
+
+
+      {/* <section className={styles.scheduleContentSection}>
         <div className={styles.scheduleContainer}>
           
           <div className={styles.dayTabsWrapper}>

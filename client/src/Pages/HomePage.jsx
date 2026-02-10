@@ -9,6 +9,7 @@ import InnovationOverview from "../Components/InnovationOverview/InnovationOverv
 import MarketInsights from "../Components/InnovationOverview/MarketInsights"
 import Navbar from "../Components/Navbar/Navbar"
 import Numbers from "../Components/Numbers/Numbers"
+import Cta from "../Components/OtherPages/Cta"
 import Partners from "../Components/Partners/Partners"
 import TopicHighlight from "../Components/TopicHighlight/TopicHighlight"
 import WhoMeet from "../Components/Whomeet/Whomeet"
@@ -26,17 +27,22 @@ function HomePage() {
      <Hero3></Hero3>
      {/* <Hero2></Hero2> */}
      <Event></Event>
-     <InnovationOverview></InnovationOverview>
+     {/* <InnovationOverview></InnovationOverview> */}
      {/* <MarketInsights></MarketInsights> */}
-     <Numbers></Numbers>
+     {/* <Numbers></Numbers> */}
      <Industries></Industries>
      <WhyAttend></WhyAttend>
      
      <WhoMeet></WhoMeet>  
+
      <TopicHighlight></TopicHighlight>
      <WhySponsor></WhySponsor>
+
      <Partners></Partners>
+
      <Gallery></Gallery>
+     <Cta></Cta>
+
      <Footer></Footer>
      {/* <Hero2></Hero2> */}
     </>

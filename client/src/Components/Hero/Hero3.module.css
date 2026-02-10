@@ -39,11 +39,11 @@
   margin: 0;
   letter-spacing: 2px;
   line-height: 1.1;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .eventDate {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   color: #ffffff;
   font-weight: 600;
   margin: 0;
@@ -85,7 +85,7 @@
 .timeValue {
   font-size: 3rem;
   font-weight: 900;
-  color: #ffffff;
+  color: #102147;
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -93,7 +93,7 @@
 .timeLabel {
   font-size: 0.85rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: #102147;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -442,4 +442,33 @@
   .rightContent {
     height: 300px;
   }
+}
+/* ================= POSTER FALLBACK FOR VIDEO ================= */
+
+.posterImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* Hide poster when video is loaded */
+.hidePoster {
+  opacity: 0;
+}
+
+/* Make video fade in when loaded */
+.showVideo {
+  opacity: 1 !important;
+}
+
+/* Video default hidden until load */
+.video {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 }

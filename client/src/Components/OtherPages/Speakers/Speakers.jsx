@@ -12,21 +12,26 @@ const Speakers = () => {
   const [openSpeak, setOpenSpeak] = useState(false);
 
 
-  useEffect(() => {
-    const text = heroTextRef.current;
-    if (text) {
-      const letters = text.textContent.split('');
-      text.textContent = '';
-      letters.forEach((letter, index) => {
-        const span = document.createElement('span');
-        span.textContent = letter;
-        span.className = styles.heroLetter;
-        span.style.animationDelay = `${index * 0.05}s`;
-        text.appendChild(span);
-      });
-    }
-  }, []);
+useEffect(() => {
+  const text = heroTextRef.current;
+  if (!text) return;
 
+  const full = text.textContent;
+  text.textContent = "";
+
+  [...full].forEach((letter, index) => {
+    const span = document.createElement("span");
+    span.textContent = letter === " " ? "\u00A0" : letter;
+    span.className = styles.heroLetter;
+    span.style.animationDelay = `${index * 0.04}s`;
+    text.appendChild(span);
+  });
+
+  // After animation finishes, restore wrapping
+  setTimeout(() => {
+    text.classList.add(styles.animated);
+  }, full.length * 40 + 300);
+}, []);
   // Sample speakers data - replace with your actual speakers
   const speakers = [
     {
@@ -470,45 +475,44 @@ const Speakers = () => {
   return (
     <div className={styles.speakersPageWrapper}>
       {/* Hero Section */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroBgImage}></div>
-        <div className={styles.heroOverlay}></div>
-        
-        <div className={styles.heroContentWrapper}>
-          <h1 className={styles.heroMainTitle} ref={heroTextRef}>
-            Expert&nbsp;Speakers
-          </h1>
-  <button 
- onClick={() => {
-  const current = window.location.pathname;   // save FIRST
-  window._previousRoute = current;            // assign
-  window.history.replaceState({}, "", current); // ensure no override
+    <section className={styles.heroSection}>
+  <div className={styles.heroBgImage}></div>
+  <div className={styles.heroOverlay}></div>
 
-  window.history.pushState({}, "", "/speaking-opportunity");
-  setOpenSpeak(true);
-}}
+  <div className={styles.heroContentWrapper}>
+    
+    {/* TOP DECORATIVE LINE */}
+    <div className={styles.heroDecoLine}></div>
 
-  style={{
-    marginTop: "20px",
-    background: "#ffffff",
-    padding: "12px 28px",
-    border: "none",
-    borderRadius: "6px",
-    color: "#ff6b35",
-    fontSize: "16px",
-    fontWeight: "600",
-    cursor: "pointer",
-    transition: "0.3s ease",
-    display: "inline-block"
-  }}
->
-  Speaking Opportunity
-</button>
+    {/* ANIMATED TITLE */}
+    <h1 className={styles.heroMainTitle}>
+      <span ref={heroTextRef}>Expert Speakers</span>
+    </h1>
 
+    {/* SUBTITLE */}
+    <p className={styles.heroMainSubtitle}>
+      Meet the Leaders Driving Innovation & Safety Forward
+    </p>
 
-          {/* <div className={styles.heroDividerLine}></div> */}
-        </div>
-      </section>
+    {/* CTA BUTTON */}
+    <button 
+      onClick={() => {
+        const current = window.location.pathname;
+        window._previousRoute = current;
+        window.history.replaceState({}, "", current);
+        window.history.pushState({}, "", "/speaking-opportunity");
+        setOpenSpeak(true);
+      }}
+      className={styles.heroButton}
+    >
+      Speaking Opportunity
+    </button>
+
+    {/* BOTTOM DECORATIVE LINE */}
+    <div className={styles.heroDecoLine}></div>
+  </div>
+</section>
+
      {/* <Speakers2026></Speakers2026> */}
       {/* Speakers Section and also the cards */}
       <section className={styles.speakersSection}>

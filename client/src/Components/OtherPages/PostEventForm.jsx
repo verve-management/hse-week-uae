@@ -203,7 +203,7 @@ setIsOpen(false);
   const submitBtn = {
     width: "100%",
     padding: "14px",
-    background: "#ff6b35",
+    background: "#A6223C",
     border: "none",
     color: "white",
     fontWeight: "700",

@@ -95,7 +95,10 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Layout - Main Image LEFT, Thumbnails RIGHT */}
-        <div className={styles.galleryLayout}>
+      {/* Gallery Layout - Main Image LEFT, Thumbnails RIGHT */}
+<div className={styles.galleryBackground}>
+  <div className={styles.galleryLayout}>
+
           {/* Left Side: Main Image Display */}
           <div className={styles.mainImageWrapper}>
             <div className={styles.mainImageContainer}>
@@ -196,6 +199,7 @@ const Gallery = () => {
               />
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>

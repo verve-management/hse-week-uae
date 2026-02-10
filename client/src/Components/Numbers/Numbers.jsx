@@ -34,7 +34,7 @@ const Numbers = () => {
     <section className={styles.numbersSection} ref={sectionRef}>
       <div className={styles.header}>
         <h2 className={styles.title}>THE POWERHOUSE <span>BEHIND</span></h2>
-        <p className={styles.hashtag}>#asiaprocuretech</p>
+        <p className={styles.hashtag}>#hseweek</p>
       </div>
       <div className={styles.container}>
         {stats.map((item, index) => (

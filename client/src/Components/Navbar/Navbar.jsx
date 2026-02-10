@@ -94,7 +94,7 @@ const Navbar = () => {
       Sponsors
     </NavLink>
   </li>
-<li className="nav-dropdown">
+{/* <li className="nav-dropdown">
 <span
   className="nav-link dropdown-toggle"
   onClick={() => setAwardOpen(!awardOpen)}
@@ -130,7 +130,7 @@ const Navbar = () => {
       </NavLink>
     </li>
   </ul>
-</li>
+</li> */}
 
 
   <li>
@@ -162,7 +162,7 @@ const Navbar = () => {
 
         {/* CTA */}
         <div className="nav-cta-group">
-  <Link to="/registration" className="nav-cta" onClick={closeMobileMenu}>
+  <Link to="/" className="nav-cta" onClick={closeMobileMenu}>
     Register Now
   </Link>
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Hero3.module.css';
+import posterImage from "../../assets/poster.webp";
+
 
 const Hero3 = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -8,6 +10,7 @@ const Hero3 = () => {
     minutes: 0,
     seconds: 0
   });
+const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const targetDate = new Date('2026-09-08T00:00:00');
@@ -37,7 +40,7 @@ const Hero3 = () => {
       <div className={styles.container}>
         {/* Left Side - Text Content */}
         <div className={styles.leftContent}>
-          <h1 className={styles.mainHeading}>HSE WEEK UAE</h1>
+          <h1 className={styles.mainHeading}>HSE Week UAE</h1>
           <p className={styles.eventDate}>8–9 September 2026</p>
           <p className={styles.eventLocation}>Abu Dhabi, UAE</p>
 
@@ -69,19 +72,31 @@ const Hero3 = () => {
         </div>
 
         {/* Right Side - Curved Video */}
-        <div className={styles.rightContent}>
-          <div className={styles.videoWrapper}>
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className={styles.video}
-            >
-              <source src="/background.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
+      <div className={styles.rightContent}>
+  <div className={styles.videoWrapper}>
+
+    {/* Poster always shows instantly */}
+    <img
+      src={posterImage}
+      alt="Event Poster"
+      className={`${styles.posterImage} ${videoLoaded ? styles.hidePoster : ""}`}
+    />
+
+    {/* Video loads in background */}
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className={`${styles.video} ${videoLoaded ? styles.showVideo : ""}`}
+      onLoadedData={() => setVideoLoaded(true)}
+    >
+      <source src="/background.mp4" type="video/mp4" />
+    </video>
+
+  </div>
+</div>
+
       </div>
     </section>
   );

@@ -91,7 +91,7 @@ const Navbar2 = () => {
             </NavLink>
           </li>
 
-     <li className={styles.navDropdown}>
+     {/* <li className={styles.navDropdown}>
   <span className={`${styles.navLink} ${styles.dropdownToggle}`}>
     Awards
     <IoChevronDown className={styles.arrow} />
@@ -122,7 +122,7 @@ const Navbar2 = () => {
       </NavLink>
     </li>
   </ul>
-</li>
+</li> */}
 
 
           <li>
@@ -154,7 +154,7 @@ const Navbar2 = () => {
         {/* CTA */}
         <div className={styles.navCtaGroup}>
   <Link
-    to="/registration"
+    to="/"
     className={styles.navCta}
     onClick={closeMobileMenu}
   >

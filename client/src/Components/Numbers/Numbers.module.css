@@ -277,9 +277,8 @@
 /* OFFSET 2nd AND 4th CARD */
 .container .statBox:nth-child(2),
 .container .statBox:nth-child(4) {
-  margin-top: 40px;   /* adjust height as per your need */
+  margin-top: 40px;   
 }
-/* Tablet View - smaller offset */
 @media (max-width: 1200px) {
   .container .statBox:nth-child(2),
   .container .statBox:nth-child(4) {
@@ -287,7 +286,6 @@
   }
 }
 
-/* Mobile View - remove stagger layout */
 @media (max-width: 768px) {
   .container .statBox:nth-child(2),
   .container .statBox:nth-child(4) {

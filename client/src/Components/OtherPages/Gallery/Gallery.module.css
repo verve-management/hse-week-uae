@@ -6,9 +6,18 @@
 }
 
 /* ==================== HERO SECTION ==================== */
+/* ==================== GALLERY PAGE WRAPPER ==================== */
+.galleryPageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #0a0e27;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ==================== HERO SECTION (MATCHED WITH CONTACT PAGE) ==================== */
 .heroSection {
   position: relative;
-  min-height: 60vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +33,7 @@
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  filter: brightness(0.6);
 }
 
 .heroOverlay {
@@ -31,9 +41,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(166, 34, 60, 0.57) 0%,
-    rgba(166, 34, 60, 0.54) 50%,
-    rgba(166, 34, 60, 0.47) 100%
+    rgba(166, 34, 60, 0.75) 0%,
+    rgba(16, 33, 71, 0.65) 50%,
+    rgba(166, 34, 60, 0.70) 100%
   );
   z-index: 1;
 }
@@ -42,41 +52,114 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(166, 34, 60, 0.72) 0%,
-    rgba(166, 34, 60, 0.62) 100%
-  );
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
 }
 
-
+/* CONTENT WRAPPER */
 .heroContentWrapper {
   position: relative;
   z-index: 2;
   text-align: center;
   max-width: 900px;
-  padding: 80px 20px;
+  padding: 60px 40px;
 }
 
+/* DECORATIVE LINE (TOP + BOTTOM) */
+.heroDecoLine {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.heroDecoLine::before,
+.heroDecoLine::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.heroDecoLine::before {
+  left: -4px;
+}
+
+.heroDecoLine::after {
+  right: -4px;
+}
+
+/* TITLE */
 .heroMainTitle {
-  font-size: 5rem;
-  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  font-weight: 700;
   margin: 0 0 20px 0;
-  letter-spacing: -2px;
-  line-height: 1.1;
+  letter-spacing: 2px;
   color: #ffffff;
+  text-transform: uppercase;
 }
 
+/* LETTER ANIMATION */
 .heroLetter {
   display: inline-block;
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: galleryLetterFloat 0.8s ease forwards;
+  animation: gallery-letter-float 0.8s ease forwards;
   opacity: 0;
   transform: translateY(30px);
 }
+
+@keyframes gallery-letter-float {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SUBTITLE */
+.heroMainSubtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 30px 0;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+/* ——————— SAME RESPONSIVE VALUES AS CONTACT PAGE ——————— */
+@media (max-width: 1024px) {
+  .heroMainTitle { font-size: 4.5rem; }
+}
+@media (max-width: 768px) {
+  .heroSection { min-height: 50vh; margin-top: 80px; }
+  .heroMainTitle { font-size: 3.5rem; }
+  .heroMainSubtitle { font-size: 1.2rem; }
+}
+@media (max-width: 600px) {
+  .heroMainTitle { font-size: 2.8rem; }
+  .heroMainSubtitle { font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  .heroMainTitle { font-size: 2.2rem; letter-spacing: 1px; }
+  .heroDecoLine { width: 80px; }
+}
+
 
 @keyframes galleryLetterFloat {
   to {
@@ -164,7 +247,7 @@
 }
 
 .gallerySubtitle {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #2d3748;
   line-height: 1.7;
   max-width: 800px;
@@ -172,7 +255,7 @@
   font-weight: 400;
 }
 
-/* ==================== TAB SELECTOR ==================== */
+/* ==================== NEW TAB SELECTOR DESIGN ==================== */
 .yearSelectorWrapper {
   display: flex;
   justify-content: center;
@@ -192,44 +275,78 @@
 }
 
 .yearSelector {
-  display: flex;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50px;
-  padding: 6px;
+  display: inline-flex;
+  gap: 20px;
   position: relative;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(166, 34, 60, 0.05), rgba(16, 33, 71, 0.05));
+  border-radius: 12px;
+  border: 2px solid rgba(166, 34, 60, 0.15);
 }
 
 .yearSelectorBtn {
   position: relative;
   z-index: 2;
-  padding: 16px 50px;
+  padding: 18px 45px;
   background: transparent;
-  border: none;
-  border-radius: 50px;
+  border: 2px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  min-width: 180px;
+  gap: 6px;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.yearSelectorBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(166, 34, 60, 0.08), rgba(16, 33, 71, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.yearSelectorBtn:hover::before {
+  opacity: 1;
 }
 
 .yearBtnLabel {
-  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #94a3b8;
-  transition: all 0.3s ease;
+  color: #64748b;
+  transition: all 0.4s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
 }
 
 .yearBtnCount {
-  font-size: 0.85rem;
-  color: #64748b;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: #94a3b8;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.yearSelectorBtn.active {
+  background: linear-gradient(135deg, #A6223C 0%, #8a1b30 100%);
+  border-color: #A6223C;
+  box-shadow: 
+    0 8px 25px rgba(166, 34, 60, 0.35),
+    0 4px 12px rgba(166, 34, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.yearSelectorBtn.active::before {
+  opacity: 0;
 }
 
 .yearSelectorBtn.active .yearBtnLabel {
@@ -237,28 +354,28 @@
 }
 
 .yearSelectorBtn.active .yearBtnCount {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .yearSelectorSlider {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  width: calc(50% - 6px);
-  height: calc(100% - 12px);
-  background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
-
-  border-radius: 50px;
-  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-  z-index: 1;
+  display: none;
 }
 
-/* ==================== GALLERY GRID ==================== */
+/* ==================== BACKGROUND COLOR BOX ==================== */
+.contentBackgroundBox {
+  background: #A6223C;
+  padding: 60px 40px;
+  border-radius: 6px;
+  max-width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ==================== GALLERY GRID - 4 COLUMNS ==================== */
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   animation: galleryGridFadeIn 0.8s ease-out 0.4s both;
 }
 
@@ -317,7 +434,6 @@
   position: absolute;
   inset: 0;
   background: rgba(166, 34, 60, 0.55);
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,11 +475,11 @@
   letter-spacing: 1px;
 }
 
-/* ==================== TESTIMONIALS GRID ==================== */
+/* ==================== TESTIMONIALS GRID - 4 COLUMNS ==================== */
 .testimonialsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   animation: galleryGridFadeIn 0.8s ease-out 0.4s both;
 }
 
@@ -424,8 +540,7 @@
 .playButton {
   width: 80px;
   height: 80px;
- background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
-
+  background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -450,7 +565,6 @@
   transform: scale(1.1);
   background: linear-gradient(135deg, #D93F63 0%, #A6223C 100%);
 }
-
 
 .playIcon {
   width: 32px;
@@ -636,10 +750,10 @@
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 1400px) {
   .galleryGrid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
   .testimonialsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -652,14 +766,36 @@
     font-size: 3rem;
   }
 
+  .contentBackgroundBox {
+    padding: 50px 30px;
+    max-width: 96%;
+  }
+
   .galleryGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
   .testimonialsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .yearSelector {
+    gap: 15px;
+  }
+
+  .yearSelectorBtn {
+    padding: 16px 35px;
+    min-width: 180px;
+  }
+
+  .yearBtnLabel {
+    font-size: 1.3rem;
+  }
+
+  .yearBtnCount {
+    font-size: 0.9rem;
   }
 }
 
@@ -692,6 +828,7 @@
   .yearSelector {
     width: 100%;
     max-width: 500px;
+    gap: 12px;
   }
 
   .yearSelectorBtn {
@@ -701,21 +838,26 @@
   }
 
   .yearBtnLabel {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .yearBtnCount {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .contentBackgroundBox {
+    padding: 40px 25px;
+    max-width: 97%;
   }
 
   .galleryGrid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
   .testimonialsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
   .playButton {
@@ -766,7 +908,8 @@
   }
 
   .yearSelector {
-    padding: 4px;
+    padding: 6px;
+    gap: 10px;
   }
 
   .yearSelectorBtn {
@@ -774,11 +917,16 @@
   }
 
   .yearBtnLabel {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .yearBtnCount {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .contentBackgroundBox {
+    padding: 30px 20px;
+    max-width: 98%;
   }
 
   .galleryGrid {
@@ -788,7 +936,7 @@
 
   .testimonialsGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
   }
 
   .expandIcon {

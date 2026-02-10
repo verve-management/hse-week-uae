@@ -139,7 +139,7 @@ const handleSubmit = async (e) => {
     maxWidth: "750px",
     borderRadius: "12px",
     padding: "40px",
-    border: "2px solid #ff6b35",
+    border: "2px solid #A6223C",
     boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
     overflowY: "auto",
     maxHeight: "90vh",
@@ -168,7 +168,7 @@ const handleSubmit = async (e) => {
   const headerStyle = {
     marginBottom: "35px",
     textAlign: "center",
-    borderBottom: "3px solid #ff6b35",
+    borderBottom: "3px solid #A6223C",
     paddingBottom: "20px"
   };
 
@@ -181,7 +181,7 @@ const handleSubmit = async (e) => {
   };
 
   const highlightStyle = {
-    background: "linear-gradient(135deg, #ff6b35 0%, #ff985c 100%)",
+    background: "linear-gradient(135deg, #A6223C 0%, #ff985c 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text"
@@ -222,7 +222,7 @@ const handleSubmit = async (e) => {
     maxHeight: "200px",
     overflowY: "auto",
     backgroundColor: "#ffffff",
-    border: "2px solid #ff6b35",
+    border: "2px solid #A6223C",
     borderTop: "none",
     borderRadius: "0 0 8px 8px",
     zIndex: 1000,
@@ -249,7 +249,7 @@ const handleSubmit = async (e) => {
   };
 
   const buttonStyle = {
-    background: "linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)",
+    background: "#A6223C",
     color: "#ffffff",
     padding: "16px 40px",
     borderRadius: "8px",
@@ -294,7 +294,7 @@ const handleSubmit = async (e) => {
 
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = "#f1f5f9";
-              e.target.style.color = "#ff6b35";
+              e.target.style.color = "#A6223C";
               e.target.style.transform = "rotate(90deg)";
             }}
             onMouseLeave={(e) => {
@@ -323,7 +323,7 @@ const handleSubmit = async (e) => {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -340,7 +340,7 @@ const handleSubmit = async (e) => {
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -360,7 +360,7 @@ const handleSubmit = async (e) => {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -377,7 +377,7 @@ const handleSubmit = async (e) => {
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -397,7 +397,7 @@ const handleSubmit = async (e) => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -415,7 +415,7 @@ const handleSubmit = async (e) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -442,7 +442,7 @@ const handleSubmit = async (e) => {
                   setShowDropdown(true);
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = "#ff6b35";
+                  e.target.style.borderColor = "#A6223C";
                   e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   setShowDropdown(true);
                 }}

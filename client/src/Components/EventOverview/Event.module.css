@@ -1,143 +1,528 @@
 /* ================================
-   PROFESSIONAL EVENT OVERVIEW
+   SIMPLE EVENT OVERVIEW SECTION
+   Content Left | Images Right
 ================================ */
 
 .section {
   background: #ffffff;
   padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  
+  /* Initial state for fade-in animation */
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/* Visible state when scrolled into view */
 .section.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 .container {
-  max-width: 1450px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
 }
 
 /* ================================
-   TEXT
+   LEFT SIDE - CONTENT (NO BOX)
 ================================ */
 
-.left {
-  padding-right: 1rem;
+.contentArea {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  
+  /* Initial state for animation */
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
 }
 
+/* Content visible animation */
+.contentArea.contentVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Heading styling */
 .heading {
-  font-size: 2.7rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1.2rem;
-  letter-spacing: 1px;
-}
-
-.heading span {
   color: #A6223C;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
-.text {
-  font-size: 1.12rem;
-  color: #444;
-  line-height: 1.75;
-  margin-bottom: 1.4rem;
+/* Highlighted word in accent color */
+.highlight {
+  color: #102147;
+}
+
+/* Paragraph text */
+.paragraph {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
   font-weight: 400;
 }
 
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
 /* ================================
-   RIGHT SIDE MEDIA
+   RIGHT SIDE - 4 IMAGE GRID (2x2)
 ================================ */
 
-.right {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* MAIN LOGO */
-.logoBox {
+.imageGridWrapper {
+  position: relative;
   width: 100%;
-  background: #ffffff;
-  padding: 1.7rem;
-  border-radius: 14px;
-  border: 2px solid #A6223C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  max-width: 600px;
+  justify-self: end;
+  
+  /* Initial state for animation */
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
 }
 
-.logoBox img {
-  width: 260px;
-  height: auto;
+/* Image grid visible animation */
+.imageGridWrapper.imageGridVisible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.logoBox:hover {
-  transform: translateY(-6px);
-  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.15);
-}
-
-/* GRID OF 3 IMAGES */
-.gridImages {
+.imageGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-
-.smallImage {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #A6223C;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  aspect-ratio: 1 / 1;
 }
 
-.smallImage:hover {
-  transform: translateY(-6px);
-  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.15);
+.imageBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+}
+
+/* Images */
+.gridImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.imageBox:hover .gridImage {
+  transform: scale(1.05);
+}
+
+/* ================================
+   CENTER LOGO - Where 4 images meet
+================================ */
+
+.centerLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  
+  /* Logo container styling */
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.centerLogo:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ================================
+   STATISTICS SECTION - 4 BOXES
+================================ */
+
+.statsContainer {
+  max-width: 1400px;
+  margin: 5rem auto 0;
+  padding: 0 2rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.statBox {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #A6223C;
+  border-radius: 1px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+  
+  /* Animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* OUTSIDE Right Border - Same as Why Sponsor */
+.statBox::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: -12px;
+  right: -12px;
+  width: 12px;
+  background: #A6223C;
+  z-index: -1;
+}
+
+/* OUTSIDE Bottom Border - Same as Why Sponsor */
+.statBox::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: -12px;
+  height: 12px;
+  width: calc(100% - 10px);
+  background: #A6223C;
+  z-index: -1;
+}
+
+.statBox:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(166, 34, 60, 0.15);
+}
+
+.statNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #A6223C;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #102147;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Animation */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ================================
    RESPONSIVE DESIGN
 ================================ */
 
-@media (max-width: 1100px) {
+/* Large Desktop */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    gap: 3rem;
+  }
+
+  .imageGridWrapper {
+    max-width: 550px;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .statsContainer {
+    max-width: 1200px;
+  }
+
+  .statsGrid {
+    gap: 2rem;
+  }
+
+  .statNumber {
+    font-size: 2.5rem;
+  }
+
+  .statLabel {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
   .container {
     grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contentArea {
+    order: 2;
+    justify-content: center;
     text-align: center;
+    
+    /* Adjust animation for mobile */
+    transform: translateY(30px);
+  }
+  
+  .contentArea.contentVisible {
+    transform: translateY(0);
   }
 
-  .left {
-    padding-right: 0;
+  .content {
+    max-width: 700px;
   }
 
-  .gridImages {
-    grid-template-columns: repeat(3, 1fr);
+  .imageGridWrapper {
+    order: 1;
+    max-width: 100%;
+    justify-self: center;
+    
+    /* Adjust animation for mobile */
+    transform: translateY(-30px);
   }
-}
+  
+  .imageGridWrapper.imageGridVisible {
+    transform: translateY(0);
+  }
 
-@media (max-width: 700px) {
-  .gridImages {
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .centerLogo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .statsContainer {
+    margin: 4rem auto 0;
+  }
+
+  .statsGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .statBox {
+    padding: 2rem 1.2rem;
+  }
+
+  .statNumber {
+    font-size: 2.2rem;
   }
 }
 
-@media (max-width: 500px) {
-  .gridImages {
-    grid-template-columns: 1fr;
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1.5rem;
   }
 
-  .smallImage {
-    height: 200px;
+  .container {
+    gap: 2.5rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .centerLogo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .statsContainer {
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .statsGrid {
+    gap: 1.5rem;
+  }
+
+  .statBox {
+    padding: 1.8rem 1rem;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .statLabel {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 600px) {
+  .section {
+    padding: 2.5rem 1rem;
+  }
+
+  .imageGridWrapper {
+    max-width: 400px;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .paragraph {
+    font-size: 0.95rem;
+  }
+
+  .centerLogo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .statsContainer {
+    margin: 2.5rem auto 0;
+    padding: 0 1rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .statBox {
+    padding: 1.5rem 1rem;
+  }
+
+  .statBox::after {
+    width: 10px;
+    right: -10px;
+    bottom: -10px;
+  }
+
+  .statBox::before {
+    height: 10px;
+    bottom: -10px;
+  }
+
+  .statNumber {
+    font-size: 2.5rem;
+  }
+
+  .statLabel {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 400px) {
+  .section {
+    padding: 2rem 0.75rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+  }
+
+  .centerLogo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .statsContainer {
+    margin: 2rem auto 0;
+    padding: 0 0.75rem;
+  }
+
+  .statsGrid {
+    gap: 1rem;
+  }
+
+  .statBox {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .statBox::after {
+    width: 8px;
+    right: -8px;
+    bottom: -8px;
+  }
+
+  .statBox::before {
+    height: 8px;
+    bottom: -8px;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .statLabel {
+    font-size: 0.85rem;
   }
 }

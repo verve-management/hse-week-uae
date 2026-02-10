@@ -131,7 +131,7 @@ setOpen(false);
     maxWidth: "750px",
     borderRadius: "12px",
     padding: "40px",
-    border: "2px solid #ff6b35",
+    border: "2px solid #A6223C",
     boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
     overflowY: "auto",
     maxHeight: "90vh",
@@ -160,7 +160,7 @@ setOpen(false);
   const headerStyle = {
     marginBottom: "35px",
     textAlign: "center",
-    borderBottom: "3px solid #ff6b35",
+    borderBottom: "3px solid #A6223C",
     paddingBottom: "20px"
   };
 
@@ -173,7 +173,7 @@ setOpen(false);
   };
 
   const highlightStyle = {
-    background: "linear-gradient(135deg, #ff6b35 0%, #ff985c 100%)",
+    background: "linear-gradient(135deg, #A6223C 0%, #ff985c 100%)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text"
@@ -214,7 +214,7 @@ setOpen(false);
     maxHeight: "200px",
     overflowY: "auto",
     backgroundColor: "#ffffff",
-    border: "2px solid #ff6b35",
+    border: "2px solid #A6223C",
     borderTop: "none",
     borderRadius: "0 0 8px 8px",
     zIndex: 1000,
@@ -266,11 +266,11 @@ setOpen(false);
     width: "18px",
     height: "18px",
     cursor: "pointer",
-    accentColor: "#ff6b35"
+    accentColor: "#A6223C"
   };
 
   const buttonStyle = {
-    background: "linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)",
+    background: "#A6223C",
     color: "#ffffff",
     padding: "16px 40px",
     borderRadius: "8px",
@@ -315,7 +315,7 @@ setOpen(false);
 
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = "#f1f5f9";
-              e.target.style.color = "#ff6b35";
+              e.target.style.color = "#A6223C";
               e.target.style.transform = "rotate(90deg)";
             }}
             onMouseLeave={(e) => {
@@ -344,7 +344,7 @@ setOpen(false);
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -361,7 +361,7 @@ setOpen(false);
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -381,7 +381,7 @@ setOpen(false);
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -398,7 +398,7 @@ setOpen(false);
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -418,7 +418,7 @@ setOpen(false);
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -436,7 +436,7 @@ setOpen(false);
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={(e) => {
-                    e.target.style.borderColor = "#ff6b35";
+                    e.target.style.borderColor = "#A6223C";
                     e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   }}
                   onBlur={(e) => {
@@ -463,7 +463,7 @@ setOpen(false);
                   setShowDropdown(true);
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = "#ff6b35";
+                  e.target.style.borderColor = "#A6223C";
                   e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
                   setShowDropdown(true);
                 }}
@@ -502,7 +502,7 @@ setOpen(false);
               <label 
                 style={radioLabelStyle}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#ff6b35";
+                  e.currentTarget.style.borderColor = "#A6223C";
                   e.currentTarget.style.backgroundColor = "#fff5f2";
                 }}
                 onMouseLeave={(e) => {
@@ -524,7 +524,7 @@ setOpen(false);
               <label 
                 style={radioLabelStyle}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#ff6b35";
+                  e.currentTarget.style.borderColor = "#A6223C";
                   e.currentTarget.style.backgroundColor = "#fff5f2";
                 }}
                 onMouseLeave={(e) => {
@@ -546,7 +546,7 @@ setOpen(false);
               <label 
                 style={radioLabelStyle}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#ff6b35";
+                  e.currentTarget.style.borderColor = "#A6223C";
                   e.currentTarget.style.backgroundColor = "#fff5f2";
                 }}
                 onMouseLeave={(e) => {
@@ -568,7 +568,7 @@ setOpen(false);
               <label 
                 style={radioLabelStyle}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#ff6b35";
+                  e.currentTarget.style.borderColor = "#A6223C";
                   e.currentTarget.style.backgroundColor = "#fff5f2";
                 }}
                 onMouseLeave={(e) => {

@@ -15,15 +15,15 @@ const WhyAttend = () => {
       points: [
         {
           number: "01",
-          title: "Gain Strategic Insights",
+          title: "AI & Digital Safety Innovations",
           description:
-            "Learn from global leaders, expert panels, and real-world case studies shaping the future of digital procurement and supply chains."
+            "Discover cutting-edge technologies including AI-driven risk management, predictive analytics, and real-time hazard detection systems."
         },
         {
           number: "02",
-          title: "Discover Innovative Solutions",
+          title: "UAE HSE Regulations & Compliance",
           description:
-            "Explore advanced digital procurement tools that boost efficiency, transparency, and strategic value."
+            "Stay updated on the latest UAE safety laws, Net Zero 2050 guidelines, and sustainability-focused construction and industrial standards."
         }
       ],
       bgClass: styles.bgWhite
@@ -37,15 +37,15 @@ const WhyAttend = () => {
       points: [
         {
           number: "03",
-          title: "Network with Leaders",
+          title: "Heat Stress Prevention",
           description:
-            "Connect with CPOs, senior executives, and solution providers across public and private sectors."
+            "Learn effective strategies for managing heat risks and protecting workers in extreme UAE climate conditions."
         },
         {
           number: "04",
-          title: "Benchmark and Learn",
+          title: "Emergency & Fire Safety",
           description:
-            "Hear real-world case studies from organizations leading digital procurement transformation."
+            "Strengthen your approach to incident response, fire prevention, and hazardous materials management."
         }
       ],
       bgClass: styles.bgOrange
@@ -59,15 +59,15 @@ const WhyAttend = () => {
       points: [
         {
           number: "05",
-          title: "Join the Procuretech & Supply Chain Asia Award",
+          title: "Industry Leadership Networking",
           description:
-            "Join the Procuretech Asia Awards and be inspired by innovators and organizations recognized for excellence in sustainability, technology, and performance."
+            "Connect with policymakers, HSE directors, and safety experts to shape future strategies."
         },
         {
           number: "06",
-          title: "Future-Proof Your Strategy",
+          title: "Mega Project Safety",
           description:
-            "Gain actionable insights and future-ready strategies to lead in a rapidly evolving procurement landscape."
+            "Explore innovative safety solutions for Etihad Rail, ADNOC expansions, and emerging smart city developments."
         }
       ],
       bgClass: styles.bgOrange

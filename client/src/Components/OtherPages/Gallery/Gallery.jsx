@@ -98,6 +98,8 @@ const Gallery = () => {
     { id: 73, url: "/Gallery/Gallery73.webp", alt: "HSE WEEK UAE" },
     { id: 74, url: "/Gallery/Gallery74.webp", alt: "HSE WEEK UAE" },
     { id: 75, url: "/Gallery/Gallery75.webp", alt: "HSE WEEK UAE 2026" },
+    { id: 76, url: "/Gallery/Gallery51.webp", alt: "HSE WEEK UAE" },
+
 
   ];
 
@@ -153,19 +155,30 @@ const Gallery = () => {
   return (
     <div className={styles.galleryPageWrapper}>
       {/* ── Hero ── */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroBgImage}></div>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContentWrapper}>
-          <h1 className={styles.heroMainTitle} ref={heroTextRef}>
-            Event&nbsp;Gallery
-          </h1>
-          <p className={styles.heroMainSubtitle}>
-            Capturing Moments of Excellence & Innovation
-          </p>
-          <div className={styles.heroDividerLine}></div>
-        </div>
-      </section>
+    <section className={styles.heroSection}>
+  <div className={styles.heroBgImage}></div>
+  <div className={styles.heroOverlay}></div>
+
+  <div className={styles.heroContentWrapper}>
+    
+    {/* Top Decorative Line */}
+    <div className={styles.heroDecoLine}></div>
+
+    {/* Animated Title */}
+    <h1 className={styles.heroMainTitle}>
+      <span ref={heroTextRef}>Event&nbsp;Gallery</span>
+    </h1>
+
+    {/* Subtitle */}
+    <p className={styles.heroMainSubtitle}>
+      Capturing Moments of Excellence & Innovation
+    </p>
+
+    {/* Bottom Decorative Line */}
+    <div className={styles.heroDecoLine}></div>
+  </div>
+</section>
+
 
       {/* ── Main Content ── */}
       <section className={styles.gallerySection}>
@@ -188,14 +201,14 @@ const Gallery = () => {
                 onClick={() => setActiveTab("gallery")}
               >
                 <span className={styles.yearBtnLabel}>Gallery</span>
-                <span className={styles.yearBtnCount}>{gallery2025.length} Photos</span>
+                {/* <span className={styles.yearBtnCount}>{gallery2025.length} Photos</span> */}
               </button>
               <button
                 className={`${styles.yearSelectorBtn} ${activeTab === "testimonials" ? styles.active : ""}`}
                 onClick={() => setActiveTab("testimonials")}
               >
                 <span className={styles.yearBtnLabel}>Testimonials</span>
-                <span className={styles.yearBtnCount}>{testimonials.length} Videos</span>
+                {/* <span className={styles.yearBtnCount}>{testimonials.length} Videos</span> */}
               </button>
               <div
                 className={styles.yearSelectorSlider}
@@ -206,84 +219,87 @@ const Gallery = () => {
             </div>
           </div>
 
-          {/* ── Gallery Grid ── */}
-          {activeTab === "gallery" && (
-            <div className={styles.galleryGrid}>
-              {gallery2025.map((image, index) => (
-                <div
-                  key={image.id}
-                  className={styles.galleryItem}
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                  onClick={() => openLightbox(image)}
-                >
-                  <div className={styles.galleryImageWrapper}>
-                    <img src={image.url} alt={image.alt} className={styles.galleryImage} loading="lazy" />
-                    <div className={styles.galleryOverlay}>
-                      <div className={styles.galleryOverlayContent}>
-                        <svg className={styles.expandIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <polyline points="15 3 21 3 21 9"></polyline>
-                          <polyline points="9 21 3 21 3 15"></polyline>
-                          <line x1="21" y1="3" x2="14" y2="10"></line>
-                          <line x1="3" y1="21" x2="10" y2="14"></line>
-                        </svg>
-                        <span className={styles.viewText}>View Image</span>
+          {/* ── Background Color Box Container ── */}
+          <div className={styles.contentBackgroundBox}>
+            {/* ── Gallery Grid ── */}
+            {activeTab === "gallery" && (
+              <div className={styles.galleryGrid}>
+                {gallery2025.map((image, index) => (
+                  <div
+                    key={image.id}
+                    className={styles.galleryItem}
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                    onClick={() => openLightbox(image)}
+                  >
+                    <div className={styles.galleryImageWrapper}>
+                      <img src={image.url} alt={image.alt} className={styles.galleryImage} loading="lazy" />
+                      <div className={styles.galleryOverlay}>
+                        <div className={styles.galleryOverlayContent}>
+                          <svg className={styles.expandIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <polyline points="9 21 3 21 3 15"></polyline>
+                            <line x1="21" y1="3" x2="14" y2="10"></line>
+                            <line x1="3" y1="21" x2="10" y2="14"></line>
+                          </svg>
+                          <span className={styles.viewText}>View Image</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
 
-          {/* ── Testimonials Grid ── */}
-          {activeTab === "testimonials" && (
-            <div className={styles.testimonialsGrid}>
-              {testimonials.map((video, index) => (
-                <div
-                  key={video.id}
-                  className={styles.testimonialCard}
-                  style={{ animationDelay: `${index * 0.07}s` }}
-                >
-                  {/* Video Frame */}
-                  <div className={styles.videoFrame}>
-                    {playingVideo === video.id ? (
-                      /* Embedded iframe */
-                      <iframe
-                        className={styles.videoIframe}
-                        src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0`}
-                        title={video.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    ) : (
-                      /* Thumbnail + Play overlay */
-                      <div className={styles.videoPlaceholder} onClick={() => setPlayingVideo(video.id)}>
-                        <img
-                          className={styles.videoThumbnail}
-                          src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
-                          alt={video.title}
-                        />
-                        <div className={styles.playButtonWrapper}>
-                          <button className={styles.playButton} type="button">
-                            <svg className={styles.playIcon} viewBox="0 0 24 24" fill="currentColor">
-                              <polygon points="5,3 19,12 5,21"></polygon>
-                            </svg>
-                          </button>
+            {/* ── Testimonials Grid ── */}
+            {activeTab === "testimonials" && (
+              <div className={styles.testimonialsGrid}>
+                {testimonials.map((video, index) => (
+                  <div
+                    key={video.id}
+                    className={styles.testimonialCard}
+                    style={{ animationDelay: `${index * 0.07}s` }}
+                  >
+                    {/* Video Frame */}
+                    <div className={styles.videoFrame}>
+                      {playingVideo === video.id ? (
+                        /* Embedded iframe */
+                        <iframe
+                          className={styles.videoIframe}
+                          src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0`}
+                          title={video.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      ) : (
+                        /* Thumbnail + Play overlay */
+                        <div className={styles.videoPlaceholder} onClick={() => setPlayingVideo(video.id)}>
+                          <img
+                            className={styles.videoThumbnail}
+                            src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
+                            alt={video.title}
+                          />
+                          <div className={styles.playButtonWrapper}>
+                            <button className={styles.playButton} type="button">
+                              <svg className={styles.playIcon} viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5,3 19,12 5,21"></polygon>
+                              </svg>
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
 
-                  {/* Card Info */}
-                  <div className={styles.testimonialInfo}>
-                    <h3 className={styles.testimonialTitle}>{video.title}</h3>
-                    <p className={styles.testimonialSpeaker}>{video.speaker}</p>
+                    {/* Card Info */}
+                    <div className={styles.testimonialInfo}>
+                      <h3 className={styles.testimonialTitle}>{video.title}</h3>
+                      <p className={styles.testimonialSpeaker}>{video.speaker}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
 

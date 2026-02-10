@@ -131,7 +131,7 @@
 .hamburger span {
   width: 26px;
   height: 3px;
-  background: #ff6b35;
+  background: #A6223C;
 }
 
 /* ===============================
@@ -179,11 +179,11 @@
 
 .dropdownLink:hover {
   background: rgba(255, 107, 53, 0.15);
-  color: #ff6b35;
+  color: #A6223C;
 }
 
 .dropdownLink.active {
-  color: #ff6b35;
+  color: #A6223C;
 }
 
 .dropdownToggle {

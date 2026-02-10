@@ -1,26 +1,13 @@
-/* ===================================================
-   SPEAKERS PAGE — ENHANCED STYLESHEET
-   Colors & class names preserved exactly.
-   Enhancements: typography, spacing, shadows,
-   animations, card polish, micro-interactions.
-   =================================================== */
-
-/* ---------- PAGE WRAPPER ---------- */
-.speakersPageWrapper {
-  width: 100%;
-  overflow-x: hidden;
-  background: #ffffff;
-}
-
 /* ==================== HERO SECTION ==================== */
 .heroSection {
   position: relative;
-  min-height: 60vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 55px;
+  margin-top: 50px;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .heroBgImage {
@@ -30,13 +17,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  filter: brightness(0.6);
   z-index: 0;
-  animation: heroZoom 18s ease-out forwards;
-}
-
-@keyframes heroZoom {
-  0%   { transform: scale(1.08); }
-  100% { transform: scale(1);    }
 }
 
 .heroOverlay {
@@ -44,62 +26,150 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(166, 34, 60, 0.57) 0%,
-    rgba(166, 34, 60, 0.54) 50%,
-    rgba(166, 34, 60, 0.47) 100%
+    rgba(166, 34, 60, 0.75) 0%,
+    rgba(16, 33, 71, 0.65) 50%,
+    rgba(166, 34, 60, 0.70) 100%
   );
   z-index: 1;
 }
 
 .heroOverlay::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(166, 34, 60, 0.72) 0%,
-    rgba(166, 34, 60, 0.62) 100%
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
   );
 }
 
-.heroOverlay::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.18));
-  z-index: 1;
-}
-
+/******** CONTENT WRAPPER ********/
 .heroContentWrapper {
   position: relative;
   z-index: 2;
   text-align: center;
   max-width: 900px;
-  padding: 80px 20px;
+  padding: 60px 40px;
 }
 
+/******** DECORATIVE LINES ********/
+.heroDecoLine {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.heroDecoLine::before,
+.heroDecoLine::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.heroDecoLine::before {
+  left: -4px;
+}
+
+.heroDecoLine::after {
+  right: -4px;
+}
+
+/******** HERO TITLE ********/
 .heroMainTitle {
-  font-size: 5.5rem;
-  font-weight: 900;
-  margin: 0 0 24px 0;
-  letter-spacing: -3px;
-  line-height: 1.05;
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
   color: #ffffff;
   text-transform: uppercase;
 }
 
+/******** LETTER ANIMATION ********/
 .heroLetter {
   display: inline-block;
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: speakersLetterFloat 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: speakersLetterFloat 0.8s ease forwards;
   opacity: 0;
-  transform: translateY(40px) rotate(-4deg);
+  transform: translateY(30px);
+}
+/* Prevent breaking during animation */
+.heroMainTitle span {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* After animation, allow normal line breaks */
+.heroMainTitle.animated span {
+  white-space: normal;
+}
+
+@keyframes speakersLetterFloat {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/******** SUBTITLE ********/
+.heroMainSubtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+/******** BUTTON ********/
+.heroButton {
+  background: #ffffff;
+  padding: 12px 28px;
+  color: #A6223C;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.heroButton:hover {
+  background: #f5f5f5;
+  transform: translateY(-3px);
+}
+/* Push only the bottom decorative line */
+.heroDecoLine:last-of-type {
+  margin-top: 45px !important;   /* increase space so it clears the button */
+}
+
+/******** RESPONSIVE ********/
+@media (max-width: 1024px) {
+  .heroMainTitle { font-size: 4.5rem; }
+}
+
+@media (max-width: 768px) {
+  .heroSection { min-height: 50vh; }
+  .heroMainTitle { font-size: 3.5rem; }
+  .heroMainSubtitle { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle { font-size: 2.2rem; }
+  .heroDecoLine { width: 80px; }
 }
 
 @keyframes speakersLetterFloat {

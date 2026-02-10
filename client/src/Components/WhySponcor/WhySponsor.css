@@ -1,8 +1,7 @@
-/* Why Sponsor Section - Consistent Professional Design */
+/* Why Sponsor Section */
 .why-sponsor-section {
-  /* width: 100%; */
   background: #ffffff;
-  padding: 40px 20px 60px;
+  padding: 40px 20px 0px;
   position: relative;
   overflow: hidden;
 }
@@ -24,7 +23,7 @@
 .why-sponsor-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #273272;
+  color: #A6223C;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
 }
@@ -32,7 +31,7 @@
 .why-sponsor-highlight {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ff6b35;
+  color: #102147;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
 }
@@ -42,16 +41,6 @@
   font-weight: 500;
   color: #666666;
   margin: 0;
-}
-
-.why-sponsor-description {
-  font-size: 1.05rem;
-  color: #aaa;
-  margin: 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.8;
 }
 
 /* Grid */
@@ -64,12 +53,45 @@
 
 /* Card */
 .why-sponsor-card {
-  background: var(--text-white);
-  border: 1px solid #273272;
+  background: #ffffff;
+  border-top: 1px solid #A6223C;
+  border-left: 1px solid #A6223C;
+  border-right: 1px solid #A6223C;
+  border-bottom: 1px solid #A6223C;
   border-radius: 1px;
   padding: 40px 35px;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: slideUp 0.6s ease-out both;
+}
+/* Make sure the card can hold absolute elements */
+.why-sponsor-card {
+  position: relative;
+  background: #ffffff;
+  z-index: 1;
+}
+
+/* OUTSIDE Right Border */
+.why-sponsor-card::after {
+  content: "";
+  position: absolute;
+  top: 10px;              /* where border starts */
+  bottom: -12px;          /* pushes border OUTSIDE box */
+  right: -12px;           /* moves border fully outside */
+  width: 12px;
+  background: #A6223C;
+  z-index: -1;            /* keeps it behind the card */
+}
+
+/* OUTSIDE Bottom Border */
+.why-sponsor-card::before {
+  content: "";
+  position: absolute;
+  left: 10px;             /* horizontal offset */
+  bottom: -12px;          /* outside bottom */
+  height: 12px;
+  width: calc(100% - 10px);
+  background: #A6223C;
+  z-index: -1;
 }
 
 @keyframes slideUp {
@@ -96,16 +118,10 @@
 }
 
 .why-sponsor-card:hover {
-  border-color: rgba(255, 107, 53, 0.5);
+  border-right-color: #A6223C;
+  border-bottom-color: #A6223C;
   box-shadow: 0 20px 50px rgba(255, 107, 53, 0.15);
   transform: translateY(-8px);
-}
-
-/* Card Icon */
-.why-sponsor-card-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  display: inline-block;
 }
 
 /* Card Logo */
@@ -156,237 +172,7 @@
   color: #333;
   margin: 0;
   line-height: 1.7;
-}
-
-/* CTA Section */
-.why-sponsor-cta {
-  background: var(--text-white);
-  border: 1px solid #273272;
-  border-radius: 1px;
-  padding: 39px 50px;
-  text-align: center;
-}
-
-.why-sponsor-cta-heading {
-  font-size: 2rem;
-  font-weight: 900;
-  color: black;
-  margin: 0 0 15px 0;
-}
-
-.why-sponsor-cta-text {
-  font-size: 1.05rem;
-  color: #333;
-  margin: 0 0 45px 0;
-  line-height: 1.7;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* CTA split layout */
-.cta-split {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 70px;
-}
-
-/* Left text */
-.cta-left {
-  flex: 1;
-  text-align: left;
-}
-
-.cta-left .why-sponsor-cta-heading {
-  text-align: center;
-}
-
-.cta-left .why-sponsor-cta-text {
-  margin-left: 0;
-  margin-right: 0;
-  text-align: center;
-}
-
-/* Right boxes */
-.cta-right {
-  flex: 1;
-}
-
-.cta-right .why-sponsor-contact-methods {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Contact Methods */
-.why-sponsor-contact-methods {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-
-.why-sponsor-contact-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.16) 0%, rgba(255, 107, 53, 0.08) 100%);
-  border: 1.5px solid #273272;
-  padding: 22px 28px;
-  min-width: 340px;
-  max-width: 460px;
-  width: 100%;
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-.why-sponsor-contact-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
-  transition: left 0.6s ease;
-}
-
-.why-sponsor-contact-card:hover::before {
-  left: 100%;
-}
-
-.why-sponsor-contact-card:hover {
-  border-color: #273272;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.25) 0%, rgba(255, 107, 53, 0.15) 100%);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
-}
-
-.contact-card-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  text-align: left;
-}
-
-.contact-card-icon {
-  font-size: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 50px;
-  animation: none;
-}
-
-.contact-card-icon svg {
-  color: #273272;
-}
-
-.why-sponsor-contact-card:hover .contact-card-icon {
-  animation: bounceActive 0.6s ease-out;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes bounceActive {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.contact-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  z-index: 2;
-}
-
-.contact-card-label {
-  font-size: 0.8rem;
-  color: #273272;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.contact-card-value {
-  font-size: 1.05rem;
-  color: black;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.why-sponsor-contact-card:hover .contact-card-value {
-  font-weight: 800;
-}
-
-.contact-card-arrow {
-  font-size: 1.4rem;
-  color: #273272;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  position: relative;
-  z-index: 2;
-}
-
-.why-sponsor-contact-card:hover .contact-card-arrow {
-  color: #ff985c;
-  transform: translateX(8px);
-  font-size: 1.6rem;
-}
-
-.phone-card .contact-card-icon::before {
-  content: '';
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  border: 2px solid #273272;
-  border-radius: 50%;
-  opacity: 0;
-  animation: none;
-}
-
-@keyframes pulse {
-  0% {
-    width: 35px;
-    height: 35px;
-    opacity: 1;
-  }
-  100% {
-    width: 50px;
-    height: 50px;
-    opacity: 0;
-  }
-}
-
-.why-sponsor-contact-card:hover .contact-card-icon::before {
-  animation: pulseActive 0.6s ease-out;
-}
-
-@keyframes pulseActive {
-  0% {
-    width: 35px;
-    height: 35px;
-    opacity: 1;
-  }
-  100% {
-    width: 60px;
-    height: 60px;
-    opacity: 0;
-  }
+  font-family: 'Work Sans';
 }
 
 /* Animations */
@@ -416,14 +202,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
-
-  .cta-split {
-    gap: 50px;
-  }
-
-  .why-sponsor-contact-card {
-    min-width: 300px;
-  }
 }
 
 /* Tablet Large */
@@ -452,36 +230,6 @@
 
   .why-sponsor-card {
     padding: 35px 30px;
-  }
-
-  .why-sponsor-cta {
-    padding: 35px 40px;
-  }
-
-  .cta-split {
-    gap: 40px;
-  }
-
-  .why-sponsor-contact-card {
-    min-width: 280px;
-  }
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-  .cta-split {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .cta-left,
-  .cta-right {
-    width: 100%;
-    text-align: center;
-  }
-
-  .cta-right .why-sponsor-contact-methods {
-    align-items: center;
   }
 }
 
@@ -521,38 +269,6 @@
   .why-sponsor-card-description {
     font-size: 0.9rem;
   }
-
-  .why-sponsor-cta {
-    padding: 32px 24px;
-  }
-
-  .why-sponsor-cta-heading {
-    font-size: 1.75rem;
-  }
-
-  .why-sponsor-cta-text {
-    font-size: 1rem;
-    margin-bottom: 35px;
-  }
-
-  .why-sponsor-contact-methods {
-    flex-direction: column;
-    width: 100%;
-    gap: 18px;
-  }
-
-  .why-sponsor-contact-card {
-    max-width: 80%;
-    min-width: unset;
-    width: 100%;
-    padding: 20px 20px;
-    flex-direction: row;
-  }
-
-  .contact-card-wrapper {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
 }
 
 /* Mobile Large */
@@ -563,14 +279,6 @@
 
   .why-sponsor-card {
     padding: 28px 20px;
-  }
-
-  .why-sponsor-contact-card {
-    padding: 18px 18px;
-  }
-
-  .contact-card-value {
-    font-size: 0.95rem;
   }
 }
 
@@ -595,10 +303,6 @@
     margin-bottom: 40px;
   }
 
-  .why-sponsor-description {
-    font-size: 0.9rem;
-  }
-
   .why-sponsor-grid {
     gap: 20px;
     margin-bottom: 40px;
@@ -621,44 +325,6 @@
   .why-sponsor-card-description {
     font-size: 0.85rem;
     line-height: 1.6;
-  }
-
-  .why-sponsor-cta {
-    padding: 28px 16px;
-  }
-
-  .why-sponsor-cta-heading {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .why-sponsor-cta-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-  }
-
-  .why-sponsor-contact-card {
-    padding: 16px 16px;
-    gap: 12px;
-  }
-
-  .contact-card-icon {
-    font-size: 1.8rem;
-    min-width: 45px;
-  }
-
-  .contact-card-label {
-    font-size: 0.75rem;
-  }
-
-  .contact-card-value {
-    font-size: 0.85rem;
-  }
-
-  .contact-card-arrow {
-    font-size: 1.2rem;
-    min-width: 35px;
   }
 }
 
@@ -688,24 +354,32 @@
   .why-sponsor-card-description {
     font-size: 0.8rem;
   }
+}
+/* ===============================================
+   REACT ICONS STYLING - ADD TO YOUR WhySponsor.css
+=============================================== */
 
-  .why-sponsor-cta {
-    padding: 24px 14px;
+/* Icon styling for React Icons */
+.why-sponsor-logo-icon {
+  font-size: 2.5rem;
+  color: #A6223C;
+  transition: all 0.3s ease;
+}
+
+.why-sponsor-card:hover .why-sponsor-logo-icon {
+  color: #A6223C;
+  transform: scale(1.1);
+}
+
+/* Responsive icon sizes */
+@media (max-width: 480px) {
+  .why-sponsor-logo-icon {
+    font-size: 2rem;
   }
+}
 
-  .why-sponsor-cta-heading {
-    font-size: 1.25rem;
-  }
-
-  .why-sponsor-cta-text {
-    font-size: 0.9rem;
-  }
-
-  .why-sponsor-contact-card {
-    padding: 14px 14px;
-  }
-
-  .contact-card-value {
-    font-size: 0.8rem;
+@media (max-width: 380px) {
+  .why-sponsor-logo-icon {
+    font-size: 1.8rem;
   }
 }

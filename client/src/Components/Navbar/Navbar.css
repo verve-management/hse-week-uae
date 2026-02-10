@@ -71,7 +71,7 @@
   color: #A5223D;
   text-decoration: none;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 500;
   position: relative;
 }
 
@@ -226,11 +226,11 @@
 
 .dropdown-link:hover {
   background: rgba(255, 107, 53, 0.15);
-  color: #ff6b35;
+  color: #A6223C;
 }
 
 .dropdown-link.active {
-  color: #ff6b35;
+  color: #A6223C;
 }
 .dropdown-toggle {
   cursor: pointer;

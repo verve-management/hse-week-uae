@@ -206,19 +206,29 @@ const Sponsors = () => {
   return (
     <div className="sponsors-page-wrapper">
       <section className="sponsors-hero-section">
-        <div className="sponsors-hero-bg-image"></div>
-        <div className="sponsors-hero-overlay"></div>
+  <div className="sponsors-hero-bg-image"></div>
+  <div className="sponsors-hero-overlay"></div>
 
-        <div className="sponsors-hero-content-wrapper">
-          <h1 className="sponsors-hero-main-title" ref={heroTextRef}>
-            Sponsors&nbsp;and&nbsp;Partners
-          </h1>
-          <p className="sponsors-hero-main-subtitle">
-            Powering Excellence Together
-          </p>
-          <div className="sponsors-hero-divider-line"></div>
-        </div>
-      </section>
+  <div className="sponsors-hero-content-wrapper">
+
+    {/* TOP DECORATIVE LINE */}
+    <div className="sponsors-hero-deco-line"></div>
+
+    {/* ANIMATED TITLE */}
+    <h1 className="sponsors-hero-main-title">
+      <span ref={heroTextRef}>Sponsors&nbsp; and&nbsp; Partners</span>
+    </h1>
+
+    {/* SUBTITLE */}
+    <p className="sponsors-hero-main-subtitle">
+      Powering Excellence Together
+    </p>
+
+    {/* BOTTOM DECORATIVE LINE */}
+    <div className="sponsors-hero-deco-line"></div>
+  </div>
+</section>
+
       {/* <UpdateSoon></UpdateSoon> */}
 
       <section className="sponsors-series-section">
