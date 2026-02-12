@@ -8,8 +8,8 @@ import PageTransition from '../Components/PageTransition';
 const ContactPage = () => {
   return (
     <div>
+      <Navbar2></Navbar2>
       <PageTransition>
-        <Navbar2></Navbar2>
         <Contact></Contact>
         <Footer></Footer>
         </PageTransition>

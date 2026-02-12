@@ -1,170 +1,211 @@
-// InnovationOverview.jsx
-"use client"
-
-import { useEffect, useRef, useState } from "react"
-import { TrendingUp, Globe, Zap, Users } from "lucide-react"
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts"
-import styles from "./InnovationOverview.module.css"
+import React from 'react';
+import styles from './InnovationOverview.module.css';
 
 const InnovationOverview = () => {
-  const sectionRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const [hoveredBar, setHoveredBar] = useState(null)
+  const statsCards = [
+    { value: '$7.8B', label: '2024 Market Size', icon: '◈' },
+    { value: '$19.9B', label: '2033 Projection', icon: '◉' },
+    { value: '~9.1%', label: 'Annual CAGR', icon: '◇' }
+  ];
 
-  const marketData = [
-    { year: "2024", value: 7.8 },
-    { year: "2025", value: 9.8 },
-    { year: "2026", value: 11.5 },
-    { year: "2027", value: 13.2 },
-    { year: "2028", value: 14.8 },
-    { year: "2029", value: 15.7 },
-    { year: "2030", value: 16.5 },
-    { year: "2031", value: 17.6 },
-    { year: "2032", value: 18.8 },
-    { year: "2033", value: 19.9 },
-  ]
+  const industries = [
+    { name: 'Corporate Events', percentage: 34, color: '#A6223C' },
+    { name: 'Oil & Gas', percentage: 28, color: '#102147' },
+    { name: 'Mining', percentage: 10, color: '#C8435E' },
+    { name: 'Aviation', percentage: 6, color: '#D4758A' },
+    { name: 'Transportation', percentage: 20, color: '#2C3E6B' },
+    { name: 'Other', percentage: 2, color: '#8C9BB5' }
+  ];
 
-  useEffect(() => {
-    const obs = new IntersectionObserver(([entry]) => entry.isIntersecting && setIsVisible(true), { threshold: 0.1 })
-    if (sectionRef.current) obs.observe(sectionRef.current)
-    return () => obs.disconnect()
-  }, [])
+  const severityData = [
+    { level: 'Mild / Moderate', count: 37601, percentage: 98.5, color: '#102147' },
+    { level: 'Severe (non-fatal)', count: 506, percentage: 1.3, color: '#A6223C' },
+    { level: 'Fatal', count: 50, percentage: 0.1, color: '#6B0E20' }
+  ];
 
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className={styles.tooltip}>
-          <div className={styles.tooltipYear}>{payload[0].payload.year}</div>
-          <div className={styles.tooltipValue}>${payload[0].value}B</div>
-        </div>
-      )
-    }
-    return null
-  }
+  const maxCount = Math.max(...severityData.map(d => d.count));
+
+  // Pie chart calculations
+  const pieSlices = industries.reduce((acc, industry, index) => {
+    const prevPercentage = industries.slice(0, index).reduce((sum, ind) => sum + ind.percentage, 0);
+    const startAngle = (prevPercentage / 100) * 360 - 90;
+    const endAngle = ((prevPercentage + industry.percentage) / 100) * 360 - 90;
+    const startRad = (startAngle * Math.PI) / 180;
+    const endRad = (endAngle * Math.PI) / 180;
+    const x1 = 100 + 80 * Math.cos(startRad);
+    const y1 = 100 + 80 * Math.sin(startRad);
+    const x2 = 100 + 80 * Math.cos(endRad);
+    const y2 = 100 + 80 * Math.sin(endRad);
+    const largeArc = industry.percentage > 50 ? 1 : 0;
+    const path = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArc} 1 ${x2} ${y2} Z`;
+
+    const labelAngle = ((prevPercentage + industry.percentage / 2) / 100) * 360 - 90;
+    const labelRad = (labelAngle * Math.PI) / 180;
+    const labelRadius = 62;
+    const lx = 50 + labelRadius * Math.cos(labelRad);
+    const ly = 50 + labelRadius * Math.sin(labelRad);
+
+    return [...acc, { path, color: industry.color, lx, ly, percentage: industry.percentage }];
+  }, []);
 
   return (
-    <section ref={sectionRef} className={`${styles.section} ${isVisible ? styles.visible : ""}`}>
-      <div className={styles.container}>
-        {/* Header */}
-        <header className={styles.header}>
-          <h1 className={styles.title}>
-           <span className={styles.titleAccent}>  Future of Procurement & <span>Supply Chain</span></span>
-          </h1>
-          <p className={styles.subtitle}>
-           How data, automation, and AI are redefining global operations.
-          </p>
-        </header>
+    <div className={styles.container}>
 
-        {/* Stats Row */}
-        <div className={styles.statsRow}>
-          <div className={styles.statCard}>
-            <div className={styles.statValue}>$7.8B</div>
-            <div className={styles.statLabel}>2024 Market Size</div>
-            <div className={styles.statIndicator}></div>
+      {/* Decorative background elements */}
+      <div className={styles.bgAccent1}></div>
+      <div className={styles.bgAccent2}></div>
+
+      {/* Header */}
+      <div className={styles.header}>
+        <h1 className={styles.title}>Multi-Year <span>Comparison</span></h1>
+        <p className={styles.subtitle}>Year-on-Year Event Performance</p>
+      </div>
+
+      {/* Stats Cards */}
+      {/* <div className={styles.statsGrid}>
+        {statsCards.map((stat, index) => (
+          <div key={index} className={`${styles.statCard} ${index === 1 ? styles.featured : ''}`}>
+            <div className={styles.statIcon}>{stat.icon}</div>
+            <div className={styles.statValue}>{stat.value}</div>
+            <div className={styles.statLabel}>{stat.label}</div>
+            <div className={styles.statAccentLine}></div>
           </div>
-          <div className={`${styles.statCard} ${styles.projectionCard}`}>
-            <div className={styles.statValue}>$19.9B</div>
-            <div className={styles.statLabel}>2033 Projection</div>
-            <div className={styles.statIndicator}></div>
+        ))}
+      </div> */}
+
+      {/* Charts */}
+      <div className={styles.chartsGrid}>
+
+        {/* Pie Chart Card */}
+        <div className={styles.chartCard}>
+          <div className={styles.cardAccentBar}></div>
+          <div className={styles.chartHeader}>
+            <div className={styles.chartIconWrap}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h2 className={styles.chartTitle}>Safety by Industry</h2>
+              <p className={styles.chartDescription}>Percentage distribution across sectors</p>
+            </div>
           </div>
-          <div className={styles.statCard}>
-            <div className={styles.statValue}>~9.1%</div>
-            <div className={styles.statLabel}>Annual CAGR</div>
-            <div className={styles.statIndicator}></div>
+
+          <div className={styles.pieWrapper}>
+            <svg className={styles.pieChart} viewBox="0 0 200 200">
+              {/* Outer ring decoration */}
+              <circle cx="100" cy="100" r="92" fill="none" stroke="#F5E6E9" strokeWidth="2" strokeDasharray="4 3"/>
+              {pieSlices.map((slice, i) => (
+                <path
+                  key={i}
+                  d={slice.path}
+                  fill={slice.color}
+                  className={styles.pieSlice}
+                  stroke="#ffffff"
+                  strokeWidth="1.5"
+                />
+              ))}
+              {/* Donut hole */}
+              <circle cx="100" cy="100" r="46" fill="#ffffff"/>
+              {/* Center label */}
+              <text x="100" y="96" textAnchor="middle" fill="#102147" fontSize="9" fontWeight="600" letterSpacing="1" fontFamily="Montserrat, sans-serif">TOTAL</text>
+              <text x="100" y="109" textAnchor="middle" fill="#A6223C" fontSize="14" fontWeight="700" fontFamily="Cormorant Garamond, serif">100%</text>
+            </svg>
+
+            {/* Floating % labels */}
+            <div className={styles.percentageLabels}>
+              {pieSlices.map((slice, i) => (
+                <div
+                  key={i}
+                  className={styles.percentageLabel}
+                  style={{ left: `${slice.lx}%`, top: `${slice.ly}%` }}
+                >
+                  {slice.percentage}%
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.legend}>
+            {industries.map((industry, i) => (
+              <div key={i} className={styles.legendItem}>
+                <div className={styles.legendDot} style={{ backgroundColor: industry.color }}></div>
+                <span className={styles.legendText}>{industry.name}</span>
+                <span className={styles.legendPct}>{industry.percentage}%</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Chart and Insights Combined Section */}``
-        <div className={styles.mainContent}>
-          {/* Chart Section */}
-          <div className={styles.chartSection}>
-            <div className={styles.chartHeader}>
-              <div className={styles.chartTitleWrapper}>
-                <div className={styles.chartIconBox}>
-                  <TrendingUp size={22} />
-                </div>
-                <h2 className={styles.chartTitle}>Global Market Growth</h2>
-              </div>
-              <span className={styles.chartUnit}>Billions USD</span>
+        {/* Bar Chart Card */}
+        <div className={styles.chartCard}>
+          <div className={styles.cardAccentBar}></div>
+          <div className={styles.chartHeader}>
+            <div className={styles.chartIconWrap}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="10" width="4" height="11" fill="currentColor" rx="1"/>
+                <rect x="10" y="5" width="4" height="16" fill="currentColor" rx="1"/>
+                <rect x="17" y="13" width="4" height="8" fill="currentColor" rx="1"/>
+              </svg>
             </div>
-            <div className={styles.chartArea}>
-              <ResponsiveContainer width="100%" height={320}>
-                <BarChart
-                  data={marketData}
-                  onMouseMove={(s) => (s.isTooltipActive ? setHoveredBar(s.activeTooltipIndex) : setHoveredBar(null))}
-                  onMouseLeave={() => setHoveredBar(null)}
-                  margin={{ top: 10, right: 10, left: -20, bottom: 10 }}
-                >
-                  <XAxis
-                    dataKey="year"
-                    tick={{ fill: "#1a1a1a", fontSize: 13, fontWeight: 600 }}
-                    axisLine={{ stroke: "#273272", strokeWidth: 2 }}
-                    tickLine={false}
-                  />
-                  <YAxis 
-                    tick={{ fill: "#1a1a1a", fontSize: 13, fontWeight: 600 }} 
-                    axisLine={{ stroke: "#273272", strokeWidth: 2 }} 
-                    tickLine={false} 
-                  />
-                  <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,61,0,0.12)" }}/>
-                  <Bar dataKey="value" radius={[6, 6, 0, 0]} maxBarSize={50}>
-                    {marketData.map((_, i) => (
-                   <Cell
-  key={i}
-  fill={hoveredBar === i ? "#273272" : "#273272"}   // warm red theme, NOT ORANGE
-  opacity={hoveredBar === null || hoveredBar === i ? 1 : 0.35}
-/>
-
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+            <div>
+              <h2 className={styles.chartTitle}>Incidents by Severity</h2>
+              <p className={styles.chartDescription}>Qatar, 2020 — Total cases by severity level</p>
             </div>
           </div>
 
-          {/* Insights Section */}
-          <div className={styles.insightsColumn}>
-            <div className={styles.insightCard}>
-              <div className={styles.insightIconBox}>
-                <Globe size={26} />
-              </div>
-              <div className={styles.insightContent}>
-                <h3 className={styles.insightTitle}>MEA & GCC Leadership</h3>
-                <p className={styles.insightDescription}>
-               Government-backed initiatives and national transformation programs are accelerating digital procurement adoption across the region.
-                </p>
-              </div>
+          <div className={styles.barChartContainer}>
+            <div className={styles.gridLines}>
+              {[100, 75, 50, 25, 0].map(v => (
+                <div key={v} className={styles.gridLine}>
+                  <span className={styles.gridLabel}>{v === 0 ? '0' : v === 100 ? '41k' : v === 75 ? '30k' : v === 50 ? '20k' : '10k'}</span>
+                  <div className={styles.gridLineRule}></div>
+                </div>
+              ))}
             </div>
 
-            <div className={`${styles.insightCard} ${styles.highlightInsight}`}>
-              <div className={styles.insightIconBox}>
-                <Zap size={26} />
-              </div>
-              <div className={styles.insightContent}>
-                <h3 className={styles.insightTitle}>Supply Chain Innovation</h3>
-                <p className={styles.insightDescription}>
-               AI-driven planning, advanced analytics, and enhanced supplier collaboration are reshaping end-to-end supply chain operations.
-                </p>
-              </div>
+            <div className={styles.barsArea}>
+              {severityData.map((data, i) => (
+                <div key={i} className={styles.barGroup}>
+                  <div className={styles.barTrack}>
+                    <div
+                      className={styles.barFill}
+                      style={{
+                        height: `${(data.count / maxCount) * 100}%`,
+                        backgroundColor: data.color
+                      }}
+                    >
+                      <span className={styles.barTopValue}>{data.count.toLocaleString()}</span>
+                    </div>
+                  </div>
+                  <div className={styles.barLabel}>{data.level}</div>
+                </div>
+              ))}
             </div>
-            
-            <div className={styles.insightCard}>
-              <div className={styles.insightIconBox}>
-                <Users size={26} />
-              </div>
-              <div className={styles.insightContent}>
-                <h3 className={styles.insightTitle}>Enterprise Transformation</h3>
-                <p className={styles.insightDescription}>
-              Organizations are modernizing procurement through cloud platforms, intelligent automation, and advanced analytics to improve speed and decision-making.
-                </p>
-              </div>
-            </div>
+          </div>
 
+          <div className={styles.severityStats}>
+            {severityData.map((data, i) => (
+              <div key={i} className={styles.severityStat} style={{ '--accent': data.color }}>
+                <div className={styles.severityTop}>
+                  <div className={styles.severityDot} style={{ backgroundColor: data.color }}></div>
+                  <span className={styles.severityLabel}>{data.level}</span>
+                </div>
+                <div className={styles.severityCount}>{data.count.toLocaleString()}</div>
+                <div className={styles.severityPct}>{data.percentage}% of total</div>
+                <div className={styles.severityBar}>
+                  <div
+                    className={styles.severityBarFill}
+                    style={{ width: `${data.percentage}%`, backgroundColor: data.color }}
+                  ></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
 
-export default InnovationOverview
+export default InnovationOverview;

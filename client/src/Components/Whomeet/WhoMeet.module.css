@@ -1,8 +1,9 @@
+/* WhoMeet.module.css - Premium Luxury Design */
+
 .section {
   background: #ffffff;
-  padding: 6rem 2rem 8rem;
+  padding: 8rem 2rem;
   position: relative;
-  overflow: visible;
 }
 
 .container {
@@ -11,172 +12,168 @@
   position: relative;
 }
 
-/* ================= HEADER WITH SEMI-CIRCULAR ARC ================= */
+/* ================= LUXURY HEADER ================= */
 
 .headerWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
-  min-height: 400px;
-}
-
-.arcBackground {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1300px;
-  height: 380px;
-  background: #A6223C;
-  border-radius: 0 0 50% 50% / 0 0 100% 100%;
-  z-index: 1;
-}
-
-.headerContent {
-  position: relative;
-  z-index: 2;
   text-align: center;
-  padding: 3rem 2rem;
-  max-width: 900px;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.headerLine {
+  width: 100px;
+  height: 3px;
+  background: #A6223C;
+  margin: 0 auto 2rem;
 }
 
 .mainHeading {
-  font-size: 4rem;
-  font-weight: 900;
-  color: #ffffff;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #102147;
   margin: 0 0 1.5rem 0;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  text-transform: capitalize;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.highlightText {
+  color: #A6223C;
 }
 
 .subHeading {
-  font-size: 1.25rem;
-  color: #ffffff;
+  font-size: 1.15rem;
+  color: #666666;
   font-weight: 400;
-  margin: 0;
+  margin: 0 auto;
   line-height: 1.6;
-  opacity: 0.95;
+  max-width: 700px;
+  letter-spacing: 0.3px;
 }
 
-/* ================= BOXES GRID ================= */
+/* ================= PREMIUM GRID ================= */
 
-.boxesGrid {
+.professionalsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  max-width: 1300px;
+  gap: 2rem;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
-  position: relative;
-  z-index: 2;
 }
 
-.box {
-  background: #F5F5F5;
-  border-radius: 4px;
-  padding: 2.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  position: relative;
+/* ================= PROFESSIONAL CARD ================= */
+
+.professionalCard {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
   overflow: hidden;
-  border: 1px solid #102147;
-}
-
-.box::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: linear-gradient(135deg, #E63946 0%, #ff6b6b 100%);
-  transition: height 0.3s ease;
-  z-index: 0;
-}
-
-.box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(230, 57, 70, 0.2);
-}
-
-.box:hover::before {
-  height: 5px;
-}
-
-.numberBubble {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  z-index: 1;
-  width: 80px;
-  height: 80px;
-  background: #A6223C;
-  border-radius: 50%;
+  cursor: pointer;
+}
+
+.professionalCard:hover {
+  border-color: #A6223C;
+  transform: translateY(-5px);
+}
+
+/* ================= IMAGE SECTION ================= */
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.professionalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professionalCard:hover .professionalImage {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(16, 33, 71, 0.1) 100%);
+  pointer-events: none;
+}
+
+/* ================= CARD CONTENT ================= */
+
+.cardContent {
+  padding: 2rem 1.5rem;
+  background: #ffffff;
+  position: relative;
+}
+
+.numberTag {
+  position: absolute;
+  top: -20px;
+  right: 1.5rem;
+  background: #102147;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #ffffff;
-  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.box:hover .numberBubble {
-  transform: scale(1.1);
-  box-shadow: 0 12px 30px #A6223C;
-}
-
-.boxTitle {
-  position: relative;
-  z-index: 1;
+.roleTitle {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #2d3748;
-  text-align: center;
-  line-height: 1.5;
+  color: #102147;
   margin: 0;
-  min-height: 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 1.4;
+  min-height: 2.8em;
+  letter-spacing: 0.3px;
+}
+
+.professionalCard:hover .roleTitle {
+  color: #A6223C;
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 1200px) {
-  .arcBackground {
-    width: 80%;
-    height: 360px;
+@media (max-width: 1400px) {
+  .professionalsGrid {
+    gap: 1.8rem;
   }
 
-  .mainHeading {
-    font-size: 3.5rem;
+  .imageWrapper {
+    height: 260px;
   }
 
-  .subHeading {
-    font-size: 1.15rem;
+  .cardContent {
+    padding: 1.75rem 1.25rem;
   }
 
-  .boxesGrid {
-    gap: 2rem;
+  .roleTitle {
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 1024px) {
-  .headerWrapper {
-    min-height: 360px;
-    margin-bottom: 2.5rem;
+@media (max-width: 1200px) {
+  .section {
+    padding: 6rem 2rem;
   }
 
-  .arcBackground {
-    height: 340px;
+  .headerWrapper {
+    margin-bottom: 5rem;
   }
 
   .mainHeading {
@@ -187,147 +184,159 @@
     font-size: 1.1rem;
   }
 
-  .boxesGrid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.8rem;
+  .professionalsGrid {
+    gap: 1.5rem;
   }
 
-  .box {
-    padding: 2rem 1.2rem;
+  .imageWrapper {
+    height: 240px;
   }
 
-  .numberBubble {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
+  .cardContent {
+    padding: 1.5rem 1.25rem;
   }
 
-  .boxTitle {
+  .roleTitle {
     font-size: 0.95rem;
+  }
+
+  .numberTag {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .professionalsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .imageWrapper {
+    height: 260px;
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 1.5rem 6rem;
+    padding: 5rem 1.5rem;
   }
 
   .headerWrapper {
-    min-height: 320px;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
-  .arcBackground {
-    width: 100%;
-    height: 300px;
-  }
-
-  .headerContent {
-    padding: 2.5rem 1.5rem;
+  .headerLine {
+    width: 80px;
+    height: 2px;
+    margin-bottom: 1.5rem;
   }
 
   .mainHeading {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    letter-spacing: 2px;
   }
 
   .subHeading {
     font-size: 1rem;
   }
 
-  .boxesGrid {
+  .professionalsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
-  .box {
-    padding: 1.8rem 1rem;
+  .imageWrapper {
+    height: 240px;
   }
 
-  .numberBubble {
-    width: 65px;
-    height: 65px;
-    font-size: 1.8rem;
+  .cardContent {
+    padding: 1.5rem 1rem;
   }
 
-  .boxTitle {
+  .numberTag {
+    top: -18px;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .roleTitle {
     font-size: 0.9rem;
-    min-height: auto;
   }
 }
 
 @media (max-width: 600px) {
   .section {
-    padding: 3rem 1rem 5rem;
+    padding: 4rem 1rem;
   }
 
   .headerWrapper {
-    min-height: 280px;
-    margin-bottom: 2rem;
-  }
-
-  .arcBackground {
-    height: 260px;
-  }
-
-  .headerContent {
-    padding: 2rem 1rem;
+    margin-bottom: 3rem;
   }
 
   .mainHeading {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
   }
 
   .subHeading {
     font-size: 0.95rem;
   }
 
-  .boxesGrid {
+  .professionalsGrid {
     grid-template-columns: 1fr;
-    gap: 1.3rem;
-    padding: 0;
+    gap: 2rem;
   }
 
-  .box {
-    padding: 1.5rem 1rem;
-    gap: 1.2rem;
+  .imageWrapper {
+    height: 280px;
   }
 
-  .numberBubble {
-    width: 60px;
-    height: 60px;
-    font-size: 1.6rem;
+  .cardContent {
+    padding: 1.75rem 1.25rem;
   }
 
-  .boxTitle {
-    font-size: 0.88rem;
+  .roleTitle {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .headerWrapper {
-    min-height: 260px;
+  .section {
+    padding: 3rem 1rem;
   }
 
-  .arcBackground {
-    height: 240px;
+  .headerLine {
+    width: 60px;
+    margin-bottom: 1rem;
   }
 
   .mainHeading {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    letter-spacing: 1px;
   }
 
   .subHeading {
     font-size: 0.9rem;
   }
 
-  .numberBubble {
-    width: 55px;
-    height: 55px;
-    font-size: 1.5rem;
+  .imageWrapper {
+    height: 250px;
   }
 
-  .boxTitle {
-    font-size: 0.85rem;
+  .cardContent {
+    padding: 1.5rem 1rem;
+  }
+
+  .numberTag {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8rem;
+  }
+
+  .roleTitle {
+    font-size: 0.95rem;
   }
 }

@@ -318,8 +318,14 @@
   position: relative;
   z-index: 1;
   margin-top: 0;
+     width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
 }
 
+.copyright {
+  max-width: 100% !important;
+  width: 100% !important;
+}
 /* Accent stripe on top of bottom bar */
 .bottomBar::before {
   content: '';

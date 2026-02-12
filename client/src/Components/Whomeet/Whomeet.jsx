@@ -1,15 +1,39 @@
 import React from "react";
 import styles from "./WhoMeet.module.css";
 
-const roles = [
-  "Chief Procurement Officers",
-  "Heads Of Supply Chain & Logistics",
-  "Chief Logistics Officer",
-  "Head of Strategic Sourcing",
-  "Head of Warehouse",
-  "Chief Financial Officer",
-  "Chief Information Officer",
-  "Head of Inventory System"
+const professionals = [
+  {
+    role: "Chief Procurement Officers",
+    image: "/Gallery/Gallery1.webp"
+  },
+  {
+    role: "Heads Of Supply Chain & Logistics",
+    image: "/Gallery/Gallery2.webp"
+  },
+  {
+    role: "Chief Logistics Officer",
+    image: "/Gallery/Gallery3.webp"
+  },
+  {
+    role: "Head of Strategic Sourcing",
+    image: "/Gallery/Gallery4.webp"
+  },
+  {
+    role: "Head of Warehouse",
+    image: "/Gallery/Gallery5.webp"
+  },
+  {
+    role: "Chief Financial Officer",
+    image: "/Gallery/Gallery6.webp"
+  },
+  {
+    role: "Chief Information Officer",
+    image: "/Gallery/Gallery7.webp"
+  },
+  {
+    role: "Head of Inventory System",
+    image: "/Gallery/Gallery8.webp"
+  }
 ];
 
 const WhoMeet = () => {
@@ -17,21 +41,35 @@ const WhoMeet = () => {
     <section className={styles.section}>
       <div className={styles.container}>
 
-        {/* Header with Semi-Circular Arc Background */}
+        {/* Luxury Header */}
         <div className={styles.headerWrapper}>
-          <div className={styles.arcBackground}></div>
-          <div className={styles.headerContent}>
-            <h2 className={styles.mainHeading}>Who Will You Meet</h2>
-            <p className={styles.subHeading}>Meet the key professionals who shape the industry</p>
-          </div>
+          <div className={styles.headerLine}></div>
+          <h2 className={styles.mainHeading}>
+            WHO WILL <span className={styles.highlightText}>YOU MEET</span>
+          </h2>
+          <p className={styles.subHeading}>
+            Connect with industry-leading executives shaping the future of procurement and supply chain excellence
+          </p>
         </div>
 
-        {/* Boxes Grid */}
-        <div className={styles.boxesGrid}>
-          {roles.map((role, index) => (
-            <div key={index} className={styles.box}>
-              <div className={styles.numberBubble}>{String(index + 1).padStart(2, '0')}</div>
-              <h3 className={styles.boxTitle}>{role}</h3>
+        {/* Premium Grid with Images */}
+        <div className={styles.professionalsGrid}>
+          {professionals.map((professional, index) => (
+            <div key={index} className={styles.professionalCard}>
+              <div className={styles.imageWrapper}>
+                <img 
+                  src={professional.image} 
+                  alt={professional.role}
+                  className={styles.professionalImage}
+                />
+                <div className={styles.overlay}></div>
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.numberTag}>
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <h3 className={styles.roleTitle}>{professional.role}</h3>
+              </div>
             </div>
           ))}
         </div>

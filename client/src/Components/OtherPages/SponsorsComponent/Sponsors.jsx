@@ -149,20 +149,13 @@ const Sponsors = () => {
     { id: 38, logo: sponsor38, link: "" },
     { id: 39, logo: sponsor39, link: "" },
     { id: 40, logo: sponsor40, link: "" },
-
-
-
-
   ];
 
   const mediaPartners = [
-    // { id: 1, logo: mediaPartner1,link: "https://www.cips.org/events-networking/branches/uae" },
-    // { id: 2, logo: mediaPartner2,link: "http://www.sclgme.org/" },
     { id: 3, logo: mediaPartner3,link: "" },
     { id: 4, logo: mediaPartner4,link: "https://procurementmag.com/" },
     { id: 5, logo: mediaPartner5,link: "https://artofprocurement.com/" },
     { id: 6, logo: mediaPartner6,link: "https://www.supplychainbrain.com/" },
-    // { id: 7, logo: mediaPartner7,link: "" },
     { id: 8, logo: mediaPartner8,link: "" },
     { id: 9, logo: mediaPartner9,link: "" },
     { id: 10, logo: mediaPartner10,link: "" },
@@ -197,10 +190,6 @@ const Sponsors = () => {
     { id: 39, logo: mediaPartner39,link: "" },
     { id: 40, logo: mediaPartner40,link: "" },
     { id: 41, logo: mediaPartner41,link: "" },
-
-
-
-
   ];
 
   return (
@@ -246,38 +235,56 @@ const Sponsors = () => {
           <div className="sponsors-carousel-wrapper">
             <div className="sponsors-carousel sponsors-carousel-ltr">
               <div className="sponsors-carousel-track">
-                {seriesSponsors.map((sponsor, index) => (
+                {seriesSponsors.map((sponsor) => (
                   <div key={`top-${sponsor.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-series-card-inner">
-                      <img
-                        src={sponsor.logo}
-                        alt={`Sponsor ${sponsor.id}`}
-                        className="sponsors-series-logo"
-                      />
+                    <div className="sponsors-series-card-wrapper">
+                      <div className="sponsors-series-card-inner">
+                        <img
+                          src={sponsor.logo}
+                          alt={`Sponsor ${sponsor.id}`}
+                          className="sponsors-series-logo"
+                        />
+                      </div>
                       <a
-                        href={sponsor.link}
+                        href={sponsor.link || "#"}
                         className="spnsr-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!sponsor.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
                 ))}
-                {seriesSponsors.map((sponsor, index) => (
+                {seriesSponsors.map((sponsor) => (
                   <div key={`top-duplicate-${sponsor.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-series-card-inner">
-                      <img
-                        src={sponsor.logo}
-                        alt={`Sponsor ${sponsor.id}`}
-                        className="sponsors-series-logo"
-                      />
+                    <div className="sponsors-series-card-wrapper">
+                      <div className="sponsors-series-card-inner">
+                        <img
+                          src={sponsor.logo}
+                          alt={`Sponsor ${sponsor.id}`}
+                          className="sponsors-series-logo"
+                        />
+                      </div>
                       <a
-                        href={sponsor.link}
+                        href={sponsor.link || "#"}
                         className="spnsr-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!sponsor.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
@@ -286,42 +293,60 @@ const Sponsors = () => {
             </div>
           </div>
 
-          {/* BOTTOM CAROUSEL - Right to Left */}
+          {/* BOTTOM CAROUSEL - Left to Right (Delayed) */}
           <div className="sponsors-carousel-wrapper">
-            <div className="sponsors-carousel sponsors-carousel-rtl">
+            <div className="sponsors-carousel sponsors-carousel-ltr sponsors-carousel-delayed">
               <div className="sponsors-carousel-track">
-                {seriesSponsors.map((sponsor, index) => (
+                {seriesSponsors.map((sponsor) => (
                   <div key={`bottom-${sponsor.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-series-card-inner">
-                      <img
-                        src={sponsor.logo}
-                        alt={`Sponsor ${sponsor.id}`}
-                        className="sponsors-series-logo"
-                      />
+                    <div className="sponsors-series-card-wrapper">
+                      <div className="sponsors-series-card-inner">
+                        <img
+                          src={sponsor.logo}
+                          alt={`Sponsor ${sponsor.id}`}
+                          className="sponsors-series-logo"
+                        />
+                      </div>
                       <a
-                        href={sponsor.link}
+                        href={sponsor.link || "#"}
                         className="spnsr-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!sponsor.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
                 ))}
-                {seriesSponsors.map((sponsor, index) => (
+                {seriesSponsors.map((sponsor) => (
                   <div key={`bottom-duplicate-${sponsor.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-series-card-inner">
-                      <img
-                        src={sponsor.logo}
-                        alt={`Sponsor ${sponsor.id}`}
-                        className="sponsors-series-logo"
-                      />
+                    <div className="sponsors-series-card-wrapper">
+                      <div className="sponsors-series-card-inner">
+                        <img
+                          src={sponsor.logo}
+                          alt={`Sponsor ${sponsor.id}`}
+                          className="sponsors-series-logo"
+                        />
+                      </div>
                       <a
-                        href={sponsor.link}
+                        href={sponsor.link || "#"}
                         className="spnsr-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!sponsor.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
@@ -348,38 +373,56 @@ const Sponsors = () => {
           <div className="sponsors-carousel-wrapper">
             <div className="sponsors-carousel sponsors-carousel-ltr">
               <div className="sponsors-carousel-track">
-                {mediaPartners.map((partner, index) => (
+                {mediaPartners.map((partner) => (
                   <div key={`media-top-${partner.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-media-card-inner">
-                      <img
-                        src={partner.logo}
-                        alt={`Media Partner ${partner.id}`}
-                        className="sponsors-media-logo"
-                      />
+                    <div className="sponsors-media-card-wrapper">
+                      <div className="sponsors-media-card-inner">
+                        <img
+                          src={partner.logo}
+                          alt={`Media Partner ${partner.id}`}
+                          className="sponsors-media-logo"
+                        />
+                      </div>
                       <a
-                        href={partner.link}
+                        href={partner.link || "#"}
                         className="mdprt-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!partner.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
                 ))}
-                {mediaPartners.map((partner, index) => (
+                {mediaPartners.map((partner) => (
                   <div key={`media-top-duplicate-${partner.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-media-card-inner">
-                      <img
-                        src={partner.logo}
-                        alt={`Media Partner ${partner.id}`}
-                        className="sponsors-media-logo"
-                      />
+                    <div className="sponsors-media-card-wrapper">
+                      <div className="sponsors-media-card-inner">
+                        <img
+                          src={partner.logo}
+                          alt={`Media Partner ${partner.id}`}
+                          className="sponsors-media-logo"
+                        />
+                      </div>
                       <a
-                        href={partner.link}
+                        href={partner.link || "#"}
                         className="mdprt-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!partner.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
@@ -388,42 +431,60 @@ const Sponsors = () => {
             </div>
           </div>
 
-          {/* BOTTOM CAROUSEL - Right to Left */}
+          {/* BOTTOM CAROUSEL - Left to Right (Delayed) */}
           <div className="sponsors-carousel-wrapper">
-            <div className="sponsors-carousel sponsors-carousel-rtl">
+            <div className="sponsors-carousel sponsors-carousel-ltr sponsors-carousel-delayed">
               <div className="sponsors-carousel-track">
-                {mediaPartners.map((partner, index) => (
+                {mediaPartners.map((partner) => (
                   <div key={`media-bottom-${partner.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-media-card-inner">
-                      <img
-                        src={partner.logo}
-                        alt={`Media Partner ${partner.id}`}
-                        className="sponsors-media-logo"
-                      />
+                    <div className="sponsors-media-card-wrapper">
+                      <div className="sponsors-media-card-inner">
+                        <img
+                          src={partner.logo}
+                          alt={`Media Partner ${partner.id}`}
+                          className="sponsors-media-logo"
+                        />
+                      </div>
                       <a
-                        href={partner.link}
+                        href={partner.link || "#"}
                         className="mdprt-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!partner.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>
                 ))}
-                {mediaPartners.map((partner, index) => (
+                {mediaPartners.map((partner) => (
                   <div key={`media-bottom-duplicate-${partner.id}`} className="sponsors-carousel-item">
-                    <div className="sponsors-media-card-inner">
-                      <img
-                        src={partner.logo}
-                        alt={`Media Partner ${partner.id}`}
-                        className="sponsors-media-logo"
-                      />
+                    <div className="sponsors-media-card-wrapper">
+                      <div className="sponsors-media-card-inner">
+                        <img
+                          src={partner.logo}
+                          alt={`Media Partner ${partner.id}`}
+                          className="sponsors-media-logo"
+                        />
+                      </div>
                       <a
-                        href={partner.link}
+                        href={partner.link || "#"}
                         className="mdprt-crd-lrnmr-actn-btn-wrpr-elmt-v2"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          if (!partner.link) e.preventDefault();
+                        }}
                       >
-                        Learn More
+                        <span>Learn More</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     </div>
                   </div>

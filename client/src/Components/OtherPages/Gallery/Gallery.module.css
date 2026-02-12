@@ -3,6 +3,7 @@
   width: 100%;
   overflow-x: hidden;
   background: #0a0e27;
+  padding-top: 88px;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -22,7 +23,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 0;
 }
 
 .heroBgImage {

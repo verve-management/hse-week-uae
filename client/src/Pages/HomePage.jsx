@@ -4,6 +4,7 @@ import Gallery from "../Components/Gallery/Gallery"
 import Hero from "../Components/Hero/Hero"
 import Hero2 from "../Components/Hero/Hero2"
 import Hero3 from "../Components/Hero/Hero3"
+import Hero4 from "../Components/Hero/Hero4"
 import Industries from "../Components/Industries/Industries"
 import InnovationOverview from "../Components/InnovationOverview/InnovationOverview"
 import MarketInsights from "../Components/InnovationOverview/MarketInsights"
@@ -24,10 +25,11 @@ function HomePage() {
     <>
     <Navbar></Navbar>
      {/* <Hero></Hero> */}
-     <Hero3></Hero3>
+     {/* <Hero3></Hero3> */}
      {/* <Hero2></Hero2> */}
+     <Hero4></Hero4>
      <Event></Event>
-     {/* <InnovationOverview></InnovationOverview> */}
+     <InnovationOverview></InnovationOverview>
      {/* <MarketInsights></MarketInsights> */}
      {/* <Numbers></Numbers> */}
      <Industries></Industries>

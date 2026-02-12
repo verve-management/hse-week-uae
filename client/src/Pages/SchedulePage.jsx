@@ -8,11 +8,13 @@ import PageTransition from '../Components/PageTransition';
 
 const SchedulePage = () => {
   return (
-    <PageTransition>
+    <div>
       <Navbar2 />
-      <Schedule />
-      <Footer />
-    </PageTransition>
+      <PageTransition>
+        <Schedule />
+        <Footer />
+      </PageTransition>
+    </div>
   );
 };
 

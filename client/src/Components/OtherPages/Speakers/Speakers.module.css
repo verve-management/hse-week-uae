@@ -290,17 +290,17 @@
 
 /* ==================== SPEAKER CARD ==================== */
 .speakerCard {
-  background: #ffffff;
-  border: 1.5px solid #A6223C;
-  border-radius: 22px;
-  padding: 26px 24px 28px;
+  background: #102147;
+  border: 2px solid #A6223C;
+  border-radius: 16px;
+  padding: 0;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.35s ease;
   position: relative;
   overflow: hidden;
   animation: speakerCardSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-  box-shadow: 0 2px 12px rgba(39, 50, 114, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes speakerCardSlideUp {
@@ -314,8 +314,8 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(255, 107, 53, 0.04) 0%,
-    rgba(247, 147, 30, 0.03) 60%,
+    rgba(166, 34, 60, 0.08) 0%,
+    rgba(166, 34, 60, 0.04) 60%,
     transparent 100%
   );
   opacity: 0;
@@ -326,9 +326,9 @@
 
 .speakerCard:hover {
   transform: translateY(-14px);
-  border-color: rgba(255, 107, 53, 0.55);
-  box-shadow: 0 18px 48px rgba(39, 50, 114, 0.1),
-              0  6px 16px rgba(255, 107, 53, 0.12);
+  border-color: #e84a6a;
+  box-shadow: 0 22px 60px rgba(166, 34, 60, 0.45),
+              0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
 .speakerCard:hover::before {
@@ -336,18 +336,6 @@
 }
 
 /* ---------- top-edge accent bar ---------- */
-.cardDecoration {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
- background: linear-gradient(90deg, #A6223C, #D93F63);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  border-radius: 0 2px 2px 0;
-}
 
 .speakerCard:hover .cardDecoration {
   transform: scaleX(1);
@@ -356,24 +344,23 @@
 /* ==================== SPEAKER IMAGE ==================== */
 .speakerImageWrapper {
   position: relative;
-  margin-bottom: 22px;
+  margin-bottom: 0;
 }
 
 .speakerImageContainer {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 16px;
+  border-radius: 14px 14px 0 0;
   overflow: hidden;
-  border: 2.5px solid #A6223C;
+  border: none;
   transition: border-color 0.4s ease,
               box-shadow   0.4s ease;
-  box-shadow: 0 4px 18px rgba(39, 50, 114, 0.08);
+  box-shadow: none;
 }
 
 .speakerCard:hover .speakerImageContainer {
-  border-color: rgba(255, 107, 53, 0.7);
-  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.2);
+  box-shadow: none;
 }
 
 .speakerImage {
@@ -382,21 +369,21 @@
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
               filter   0.5s ease;
-  filter: grayscale(18%) brightness(0.96);
+  filter: grayscale(0%) brightness(1);
 }
 
 .speakerCard:hover .speakerImage {
-  transform: scale(1.07);
-  filter: grayscale(0%) brightness(1);
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1.05);
 }
 
 .speakerImageOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    150deg,
-    rgba(255, 107, 53, 0.15) 0%,
-    rgba(247, 147, 30, 0.12) 100%
+    180deg,
+    transparent 0%,
+    rgba(16, 33, 71, 0.3) 100%
   );
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -411,11 +398,11 @@
 .linkedinButton {
   position: absolute;
   bottom: 14px;
-  right: 14px;
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-  border: 3px solid #ffffff;
+  left: 14px;
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -424,7 +411,7 @@
   transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55),
               box-shadow 0.3s ease,
               background  0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 2;
   opacity: 1;
   transform: scale(1);
@@ -433,60 +420,60 @@
 /* keeps it stable when card is hovered */
 .speakerCard:hover .linkedinButton {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .linkedinButton:hover {
-  transform: scale(1.14);
-  box-shadow: 0 10px 30px rgba(0, 119, 181, 0.55);
-  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  transform: scale(1.2) !important;
+  background: #f0f0f0;
 }
 
 .linkedinButton:active {
-  transform: scale(0.94);
+  transform: scale(0.95) !important;
 }
 
 .linkedinIcon {
-  width: 26px;
-  height: 26px;
-  color: #ffffff;
+  width: 22px;
+  height: 22px;
+  color: #0077b5;
   transition: transform 0.3s ease;
 }
 
 .linkedinButton:hover .linkedinIcon {
-  transform: rotate(8deg) scale(1.05);
+  transform: rotate(5deg) scale(1.05);
 }
 
 /* ==================== SPEAKER INFO ==================== */
 .speakerInfo {
-  text-align: center;
+  text-align: left;
   position: relative;
   z-index: 1;
-  padding-top: 4px;
+  padding: 20px 24px 24px;
 }
 
 .speakerName {
-  font-size: 1.38rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 6px 0;
+  color: #ffffff;
+  margin: 0 0 8px 0;
   line-height: 1.3;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.3px;
   transition: color 0.35s ease;
 }
 
 .speakerCard:hover .speakerName {
-  color: #A6223C;
+  color: #ffffff;
 }
 
 /* thin separator under name on hover */
 .speakerName::after {
   content: '';
   display: block;
-  width: 36px;
+  width: 40px;
   height: 2px;
   background: linear-gradient(90deg, #A6223C, #D93F63);
-  margin: 10px auto 0;
+  margin: 8px 0 0 0;
   border-radius: 2px;
   transform: scaleX(0);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -497,24 +484,25 @@
 }
 
 .speakerDesignation {
-  font-size: 0.92rem;
-  color: #1f2937;
+  font-size: 0.9rem;
+  color: #D93F63;
   font-weight: 600;
-  margin: 0 0 7px 0;
-  line-height: 1.45;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
   letter-spacing: 0.1px;
   transition: color 0.3s ease;
 }
 
 /* ==================== COMPANY — no dots ==================== */
 .speakerCompany {
-  font-size: 0.9rem;
-  color: #2d3748;
-  font-weight: 500;
+  font-size: 0.88rem;
+  color: #ffffff;
+  font-weight: 400;
   margin: 0;
   line-height: 1.4;
-  text-align: center;
-  letter-spacing: 0.15px;
+  text-align: left;
+  letter-spacing: 0.1px;
+  opacity: 0.9;
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -591,23 +579,27 @@
   }
 
   .speakerCard {
-    padding: 22px 20px 24px;
+    padding: 0;
   }
 
   .speakerImageWrapper {
-    margin-bottom: 18px;
+    margin-bottom: 0;
   }
 
   .linkedinButton {
-    width: 48px;
-    height: 48px;
-    bottom: 11px;
-    right: 11px;
+    width: 42px;
+    height: 42px;
+    bottom: 12px;
+    left: 12px;
   }
 
   .linkedinIcon {
-    width: 23px;
-    height: 23px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .speakerInfo {
+    padding: 18px 20px 22px;
   }
 
   .speakerName {
@@ -615,11 +607,11 @@
   }
 
   .speakerDesignation {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   .speakerCompany {
-    font-size: 0.87rem;
+    font-size: 0.86rem;
   }
 }
 
@@ -665,28 +657,31 @@
   }
 
   .speakerCard {
-    padding: 20px 18px 22px;
+    padding: 0;
   }
 
   .speakerImageWrapper {
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
 
   .speakerImageContainer {
-    border-width: 2px;
+    border-width: 0;
   }
 
   .linkedinButton {
-    width: 46px;
-    height: 46px;
-    border-width: 2px;
-    bottom: 9px;
-    right: 9px;
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    left: 10px;
   }
 
   .linkedinIcon {
-    width: 21px;
-    height: 21px;
+    width: 19px;
+    height: 19px;
+  }
+
+  .speakerInfo {
+    padding: 16px 18px 20px;
   }
 
   .speakerName {
@@ -695,8 +690,8 @@
   }
 
   .speakerDesignation {
-    font-size: 0.88rem;
-    margin-bottom: 5px;
+    font-size: 0.86rem;
+    margin-bottom: 6px;
   }
 
   .speakerCompany {

@@ -8,8 +8,8 @@ import PageTransition from '../Components/PageTransition';
 const GalleryPage = () => {
   return (
     <div>
+      <Navbar2></Navbar2>
       <PageTransition>
-        <Navbar2></Navbar2>
         {/* <Gallery></Gallery> */}
         <Gallery></Gallery>
         <Footer></Footer>

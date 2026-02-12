@@ -9,8 +9,8 @@ import PageTransition from '../Components/PageTransition';
 const Sponsor = () => {
   return (
     <div>
+      <Navbar2></Navbar2>
       <PageTransition>
-        <Navbar2></Navbar2>
         <Sponsors></Sponsors>
         {/* <UpdateSoon></UpdateSoon> */}
         <Footer></Footer>

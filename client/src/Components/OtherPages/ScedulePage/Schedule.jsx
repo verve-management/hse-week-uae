@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Schedule.module.css';
-import UpdateSoon from '../Elements/UpdateSoon';
 
-const Schedule = () => {
+const ScheduleWithoutImages = () => {
   const heroTextRef = useRef(null);
   const [activeDay, setActiveDay] = useState('day1');
 
@@ -27,14 +26,12 @@ const Schedule = () => {
     {
       time: '09:00 - 10:00',
       title: 'Registration & Welcome Coffee',
-      type: 'Welcome',
-      image: 32
+      type: 'Welcome'
     },
     {
       time: '10:00 - 10:05',
       title: 'Opening Note by Summit Chairperson',
-      type: 'keynote',
-      image: 40
+      type: 'keynote'
     },
     {
       time: '10:05 – 10:25',
@@ -43,8 +40,7 @@ const Schedule = () => {
         'How strategic hubs are reshaping global competitiveness.',
         'Government-industry collaboration for smart logistics and trade facilitation.',
         'Implications for CPOs in regional sourcing and global expansion.'
-      ],
-      image: 3
+      ]
     },
     {
       time: '10:25 – 10:45',
@@ -53,8 +49,7 @@ const Schedule = () => {
         'Leveraging AI/ML for spend forecasting, supplier risk scoring, and autonomous sourcing.',
         'Real-time data exchange and intelligent supplier portals.',
         'Future-ready procurement operating models.'
-      ],
-      image: 4
+      ]
     },
     {
       time: '10:45 - 11:30',
@@ -64,8 +59,7 @@ const Schedule = () => {
         'Strategic supplier diversification vs. deep partnerships.',
         'Multi-tier visibility and proactive risk sensing.',
         'Scenario planning and dynamic forecasting for disruption readiness.'
-      ],
-      image: 5
+      ]
     },
     {
       time: '11:30 – 11:50',
@@ -74,14 +68,12 @@ const Schedule = () => {
         'Aligning procurement categories with business growth levers.',
         'Supplier innovation, ESG alignment, and total value creation.',
         'Advanced analytics for segmentation and strategic sourcing.'
-      ],
-      image: 6
+      ]
     },
     {
       time: '11:50 – 12:20',
       title: 'Networking & Coffee Break',
-      type: 'break',
-      image: 25
+      type: 'break'
     },
     {
       time: '12:20 – 12:40',
@@ -91,8 +83,7 @@ const Schedule = () => {
         'Strategic workforce planning for digital fluency and innovation.',
         'Transitioning teams from tactical execution to strategic enablement.',
         'Talent development ecosystems and public-private partnerships.'
-      ],
-      image: 24
+      ]
     },
     {
       time: '12:40 – 13:00',
@@ -101,8 +92,7 @@ const Schedule = () => {
         'Cyber threats in procurement ecosystems.',
         'Implementing supplier-wide security frameworks.',
         'Blockchain for traceability and trust.'
-      ],
-      image: 19
+      ]
     },
     {
       time: '13:00 – 13:45',
@@ -112,8 +102,7 @@ const Schedule = () => {
         'Predictive spend intelligence and cost optimization.',
         'Supplier performance dashboards and compliance metrics.',
         'Market behavior forecasting for agile decision-making.'
-      ],
-      image: 40
+      ]
     },
     {
       time: '13:45 – 14:05',
@@ -122,26 +111,22 @@ const Schedule = () => {
         'Real-time visibility across the value chain.',
         'Technologies enabling transparency and control.',
         'Impact on risk mitigation and stakeholder confidence.'
-      ],
-      image: 41
+      ]
     },
     {
       time: '14:05 – 15:05',
       title: 'Networking Luncheon',
-      type: 'break',
-      image: 15
+      type: 'break'
     },
     {
       time: '15:05 – 15:15',
       title: 'Closing Remarks – Day One',
-      type: 'keynote',
-      image: 13
+      type: 'keynote'
     },
     {
       time: '15:15 – 16:15',
       title: 'Procurement & Supply Chain Leadership Awards 2026',
-      type: 'awards',
-      image: 16
+      type: 'awards'
     }
   ];
 
@@ -149,14 +134,12 @@ const Schedule = () => {
     {
       time: '09:00 - 10:00',
       title: 'Registration & Welcome Coffee',
-      type: 'break',
-      image: 15
+      type: 'break'
     },
     {
       time: '10:00 - 10:05',
       title: 'Opening Note',
-      type: 'keynote',
-      image: 16
+      type: 'keynote'
     },
     {
       time: '10:05 – 10:25',
@@ -165,8 +148,7 @@ const Schedule = () => {
         'Cloud vs. on-premise: strategic considerations for CPOs.',
         'Real-world examples of cloud-native procurement ecosystems.',
         'Data governance and security in cloud transformation.'
-      ],
-      image: 45
+      ]
     },
     {
       time: '10:25 – 10:45',
@@ -175,8 +157,7 @@ const Schedule = () => {
         'Navigating geopolitical, financial, and cyber risks.',
         'Building resilient supplier ecosystems.',
         'Role of procurement in enterprise risk governance.'
-      ],
-      image: 46
+      ]
     },
     {
       time: '10:45 – 11:30',
@@ -186,8 +167,7 @@ const Schedule = () => {
         'Procurement as a driver of innovation and growth.',
         'Collaborative product development and process redesign.',
         'Managing IP, cost-sharing, and speed-to-market.'
-      ],
-      image: 19
+      ]
     },
     {
       time: '11:30 – 11:50',
@@ -196,14 +176,12 @@ const Schedule = () => {
         'Digital tools for sourcing, tendering, and auctions.',
         'Cross-functional alignment with finance and operations.',
         'Supplier engagement for long-term value.'
-      ],
-      image: 3
+      ]
     },
     {
       time: '11:50 – 12:20',
       title: 'Networking & Coffee Break',
-      type: 'break',
-      image: 32
+      type: 'break'
     },
     {
       time: '12:20 – 12:50',
@@ -213,8 +191,7 @@ const Schedule = () => {
         'Building high-performing procurement teams.',
         'Leadership strategies for workforce innovation.',
         'Culture of continuous learning and agility.'
-      ],
-      image: 4
+      ]
     },
     {
       time: '12:50 – 13:10',
@@ -223,8 +200,7 @@ const Schedule = () => {
         'Total Cost of Ownership (TCO) frameworks.',
         'Supplier evaluation beyond price.',
         'Negotiation strategies for long-term value.'
-      ],
-      image: 13
+      ]
     },
     {
       time: '13:10 – 13:55',
@@ -234,8 +210,7 @@ const Schedule = () => {
         'Case studies on supply chain stress testing.',
         'Nearshoring, multi-sourcing, and network agility.',
         'Strategic playbooks for crisis response.'
-      ],
-      image: 24
+      ]
     },
     {
       time: '13:55 – 14:15',
@@ -244,88 +219,82 @@ const Schedule = () => {
         'Circular supply chains and carbon reduction strategies.',
         'Supplier collaboration for ESG compliance.',
         'Technology for sustainable logistics and operations.'
-      ],
-      image: 25
+      ]
     },
     {
       time: '14:15 – 14:25',
       title: 'Closing Remarks – End of Summit',
-      type: 'keynote',
-      image: 27
+      type: 'keynote'
     },
     {
       time: '14:25 – 15:25',
       title: 'Leadership Networking Luncheon',
-      type: 'break',
-      image: 30
+      type: 'break'
     }
   ];
 
   const renderScheduleItem = (item, index) => (
     <div 
       key={index} 
-      className={`${styles.scheduleItem} ${index % 2 === 0 ? styles.imageLeft : styles.imageRight}`}
+      className={styles.timelineItem}
+      style={{ animationDelay: `${index * 0.05}s` }}
     >
-      <div className={styles.scheduleImageContainer}>
-        <img 
-          src={`/Gallery2025/Gallery${item.image}Pic2025.webp`}
-          alt={item.title}
-          className={styles.scheduleImage}
-        />
-        <div className={styles.scheduleImageOverlay}></div>
-        <div className={styles.scheduleTimeOverlay}>
-          {item.time}
+      <div className={styles.timeColumn}>
+        <div className={styles.timeBox}>
+          <span className={styles.timeText}>{item.time}</span>
         </div>
+        <div className={styles.connector}></div>
       </div>
       
-      <div className={styles.scheduleContentBox}>
-        {item.type && (
-          <span className={`${styles.sessionTypeBadge} ${styles[item.type]}`}>
-            {item.type === 'panel' && 'PANEL DISCUSSION'}
-            {item.type === 'fireside' && 'FIRESIDE CHAT'}
-            {item.type === 'break' && 'BREAK'}
-            {item.type === 'awards' && 'AWARDS CEREMONY'}
-            {item.type === 'keynote' && 'KEYNOTE'}
-          </span>
-        )}
-        <h3 className={styles.scheduleItemTitle}>{item.title}</h3>
-        {item.points && (
-          <ul className={styles.schedulePointsList}>
-            {item.points.map((point, i) => (
-              <li key={i} className={styles.schedulePointItem}>{point}</li>
-            ))}
-          </ul>
-        )}
+      <div className={styles.contentColumn}>
+        <div className={styles.contentCard}>
+          {item.type && (
+            <span className={`${styles.typeBadge} ${styles[item.type]}`}>
+              {item.type === 'panel' && 'PANEL DISCUSSION'}
+              {item.type === 'fireside' && 'FIRESIDE CHAT'}
+              {item.type === 'break' && 'BREAK'}
+              {item.type === 'awards' && 'AWARDS CEREMONY'}
+              {item.type === 'keynote' && 'KEYNOTE'}
+              {item.type === 'Welcome' && 'WELCOME'}
+            </span>
+          )}
+          
+          <h3 className={styles.sessionTitle}>{item.title}</h3>
+          
+          {item.points && (
+            <ul className={styles.sessionPoints}>
+              {item.points.map((point, i) => (
+                <li key={i} className={styles.sessionPoint}>{point}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
 
   return (
     <div className={styles.schedulePageWrapper}>
-      <UpdateSoon></UpdateSoon>
-     {/* <section className={styles.heroSection}>
-  <div className={styles.heroBgImage}></div>
-  <div className={styles.heroOverlay}></div>
+      <section className={styles.heroSection}>
+        <div className={styles.heroBgImage}></div>
+        <div className={styles.heroOverlay}></div>
 
-  <div className={styles.heroContentWrapper}>
+        <div className={styles.heroContentWrapper}>
+          <div className={styles.heroDecoLine}></div>
 
-    <div className={styles.heroDecoLine}></div>
+          <h1 className={styles.heroMainTitle}>
+            <span ref={heroTextRef}>Event Schedule</span>
+          </h1>
 
-    <h1 className={styles.heroMainTitle}>
-      <span ref={heroTextRef}>Event Schedule</span>
-    </h1>
+          <p className={styles.heroMainSubtitle}>
+            Two Days of Innovation, Insights & Networking
+          </p>
 
-    <p className={styles.heroMainSubtitle}>
-      Two Days of Innovation, Insights & Networking
-    </p>
+          <div className={styles.heroDecoLine}></div>
+        </div>
+      </section>
 
-    <div className={styles.heroDecoLine}></div>
-
-  </div>
-</section> */}
-
-
-      {/* <section className={styles.scheduleContentSection}>
+      <section className={styles.scheduleContentSection}>
         <div className={styles.scheduleContainer}>
           
           <div className={styles.dayTabsWrapper}>
@@ -333,14 +302,16 @@ const Schedule = () => {
               className={`${styles.dayTab} ${activeDay === 'day1' ? styles.active : ''}`}
               onClick={() => setActiveDay('day1')}
             >
-              <span className={styles.dayNumber}>Day 1</span>
+              <div className={styles.tabIndicator}></div>
+              <span className={styles.dayNumber}>DAY 01</span>
               <span className={styles.dayLabel}>First Day</span>
             </button>
             <button 
               className={`${styles.dayTab} ${activeDay === 'day2' ? styles.active : ''}`}
               onClick={() => setActiveDay('day2')}
             >
-              <span className={styles.dayNumber}>Day 2</span>
+              <div className={styles.tabIndicator}></div>
+              <span className={styles.dayNumber}>DAY 02</span>
               <span className={styles.dayLabel}>Second Day</span>
             </button>
           </div>
@@ -351,9 +322,9 @@ const Schedule = () => {
           </div>
 
         </div>
-      </section> */}
+      </section>
     </div>
   );
 };
 
-export default Schedule;
+export default ScheduleWithoutImages;

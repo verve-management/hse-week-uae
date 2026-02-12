@@ -66,14 +66,7 @@ useEffect(() => {
     image: "/Speakers/Speaker4.webp",
     linkedin: "https://www.linkedin.com/in/dr-huda-alsalmi-2b0a912b/"
   },
-  {
-    id: 5,
-    name: "Dr. Waddah S. Ghanem Al Hashmi",
-    designation: "Chairman",
-    company: "Federal Occupational Health & Safety Committee (ESMA, UAE)",
-    image: "/Speakers/Speaker5.webp",
-    linkedin: "https://www.linkedin.com/in/waddah-ghanem/"
-  },
+ 
   {
     id: 6,
     name: "Dr. Ahmad Al-Ghamdi",
@@ -465,7 +458,15 @@ useEffect(() => {
     company: "Intenseye",
     image: "/Speakers/Speaker56.webp",
     linkedin: ""
-  }
+  },
+   {
+    id: 5,
+    name: "Dr. Waddah S. Ghanem Al Hashmi",
+    designation: "Chairman",
+    company: "Federal Occupational Health & Safety Committee (ESMA, UAE)",
+    image: "/Speakers/Speaker5.webp",
+    linkedin: "https://www.linkedin.com/in/waddah-ghanem/"
+  },
   ];
 
   const handleLinkedInClick = (linkedin) => {
