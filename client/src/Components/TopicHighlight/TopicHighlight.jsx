@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './TopicHighlight.module.css';
 import { FaBrain, FaShieldAlt, FaTemperatureHigh, FaFire, FaLeaf, FaBuilding, FaChartLine, FaSeedling, FaUsers } from 'react-icons/fa';
 
 const TopicHighlight = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   const topics = [
     { title: 'AI-Driven Safety Innovations', icon: <FaBrain /> },
     { title: 'UAE HSE Compliance', icon: <FaShieldAlt /> },
@@ -12,11 +15,27 @@ const TopicHighlight = () => {
     { title: 'Mega Project Safety', icon: <FaBuilding /> },
     { title: 'Workplace Risk Management', icon: <FaChartLine /> },
     { title: 'Environmental Protection Standards', icon: <FaSeedling /> },
-    { title: 'Leadership & Safety Culture', icon: <FaUsers /> }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className={styles.topicHighlight}>
+    <section ref={sectionRef} className={`${styles.topicHighlight} ${isVisible ? styles.visible : ''}`}>
       <div className={styles.container}>
 
         {/* Section Header */}

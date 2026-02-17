@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Hero4.module.css";
-import { MdLocationCity, MdPublic, MdRecordVoiceOver, MdEmojiEvents, MdVerifiedUser, MdGroups } from "react-icons/md";
+import { MdLocationOn, MdPeople, MdTrendingUp, MdStars, MdEco, MdHandshake } from "react-icons/md";
 
 const TARGET_DATE = new Date("2026-09-08T09:00:00");
 
@@ -24,12 +24,12 @@ function useCountdown(target) {
 }
 
 const keyFacts = [
-  { icon: <MdLocationCity />, label: "Venue", value: "ADNEC, Abu Dhabi" },
-  { icon: <MdPublic />, label: "Countries", value: "40+ Nations" },
-  { icon: <MdRecordVoiceOver />, label: "Speakers", value: "120+ Experts" },
-  { icon: <MdEmojiEvents />, label: "Awards", value: "HSE Excellence" },
-  { icon: <MdVerifiedUser />, label: "CPD Points", value: "Certified" },
-  { icon: <MdGroups />, label: "Networking", value: "VIP Gala" },
+  { icon: <MdLocationOn />, label: "Venue", value: "Abu Dhabi" },
+  { icon: <MdPeople />, label: "Delegates", value: "500+" },
+  { icon: <MdTrendingUp />, label: "Attendance", value: "95+" },
+  { icon: <MdStars />, label: "Satisfaction", value: "96%" },
+  { icon: <MdEco />, label: "Sustainability Focus", value: "ESG & Net Zero" },
+  { icon: <MdHandshake />, label: "Networking", value: "VIP Gala" },
 ];
 
 export default function Hero3() {
@@ -40,24 +40,6 @@ export default function Hero3() {
       {/* Background */}
       <div className={styles.bg} />
       <div className={styles.bgMesh} />
-
-      {/* ── TOP HEADER BAR ── */}
-      <div className={styles.headerBar}>
-        <div className={styles.hbLeft}>
-          <span className={styles.hbEdition}>XII Annual Edition</span>
-          <span className={styles.hbSep}>|</span>
-          <span className={styles.hbTheme}>Theme: <em>Safety Beyond Boundaries</em></span>
-        </div>
-        <div className={styles.hbCenter}>
-          <div className={styles.hbLogo}>HSE</div>
-        </div>
-        <div className={styles.hbRight}>
-          <span className={styles.hbCountry}>🇦🇪 United Arab Emirates</span>
-          <span className={styles.hbSep}>|</span>
-          <span className={styles.hbDate}>SEP 08–09, 2026</span>
-        </div>
-      </div>
-
       {/* ── MAIN GRID ── */}
       <div className={styles.mainGrid}>
 
@@ -65,23 +47,21 @@ export default function Hero3() {
         <div className={styles.colA}>
           {/* Stacked giant title */}
           <div className={styles.titleStack}>
-            <span className={styles.tsLine1}>HEALTH</span>
-            <div className={styles.tsMiddle}>
-              <span className={styles.tsBig}>HSE</span>
-              <div className={styles.tsMiddleRight}>
-                <span className={styles.tsWeek}>WEEK</span>
-                <div className={styles.tsUAEWrap}>
-                  <span className={styles.tsUAE}>UAE</span>
-                  <div className={styles.tsUAEFlags}>
-                    <span className={styles.tsFlag} style={{background:'#00732F'}} />
-                    <span className={styles.tsFlag} style={{background:'#FFFFFF'}} />
-                    <span className={styles.tsFlag} style={{background:'#A6223C'}} />
-                    <span className={styles.tsFlag} style={{background:'#000000'}} />
-                  </div>
-                </div>
-              </div>
+            <div className={styles.editionLine}>
+  <span className={styles.editionTitle}>2nd Edition</span>
+</div>
+  <div className={styles.titleLine}>
+    <span className={styles.titleWord}>HSE</span>
+    <span className={styles.titleWord}>WEEK</span>
+    <span className={styles.titleWord}>UAE</span>
+  </div>
+            <div className={styles.titleSubline}>
+              <span className={styles.subWord}>HEALTH</span>
+              <span className={styles.subDot}>•</span>
+              <span className={styles.subWord}>SAFETY</span>
+              <span className={styles.subDot}>•</span>
+              <span className={styles.subWord}>ENVIRONMENT</span>
             </div>
-            <span className={styles.tsLine3}>ENVIRONMENT</span>
           </div>
 
           {/* Video as a shaped display */}
@@ -99,19 +79,17 @@ export default function Hero3() {
                 <span className={styles.vidCaptionConf}>HSE Conference & Exhibition</span>
               </div>
             </div>
-            {/* Corner tag */}
-         
           </div>
         </div>
 
         {/* ── COLUMN B: Info dense panel ── */}
         <div className={styles.colB}>
           {/* Eyebrow */}
-          <div className={styles.eyebrow}>
+          {/* <div className={styles.eyebrow}>
             <div className={styles.eyebrowBar} />
             <span>OFFICIAL EVENT DETAILS</span>
             <div className={styles.eyebrowBar} />
-          </div>
+          </div> */}
 
           {/* Date big block */}
           <div className={styles.dateMega}>
@@ -141,9 +119,8 @@ export default function Hero3() {
                 <div key={l} className={styles.cdItem}>
                   <div className={styles.cdItemInner}>
                     <span className={styles.cdItemVal}>{String(v).padStart(2,"0")}</span>
+                    <span className={styles.cdItemLabel}>{l}</span>
                   </div>
-                  <span className={styles.cdItemLabel}>{l}</span>
-                  {i<3 && <span className={styles.cdColon}>:</span>}
                 </div>
               ))}
             </div>
@@ -153,7 +130,9 @@ export default function Hero3() {
           <div className={styles.factsGrid}>
             {keyFacts.map((f) => (
               <div key={f.label} className={styles.factCard}>
-                <span className={styles.factIcon}>{f.icon}</span>
+                <div className={styles.factIconWrapper}>
+                  <span className={styles.factIcon}>{f.icon}</span>
+                </div>
                 <div className={styles.factInfo}>
                   <span className={styles.factLabel}>{f.label}</span>
                   <span className={styles.factValue}>{f.value}</span>
@@ -167,7 +146,6 @@ export default function Hero3() {
             <a href="#register" className={styles.btnReg}>
               <div className={styles.btnRegLeft}>
                 <span className={styles.btnRegLabel}>Register Now</span>
-                <span className={styles.btnRegSub}>Early Bird Rate Available</span>
               </div>
               <span className={styles.btnRegArrow}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

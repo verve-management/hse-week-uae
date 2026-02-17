@@ -1,5 +1,6 @@
 /* Hero3.module.css — DESIGN 3: Magazine editorial, dark ultra-premium, shaped video */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
 .hero {
   --red: #A6223C;
@@ -48,6 +49,7 @@
   gap: 1rem;
   animation: fUp 0.8s ease both;
 }
+
 .hbLeft, .hbRight {
   flex: 1;
   display: flex;
@@ -59,19 +61,65 @@
 }
 .hbRight { justify-content: flex-end; }
 .hbSep { color: rgba(255,255,255,0.12); }
-.hbTheme em { font-style: italic; color: rgba(255,255,255,0.4); }
-.hbEdition { color: #C8A84B; font-weight: 600; }
 .hbDate { color: #A6223C; font-weight: 600; }
 .hbCountry { color: rgba(255,255,255,0.4); }
 .hbCenter { flex-shrink: 0; }
 .hbLogo {
-  font-family: 'Anton', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 2px 12px;
+  font-family: 'Abril Fatface', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+
+    color: rgba(255, 255, 255, 0.35);     /* Increased visibility */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    padding: 2px 12px;
 }
+
+/* 2nd Edition Badge */
+.editionBadge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, rgba(200,168,75,0.15) 0%, rgba(200,168,75,0.05) 100%);
+  border: 1px solid rgba(200,168,75,0.3);
+  padding: 0.4rem 0.9rem;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+.editionBadge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,168,75,0.5), transparent);
+}
+.editionNumber {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.4rem;
+  color: #C8A84B;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.editionText {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(200,168,75,0.7);
+  line-height: 1;
+  margin-left: -0.15rem;
+}
+.editionLabel {
+  font-family: 'Abril Fatface', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(200,168,75,0.6);
+  text-transform: uppercase;
+  margin-left: 0.1rem;
+}
+
 @keyframes fUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
 
 /* ─── MAIN GRID ─── */
@@ -91,79 +139,54 @@
   justify-content: center;
   padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 4vw, 3rem);
   border-right: 1px solid rgba(255,255,255,0.06);
-  gap: clamp(1rem, 2vh, 2rem);
+  gap: clamp(1.5rem, 3vh, 3rem);
   animation: fUp 0.9s 0.05s ease both;
 }
 
-/* Title stack */
+/* Title stack - New unified design */
 .titleStack {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  line-height: 0.88;
+  gap: clamp(0.5rem, 1vh, 0.8rem);
 }
-.tsLine1 {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  letter-spacing: 0.55em;
-  color: rgba(255,255,255,0.12);
-  text-transform: uppercase;
-  padding-left: 4px;
-}
-.tsMiddle {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(0.5rem, 1.5vw, 1.5rem);
-}
-.tsBig {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(6rem, 16vw, 15rem);
-  color: #fff;
-  letter-spacing: -0.03em;
-  text-shadow: 0 10px 80px rgba(166,34,60,0.25);
-}
-.tsMiddleRight {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding-bottom: clamp(0.5rem, 1.5vw, 1.5rem);
-}
-.tsWeek {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(1.8rem, 4.5vw, 4.5rem);
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.3em;
-}
-.tsUAEWrap {
+
+.titleLine {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
 }
-.tsUAE {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(2rem, 5.5vw, 5.5rem);
-  color: transparent;
-  -webkit-text-stroke: 2px #A6223C;
-  letter-spacing: 0.12em;
+
+.titleWord {
+   font-family: Abril Fatface, serif;
+  font-size: clamp(4rem, 12vw, 6rem);
+  color: #fff;
+  letter-spacing: 0.06em;
+  line-height: 0.9;
+  text-shadow: 0 10px 80px rgba(166,34,60,0.25);
+  position: relative;
 }
-.tsUAEFlags {
+
+.titleSubline {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.tsFlag {
-  display: block;
-  width: clamp(24px, 3vw, 40px);
-  height: 3px;
-  border-radius: 2px;
-}
-.tsLine3 {
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  letter-spacing: 0.45em;
-  color: rgba(255,255,255,0.12);
-  text-transform: uppercase;
+  align-items: center;
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+  flex-wrap: wrap;
   padding-left: 4px;
+}
+
+.subWord {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.subDot {
+  color: rgba(166,34,60,0.4);
+  font-size: clamp(0.5rem, 0.8vw, 0.7rem);
 }
 
 /* Video display */
@@ -230,31 +253,6 @@
   color: rgba(255,255,255,0.75);
   letter-spacing: 0.06em;
 }
-.videoTag {
-  position: absolute;
-  top: 12px; right: 12px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(166,34,60,0.85);
-  padding: 4px 10px;
-  border-radius: 2px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: white;
-  backdrop-filter: blur(4px);
-}
-.videoTagDot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 5px #fff;
-  animation: blink 1s ease infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
 /* ─── COL B ─── */
 .colB {
@@ -262,7 +260,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(1.5rem, 3vh, 2rem) clamp(1.5rem, 3vw, 2.5rem);
-  gap: clamp(0.6rem, 1.5vh, 1.2rem);
+  gap: clamp(0.8rem, 1.8vh, 1.4rem);
   animation: fUp 0.9s 0.1s ease both;
 }
 
@@ -301,7 +299,7 @@
 }
 .dateMegaNum {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: #A6223C;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -320,14 +318,14 @@
   padding-left: 1rem;
 }
 .dateMegaMonth {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Abril Fatface', sans-serif;
   font-size: clamp(1rem, 2vw, 1.6rem);
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.12em;
 }
 .dateMegaYear {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: rgba(255,255,255,0.3);
   letter-spacing: 0.15em;
 }
@@ -338,9 +336,9 @@
   margin-top: 2px;
 }
 
-/* Countdown block */
+/* Countdown block - Improved spacing */
 .cdBlock {
-  padding: clamp(0.7rem, 1.5vh, 1rem) clamp(0.8rem, 1.5vw, 1.2rem);
+  padding: clamp(1rem, 2vh, 1.4rem) clamp(1rem, 2vw, 1.5rem);
   background: rgba(16,33,71,0.3);
   border: 1px solid rgba(16,33,71,0.8);
 }
@@ -348,36 +346,38 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
 }
 .cdBlockLine { flex:1; height:1px; background: rgba(255,255,255,0.08); }
 .cdBlockTitle {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   letter-spacing: 0.25em;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
 }
 .cdRow {
-  display: flex;
-  align-items: center;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.6rem, 1.2vw, 1rem);
 }
 .cdItem {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0;
-  position: relative;
+  gap: 0.5rem;
 }
 .cdItemInner {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
-  padding: clamp(0.5rem, 1.2vh, 0.8rem) clamp(0.6rem, 1.5vw, 1rem);
+  padding: clamp(0.7rem, 1.5vh, 1rem) clamp(0.5rem, 1vw, 0.8rem);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  min-width: clamp(52px, 5.5vw, 72px);
+  width: 100%;
+  border-radius: 2px;
 }
 .cdItemInner::before {
   content:''; position:absolute; top:0; left:0; right:0; height:1px;
@@ -385,60 +385,105 @@
 }
 .cdItemVal {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: #fff;
   line-height: 1;
+  letter-spacing: 0.05em;
 }
 .cdItemLabel {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.25);
-  margin-top: 3px;
-}
-.cdColon {
-  font-family: 'Anton', sans-serif;
-  font-size: 1.2rem;
-  color: rgba(166,34,60,0.5);
-  padding: 0 0.2rem;
-  line-height: 1;
-  align-self: flex-start;
-  margin-top: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
-/* Facts grid */
+/* Facts grid - Improved icons */
 .factsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid rgba(255,255,255,0.06);
+  gap: clamp(0.6rem, 1vw, 0.8rem);
 }
 .factCard {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.7rem;
-  border-right: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.2s;
+  gap: clamp(0.6rem, 1vw, 0.8rem);
+  padding: clamp(0.8rem, 1.5vh, 1rem) clamp(0.7rem, 1.2vw, 0.9rem);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
-.factCard:nth-child(3n) { border-right: none; }
-.factCard:nth-child(n+4) { border-bottom: none; }
-.factCard:hover { background: rgba(255,255,255,0.03); }
-.factIcon { font-size: 0.9rem; flex-shrink: 0; }
-.factInfo { display:flex; flex-direction:column; gap:1px; }
+.factCard:hover { 
+  background: rgba(255,255,255,0.04); 
+  border-color: rgba(166,34,60,0.3);
+  transform: translateY(-2px);
+}
+.editionLine span{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(1.2rem, 1.9vw, 2.8rem);
+  line-height: 1;
+
+  color: #A6223C;
+  text-shadow: 0 0 25px rgba(166, 34, 60, 0.6);
+
+  margin-bottom: 0.8rem;
+
+  padding: 8px 22px;
+  background: rgba(166, 34, 60, 0.12);
+  border: 1px solid rgba(166, 34, 60, 0.35);
+  backdrop-filter: blur(8px);
+
+  width: fit-content;
+}
+.factIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 3.5vw, 40px);
+  height: clamp(32px, 3.5vw, 40px);
+  background: rgba(166,34,60,0.1);
+  border: 1px solid rgba(166,34,60,0.2);
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.factCard:hover .factIconWrapper {
+  background: rgba(166,34,60,0.15);
+  border-color: rgba(166,34,60,0.4);
+}
+.factIcon { 
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: #A6223C;
+}
+.factInfo { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2px; 
+  flex: 1;
+  min-width: 0;
+}
 .factLabel {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
 }
 .factValue {
-  font-size: 0.98rem;
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
   font-weight: 700;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* CTA stack */
@@ -450,7 +495,8 @@
 .btnReg {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;   /* CENTER EVERYTHING */
+  gap: 10px;                 /* spacing between text and arrow */
   padding: 1rem 1.2rem;
   background: linear-gradient(110deg, #A6223C 0%, #c9314e 100%);
   text-decoration: none;
@@ -459,25 +505,23 @@
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
+
+  font-family: 'Syne', sans-serif;
 }
-.btnReg::before {
-  content:''; position:absolute; inset:0;
-  background: linear-gradient(to right, rgba(255,255,255,0.06) 0%, transparent 50%);
-}
+
 .btnReg:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(166,34,60,0.5); }
-.btnRegLeft { display:flex; flex-direction:column; gap:2px; }
+.btnRegLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .btnRegLabel {
   font-family: 'Syne', sans-serif;
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: white;
-}
-.btnRegSub {
-  font-size: 0.58rem;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.08em;
 }
 .btnRegArrow {
   color: white;
@@ -497,7 +541,7 @@
   color: #C8A84B;
   text-decoration: none;
   font-family: 'Syne', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -558,6 +602,7 @@
   box-shadow: 0 0 5px rgba(166,34,60,1);
   animation: blink 1s infinite;
 }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 .btTrack { flex:1; overflow:hidden; }
 .btInner {
   display: flex;
@@ -583,15 +628,35 @@
   .mainGrid { grid-template-columns: 1fr; overflow-y: auto; }
   .colA { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .videoDisplayInner { aspect-ratio: 16/8; }
+  .factsGrid { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
-  .hbLeft, .hbRight { display:none; }
-  .colA, .colB { padding: 1.25rem; }
-  .factsGrid { grid-template-columns: repeat(2, 1fr); }
-  .cdItemInner { min-width: 46px; padding: 0.4rem 0.5rem; }
+  .hbLeft, .hbRight { flex: auto; }
+  .hbRight { display: none; }
+  .editionBadge { padding: 0.35rem 0.7rem; }
+  .editionNumber { font-size: 1.2rem; }
+  .editionLabel { font-size: 0.65rem; }
+  .colA, .colB { padding: 1.5rem 1.25rem; }
+  .titleWord { font-size: clamp(3rem, 15vw, 6rem); }
+  .subWord { font-size: 0.65rem; }
+  .cdRow { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+  .cdItemInner { padding: 0.6rem 0.4rem; }
+  .cdItemVal { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .cdItemLabel { font-size: 0.6rem; }
+  .factsGrid { gap: 0.5rem; }
+  .factCard { padding: 0.7rem 0.6rem; }
+  .factIconWrapper { width: 30px; height: 30px; }
+  .factIcon { font-size: 1rem; }
 }
+
 @media (max-width: 480px) {
-  .tsBig { font-size: 5.5rem; }
-  .factsGrid { grid-template-columns: repeat(2, 1fr); }
+  .hbLeft { justify-content: center; }
+  .titleLine { justify-content: center; }
+  .titleWord { font-size: clamp(2.5rem, 18vw, 4.5rem); }
+  .titleSubline { justify-content: center; }
+  .factsGrid { grid-template-columns: 1fr; }
   .dateMegaNum { font-size: 2.5rem; }
+  .cdRow { grid-template-columns: repeat(2, 1fr); }
+  .cdItemInner { padding: 0.8rem 0.5rem; }
 }

@@ -68,7 +68,11 @@ const Industries = () => {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setIsVisible(true),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
       { threshold: 0.1 }
     )
     if (sectionRef.current) obs.observe(sectionRef.current)
@@ -87,8 +91,8 @@ const Industries = () => {
             return (
               <div 
                 key={industry.id} 
-                className={`${styles.cardWrapper} ${isVisible ? styles.cardVisible : ""}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={styles.cardWrapper}
+                data-index={index}
               >
                 <div className={styles.card}>
                   {/* Front Side - Number, Title, and Image */}

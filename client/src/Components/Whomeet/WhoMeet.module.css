@@ -1,9 +1,17 @@
-/* WhoMeet.module.css - Premium Luxury Design */
-
 .section {
-  background: #ffffff;
-  padding: 8rem 2rem;
+  background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%);
+  padding: 5rem 2rem;
   position: relative;
+  overflow: visible;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .container {
@@ -12,331 +20,519 @@
   position: relative;
 }
 
-/* ================= LUXURY HEADER ================= */
+/* ================= HEADER ================= */
 
 .headerWrapper {
   text-align: center;
-  margin-bottom: 6rem;
-  position: relative;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
-.headerLine {
-  width: 100px;
-  height: 3px;
-  background: #A6223C;
-  margin: 0 auto 2rem;
+.section.visible .headerWrapper {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .mainHeading {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: #102147;
-  margin: 0 0 1.5rem 0;
-  line-height: 1.2;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #A6223C;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  text-transform: capitalize;
 }
 
-.highlightText {
-  color: #A6223C;
+.mainHeading span {
+  color: #102147;
 }
 
 .subHeading {
-  font-size: 1.15rem;
-  color: #666666;
+  font-size: 1.3rem;
+  color: #64748b;
   font-weight: 400;
-  margin: 0 auto;
-  line-height: 1.6;
-  max-width: 700px;
-  letter-spacing: 0.3px;
+  margin: 0;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
 }
 
-/* ================= PREMIUM GRID ================= */
+/* ================= LIST CONTAINER WITH CORNER BORDERS ================= */
 
-.professionalsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+.listContainer {
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
-}
-
-/* ================= PROFESSIONAL CARD ================= */
-
-.professionalCard {
+  padding: 5rem 4.5rem;
   background: #ffffff;
-  border: 1px solid #e5e5e5;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  cursor: pointer;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
 }
 
-.professionalCard:hover {
-  border-color: #A6223C;
-  transform: translateY(-5px);
+.section.visible .listContainer {
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* ================= IMAGE SECTION ================= */
-
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-  background: #f8f8f8;
-}
-
-.professionalImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.professionalCard:hover .professionalImage {
-  transform: scale(1.05);
-}
-
-.overlay {
+.cornerBorder {
   position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.section.visible .cornerBorder {
+  opacity: 1;
+}
+
+.cornerBorder[data-corner="top-left"] {
   top: 0;
   left: 0;
-  right: 0;
+  border-top: 15px solid #A6223C;
+  border-left: 15px solid #A6223C;
+  transition-delay: 0.5s;
+}
+
+.cornerBorder[data-corner="bottom-right"] {
   bottom: 0;
-  background: linear-gradient(to bottom, transparent 0%, rgba(16, 33, 71, 0.1) 100%);
-  pointer-events: none;
+  right: 0;
+  border-bottom: 15px solid #A6223C;
+  border-right: 15px solid #A6223C;
+  transition-delay: 0.6s;
 }
 
-/* ================= CARD CONTENT ================= */
+/* ================= ROLES LIST ================= */
 
-.cardContent {
-  padding: 2rem 1.5rem;
+.rolesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.roleItem {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid #e8eaf0;
+  border-right: 1px solid #e8eaf0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   background: #ffffff;
-  position: relative;
+  opacity: 0;
+  transform: translateX(-30px);
 }
 
-.numberTag {
-  position: absolute;
-  top: -20px;
-  right: 1.5rem;
-  background: #102147;
-  color: #ffffff;
-  width: 40px;
-  height: 40px;
+.section.visible .roleItem {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered animation for role items */
+.section.visible .roleItem:nth-child(1) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(2) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(3) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(4) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(5) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(6) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.1s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.1s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(7) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible .roleItem:nth-child(8) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.3s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.3s,
+              all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.roleItem:nth-child(2n) {
+  border-right: none;
+}
+
+.roleItem:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.roleItem:hover {
+  background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+  padding-left: 3rem;
+  box-shadow: inset 0 0 0 1px rgba(166, 34, 60, 0.1);
+}
+
+.roleItem:hover .roleNumber {
+  background: linear-gradient(135deg, #102147 0%, #0a1630 100%);
+  transform: scale(1.12) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(16, 33, 71, 0.35), 0 4px 12px rgba(16, 33, 71, 0.2);
+}
+
+.roleNumber {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #A6223C 0%, #8a1b31 100%);
+  color: #ffffff;
+  font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(166, 34, 60, 0.25), 0 2px 8px rgba(166, 34, 60, 0.15);
 }
 
-.roleTitle {
-  font-size: 1.05rem;
+.roleText {
+  font-size: 1.15rem;
   font-weight: 600;
   color: #102147;
-  margin: 0;
-  line-height: 1.4;
-  min-height: 2.8em;
-  letter-spacing: 0.3px;
-}
-
-.professionalCard:hover .roleTitle {
-  color: #A6223C;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 /* ================= RESPONSIVE ================= */
 
+/* Large Desktop */
 @media (max-width: 1400px) {
-  .professionalsGrid {
-    gap: 1.8rem;
+  .container {
+    max-width: 1200px;
   }
 
-  .imageWrapper {
-    height: 260px;
-  }
-
-  .cardContent {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .roleTitle {
-    font-size: 1rem;
+  .listContainer {
+    max-width: 1200px;
+    padding: 5rem 4rem;
   }
 }
 
+/* 14-inch laptop / 1200px */
 @media (max-width: 1200px) {
   .section {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
   }
 
-  .headerWrapper {
-    margin-bottom: 5rem;
+  .container {
+    max-width: 100%;
+  }
+
+  .listContainer {
+    max-width: 100%;
+    padding: 4rem 3.5rem;
   }
 
   .mainHeading {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .subHeading {
+    font-size: 1.2rem;
+  }
+
+  .cornerBorder {
+    width: 160px;
+    height: 160px;
+  }
+
+  .roleItem {
+    gap: 1.8rem;
+    padding: 1.8rem 2rem;
+  }
+
+  .roleItem:hover {
+    padding-left: 2.5rem;
+  }
+
+  .roleNumber {
+    width: 55px;
+    height: 55px;
+    font-size: 1.25rem;
+  }
+
+  .roleText {
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .mainHeading {
+    font-size: 2.2rem;
+  }
+
+  .subHeading {
+    font-size: 1.15rem;
+  }
+
+  .listContainer {
+    padding: 4rem 3rem;
+  }
+
+  .cornerBorder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cornerBorder[data-corner="top-left"],
+  .cornerBorder[data-corner="bottom-right"] {
+    border-width: 8px;
+  }
+
+  .roleItem {
+    gap: 1.8rem;
+    padding: 1.8rem 2rem;
+  }
+
+  .roleItem:hover {
+    padding-left: 2.5rem;
+  }
+
+  .roleNumber {
+    width: 55px;
+    height: 55px;
+    font-size: 1.25rem;
+  }
+
+  .roleText {
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .headerWrapper {
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  .mainHeading {
+    font-size: 2rem;
   }
 
   .subHeading {
     font-size: 1.1rem;
   }
 
-  .professionalsGrid {
+  .listContainer {
+    padding: 3rem 2.5rem;
+  }
+
+  .cornerBorder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cornerBorder[data-corner="top-left"],
+  .cornerBorder[data-corner="bottom-right"] {
+    border-width: 6px;
+  }
+
+  .rolesList {
+    grid-template-columns: 1fr;
+  }
+
+  .roleItem {
     gap: 1.5rem;
+    padding: 1.6rem 1.5rem;
+    border-right: none;
   }
 
-  .imageWrapper {
-    height: 240px;
+  .roleItem:last-child {
+    border-bottom: none;
   }
 
-  .cardContent {
-    padding: 1.5rem 1.25rem;
+  .roleItem:hover {
+    padding-left: 2rem;
   }
 
-  .roleTitle {
+  .roleNumber {
+    width: 50px;
+    height: 50px;
+    font-size: 1.15rem;
+  }
+
+  .roleText {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 600px) {
+  .section {
+    padding: 2.5rem 1rem;
+  }
+
+  .headerWrapper {
+    margin-bottom: 2.5rem;
+  }
+
+  .mainHeading {
+    font-size: 1.75rem;
+    letter-spacing: -0.5px;
+  }
+
+  .subHeading {
     font-size: 0.95rem;
   }
 
-  .numberTag {
+  .listContainer {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .cornerBorder {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cornerBorder[data-corner="top-left"],
+  .cornerBorder[data-corner="bottom-right"] {
+    border-width: 5px;
+  }
+
+  .roleItem {
+    gap: 1rem;
+    padding: 1rem 0.8rem;
+  }
+
+  .roleItem:hover {
+    padding-left: 1rem;
+  }
+
+  .roleNumber {
     width: 38px;
     height: 38px;
     font-size: 0.9rem;
   }
-}
 
-@media (max-width: 1024px) {
-  .professionalsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .imageWrapper {
-    height: 260px;
+  .roleText {
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile Portrait */
+@media (max-width: 480px) {
   .section {
-    padding: 5rem 1.5rem;
-  }
-
-  .headerWrapper {
-    margin-bottom: 4rem;
-  }
-
-  .headerLine {
-    width: 80px;
-    height: 2px;
-    margin-bottom: 1.5rem;
+    padding: 2rem 0.75rem;
   }
 
   .mainHeading {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
   }
 
   .subHeading {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
-  .professionalsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .listContainer {
+    padding: 2rem 1rem;
   }
 
-  .imageWrapper {
-    height: 240px;
+  .cornerBorder {
+    width: 60px;
+    height: 60px;
   }
 
-  .cardContent {
-    padding: 1.5rem 1rem;
+  .cornerBorder[data-corner="top-left"],
+  .cornerBorder[data-corner="bottom-right"] {
+    border-width: 4px;
   }
 
-  .numberTag {
-    top: -18px;
-    right: 1rem;
+  .roleItem {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding: 0.9rem 0.5rem;
+  }
+
+  .roleNumber {
     width: 36px;
     height: 36px;
     font-size: 0.85rem;
   }
 
-  .roleTitle {
-    font-size: 0.9rem;
+  .roleText {
+    font-size: 0.85rem;
+    line-height: 1.3;
   }
 }
 
-@media (max-width: 600px) {
+/* Extra Small */
+@media (max-width: 400px) {
   .section {
-    padding: 4rem 1rem;
-  }
-
-  .headerWrapper {
-    margin-bottom: 3rem;
+    padding: 2rem 0.5rem;
   }
 
   .mainHeading {
-    font-size: 2rem;
-    letter-spacing: 1.5px;
+    font-size: 1.4rem;
   }
 
-  .subHeading {
-    font-size: 0.95rem;
+  .listContainer {
+    padding: 1.5rem 0.75rem;
   }
 
-  .professionalsGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .cornerBorder {
+    width: 50px;
+    height: 50px;
   }
 
-  .imageWrapper {
-    height: 280px;
+  .cornerBorder[data-corner="top-left"],
+  .cornerBorder[data-corner="bottom-right"] {
+    border-width: 4px;
   }
 
-  .cardContent {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .roleTitle {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    padding: 3rem 1rem;
-  }
-
-  .headerLine {
-    width: 60px;
-    margin-bottom: 1rem;
-  }
-
-  .mainHeading {
-    font-size: 1.75rem;
-    letter-spacing: 1px;
-  }
-
-  .subHeading {
-    font-size: 0.9rem;
-  }
-
-  .imageWrapper {
-    height: 250px;
-  }
-
-  .cardContent {
-    padding: 1.5rem 1rem;
-  }
-
-  .numberTag {
-    width: 34px;
-    height: 34px;
+  .roleNumber {
+    width: 32px;
+    height: 32px;
     font-size: 0.8rem;
   }
 
-  .roleTitle {
-    font-size: 0.95rem;
+  .roleText {
+    font-size: 0.8rem;
   }
 }

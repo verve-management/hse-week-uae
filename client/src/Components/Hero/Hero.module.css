@@ -1,7 +1,5 @@
 /* Hero.module.css — DESIGN 1: Full-video bg, maximalist luxury event */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rajdhani:wght@400;500;600;700&family=Fira+Sans+Condensed:wght@300;400;600;700&display=swap');
-
-/* ─────────────────────────────── ROOT VARS ─── */
 .hero {
   --red: #A6223C;
   --navy: #102147;
@@ -191,7 +189,7 @@
   gap: 8px;
   border: 1px solid rgba(201,168,76,0.4);
   padding: 5px 16px;
-  font-size: 0.62rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -212,27 +210,52 @@
 }
 
 /* ─────────────────────────────── EDITION ─── */
-.edition {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-  animation: fadeUp 0.9s 0.15s ease both;
-}
+
+
 .editionNum {
   font-family: 'Abril Fatface', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: rgba(255,255,255,0.08);
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+
+  /* CHANGED */
+  color: #A6223C;
+  text-shadow: 0 0 25px rgba(166, 34, 60, 0.6);
   line-height: 1;
   letter-spacing: -0.02em;
 }
-.editionText {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+.edition {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Abril Fatface', serif;
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
+  line-height: 1;
+
+  color: #A6223C;
+  text-shadow: 0 0 25px rgba(166, 34, 60, 0.6);
+
+  margin-bottom: 0.8rem;
+
+  padding: 8px 22px;
+  background: rgba(166, 34, 60, 0.12);
+  border: 1px solid rgba(166, 34, 60, 0.35);
+  backdrop-filter: blur(8px);
+
+  width: fit-content;
 }
+
+.editionText {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+         font-family: "Abril Fatface", serif;
+  transform: translateY(-4px);
+  /* CHANGED */
+  color: rgba(255,255,255,0.85);
+  
+}
+
 
 /* ─────────────────────────────── TITLE ─── */
 .titleWrap {
@@ -246,66 +269,21 @@
 
 .title {
   display: flex;
-  align-items: flex-end;
-  gap: clamp(0.4rem, 1.5vw, 1.2rem);
+  align-items: center;
+  gap: 0;
   line-height: 0.88;
   flex-wrap: wrap;
   margin: 0 0 0.5rem;
 }
 
-.titleHSE {
+/* NEW UNIFIED TITLE STYLE */
+.titleUnified {
   font-family: 'Abril Fatface', serif;
-  font-size: clamp(5rem, 14vw, 13rem);
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
   color: #ffffff;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.05em;
   text-shadow: 0 8px 60px rgba(0,0,0,0.5);
-}
-
-.titleWeek {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-self: center;
-  padding-bottom: clamp(0.3rem, 1vw, 0.8rem);
-}
-.titleWeekText {
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: clamp(1.4rem, 4vw, 3.8rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-}
-.titleFlag {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.flagBar1, .flagBar2, .flagBar3 {
-  display: block;
-  height: 4px;
-  border-radius: 2px;
-}
-.flagBar1 { width: clamp(50px, 8vw, 100px); background: #009B00; }
-.flagBar2 { width: clamp(40px, 6vw, 80px); background: #ffffff; }
-.flagBar3 { width: clamp(50px, 8vw, 100px); background: #A6223C; }
-
-.titleUAE {
-  font-family: 'Abril Fatface', serif;
-  font-size: clamp(5rem, 14vw, 13rem);
-  color: transparent;
-  -webkit-text-stroke: 2px rgba(166,34,60,0.7);
-  letter-spacing: -0.03em;
-  position: relative;
-}
-.titleUAE::after {
-  content: 'UAE';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #A6223C 0%, #7a1a2c 60%, transparent 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  line-height: 1;
 }
 
 .titleSub {
@@ -320,27 +298,27 @@
 
 /* ─────────────────────────────── DATE STRIP ─── */
 .dateStrip {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(1rem, 2vw, 2rem);
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(1rem, 2vw, 1.5rem);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-left: 3px solid #A6223C;
   backdrop-filter: blur(16px);
   margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
   animation: fadeUp 0.9s 0.3s ease both;
-  flex-wrap: wrap;
-  gap: 1rem;
+  width: fit-content;
+  max-width: 100%;
 }
 .dateBlock {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 .dateBlockDay {
   font-family: 'Abril Fatface', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   color: #A6223C;
   line-height: 1;
 }
@@ -350,39 +328,39 @@
   gap: 1px;
 }
 .dateBlockMonthYear span:first-child {
-  font-size: clamp(0.8rem, 1.5vw, 1.05rem);
+  font-size: clamp(0.75rem, 1.3vw, 0.95rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.8);
 }
 .dateBlockMonthYear span:last-child {
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   color: rgba(255,255,255,0.35);
 }
 .dateDivider {
   width: 1px;
-  height: 44px;
+  height: 38px;
   background: rgba(255,255,255,0.12);
   flex-shrink: 0;
 }
 .venueBlock {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   color: rgba(255,255,255,0.5);
 }
 .venueBlock svg { color: #A6223C; flex-shrink: 0; }
 .venueName {
-  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
   font-weight: 700;
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.04em;
 }
 .venueCity {
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: rgba(255,255,255,0.38);
@@ -411,7 +389,7 @@
   animation: fadeUp 0.9s 0.35s ease both;
 }
 .countdownEyebrow {
-  font-size: 0.58rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -449,7 +427,7 @@
   letter-spacing: -0.02em;
 }
 .cdBot {
-  font-size: 0.55rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -460,10 +438,14 @@
   font-family: 'Abril Fatface', serif;
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   color: #A6223C;
-  padding: 0 0.2rem;
+  padding: 0 0.4rem;
   line-height: 1;
-  align-self: flex-start;
-  margin-top: 6px;
+
+  /* FIX */
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ─────────────────────────────── CTA ROW ─── */
@@ -605,15 +587,47 @@
 }
 @media (max-width: 768px) {
   .content { padding: 1.5rem; }
-  .dateStrip { flex-direction: column; align-items: flex-start; }
+  .dateStrip { 
+    flex-direction: column; 
+    align-items: flex-start;
+    width: 100%;
+  }
   .dateDivider { display: none; }
   .categoryPills { margin-left: 0; }
   .ctaRow { gap: 0.5rem; }
   .btnGhost { display: none; }
-  .titleHSE, .titleUAE { font-size: clamp(3.5rem, 18vw, 6rem); }
+  .titleUnified { font-size: clamp(2.5rem, 12vw, 5rem); }
 }
 @media (max-width: 480px) {
   .cdUnit { min-width: 60px; padding: 0.6rem 0.8rem; }
   .btnMain, .btnAlt { width: 100%; justify-content: center; }
   .ctaRow { flex-direction: column; }
+}
+
+@media (max-width: 768px) {
+ .ribbonBadge{
+      font-size: 0.52rem;
+ }
+ .titleUnified { font-size: clamp(2.5rem, 10vw, 5rem); }
+ .cdBot{
+   font-size: 0.52rem;
+ }
+ .countdownEyebrow{
+   font-size: 0.72rem;
+ }
+ .editionText{
+ font-size: 0.62rem;
+ }
+ .editionNum{
+  font-size: 1rem;
+ }
+ .cdTop {
+   font-size: 1.5rem;
+ }
+ .titleSub{
+  font-size: 0.62rem;
+ }
+ .dateBlockDay{
+  font-size: 1.6rem;
+ }
 }

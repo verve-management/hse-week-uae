@@ -1,16 +1,13 @@
 /* src/components/WhyAttend/WhyAttend.module.css */
 
 .section {
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  position: relative;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  overflow: hidden;
-  max-width: 74vw;
-  margin: 0 auto;
-  padding: 5rem 1px;
 }
 
 .section.visible {
@@ -18,224 +15,636 @@
   transform: translateY(0);
 }
 
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ================= HEADER ================= */
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease-out both;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .mainTitle {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #A6223C;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
-  text-align: center;
-  margin-bottom: 3rem;
+  display: inline;
 }
 
-.mainTitle span {
+.mainTitleHighlight {
+  font-size: 3rem;
+  font-weight: 700;
   color: #102147;
+  letter-spacing: 2px;
 }
 
 .subTitle {
-  text-align: center;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: #666666;
-  margin-top: -1.5rem;
-  margin-bottom: 4rem;
+  margin: 0;
 }
 
-/* 2-COLUMN GRID LAYOUT */
-.grid {
+/* ================= PREMIUM GRID LAYOUT ================= */
+
+.gridLayout {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3.5rem 4rem;
-  width: 100%;
-}
-
-.gridItem {
-  display: flex;
-  align-items: flex-start;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
   gap: 1.5rem;
+  align-items: stretch;
 }
 
-/* NUMBER WRAPPER */
-.numberWrapper {
-  flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+.topLeftPoints {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.imageTopRight {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f4ff;
+  height: 100%;
+}
+
+.imageBottomLeft {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.bottomRightPoints {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+/* ================= IMAGES WITH CORNER BORDERS ================= */
+
+.imageTopRight::before,
+.imageBottomLeft::before {
+  display: none;
+}
+
+.imageTopRight::after,
+.imageBottomLeft::after {
+  display: none;
+}
+
+.imageTopRight:hover::before,
+.imageBottomLeft:hover::before,
+.imageTopRight:hover::after,
+.imageBottomLeft:hover::after {
+  display: none;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: 2px;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.image::before {
+  display: none;
+}
+
+.image::after {
+  display: none;
+}
+
+.imageTopRight:hover .image::before,
+.imageBottomLeft:hover .image::before,
+.imageTopRight:hover .image::after,
+.imageBottomLeft:hover .image::after {
+  display: none;
+}
+
+.imageTopRight:hover .image,
+.imageBottomLeft:hover .image {
+  transform: scale(1.02);
+}
+
+/* ================= SCROLL-TRIGGERED IMAGE ANIMATIONS ================= */
+
+.imageTopRight,
+.imageBottomLeft {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imageTopRight.imageVisible,
+.imageBottomLeft.imageVisible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.imageTopRight.imageVisible {
+  transition-delay: 0.1s;
+}
+
+.imageBottomLeft.imageVisible {
+  transition-delay: 0.2s;
+}
+
+/* ================= POINT CARDS WITH FADING BOX EFFECT ================= */
+
+.pointCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.5rem 1.8rem;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.7) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-left: 3px solid #A6223C;
+  border-top: 1px solid rgba(166, 34, 60, 0.2);
+  border-bottom: 1px solid rgba(166, 34, 60, 0.2);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: visible;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+/* Bottom right points fade from right to left */
+.bottomRightPoints .pointCard {
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.7) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-left: none;
+  border-right: 3px solid #A6223C;
+  transform: translateX(40px);
+}
+
+/* ================= SCROLL-TRIGGERED CARD ANIMATIONS ================= */
+
+.topLeftPoints.cardsVisible .pointCard,
+.bottomRightPoints.cardsVisible .pointCard {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Staggered animation delays for cards */
+.topLeftPoints.cardsVisible .pointCard:nth-child(1) { 
+  transition-delay: 0.1s; 
+}
+.topLeftPoints.cardsVisible .pointCard:nth-child(2) { 
+  transition-delay: 0.2s; 
+}
+.topLeftPoints.cardsVisible .pointCard:nth-child(3) { 
+  transition-delay: 0.3s; 
+}
+.bottomRightPoints.cardsVisible .pointCard:nth-child(1) { 
+  transition-delay: 0.4s; 
+}
+.bottomRightPoints.cardsVisible .pointCard:nth-child(2) { 
+  transition-delay: 0.5s; 
+}
+.bottomRightPoints.cardsVisible .pointCard:nth-child(3) { 
+  transition-delay: 0.6s; 
+}
+
+/* Accent line on left side */
+.pointCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: #A6223C;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.bottomRightPoints .pointCard::before {
+  left: auto;
+  right: 0;
+  background: #102147;
+}
+
+.pointCard:hover {
+  transform: translateX(-8px) !important;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.98) 60%,
+    rgba(255, 255, 255, 0.85) 90%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+}
+
+.bottomRightPoints .pointCard:hover {
+  transform: translateX(8px) !important;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.98) 60%,
+    rgba(255, 255, 255, 0.85) 90%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+}
+
+.pointCard:hover::before {
+  opacity: 1;
+}
+
+/* ================= ICON BADGE (TICK) ================= */
+
+.iconBadge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: #A6223C;
+  color: #ffffff;
+  font-size: 1.1rem;
   border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
 }
 
-.number {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #102147;
-  line-height: 1;
+.pointCard:hover .iconBadge {
+  background: #102147;
+  transform: scale(1.12) rotate(-8deg);
 }
 
-/* CONTENT WRAPPER */
-.contentWrapper {
+/* ================= POINT CONTENT ================= */
+
+.pointContent {
   flex: 1;
-  padding-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.itemTitle {
-  font-size: 1.25rem;
+.pointTitle {
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #102147;
-  margin: 0 0 0.75rem 0;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
   line-height: 1.3;
+  transition: color 0.3s ease;
 }
 
-.description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #666666;
+.pointCard:hover .pointTitle {
+  color: #A6223C;
+}
+
+.pointDescription {
+  font-size: 0.9rem;
+  color: #555;
   margin: 0;
-  font-weight: 400;
+  line-height: 1.6;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 1200px) {
-  .grid {
-    gap: 3rem 3.5rem;
+  .section {
+    padding: 2.2rem 2.5rem;
   }
 
-  .numberWrapper {
-    width: 55px;
-    height: 55px;
+  .headerSection {
+    margin-bottom: 1.8rem;
   }
 
-  .number {
-    font-size: 1.4rem;
+  .mainTitle,
+  .mainTitleHighlight {
+    font-size: 2.2rem;
   }
 
-  .itemTitle {
+  .subTitle {
+    font-size: 1.05rem;
+  }
+
+  .gridLayout {
+    gap: 1.3rem;
+  }
+
+  .pointCard {
+    padding: 1.3rem 1.6rem;
+    gap: 1.1rem;
+  }
+
+  .iconBadge {
+    width: 43px;
+    height: 43px;
+    font-size: 1.05rem;
+  }
+
+  .pointTitle {
     font-size: 1.15rem;
+    margin-bottom: 0.4rem;
   }
 
-  .description {
-    font-size: 0.9rem;
+  .pointDescription {
+    font-size: 0.88rem;
   }
 }
 
 @media (max-width: 968px) {
   .section {
-    padding: 4rem 1px;
-    max-width: 85vw;
+    padding: 2rem 1.5rem;
   }
 
-  .grid {
+  .gridLayout {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-auto-rows: auto;
+    gap: 2rem;
   }
 
-  .gridItem {
-    gap: 1.25rem;
+  .topLeftPoints {
+    grid-column: 1;
+    grid-row: 1;
+    gap: 0.9rem;
   }
 
-  .numberWrapper {
-    width: 50px;
-    height: 50px;
+  .imageTopRight {
+    grid-column: 1;
+    grid-row: 2;
   }
 
-  .number {
-    font-size: 1.3rem;
+  .image {
+    min-height: 250px;
+    height: 250px;
   }
 
-  .itemTitle {
-    font-size: 1.1rem;
+  .imageBottomLeft {
+    grid-column: 1;
+    grid-row: 3;
   }
 
-  .description {
-    font-size: 0.875rem;
+  .bottomRightPoints {
+    grid-column: 1;
+    grid-row: 4;
+    gap: 0.9rem;
+  }
+
+  /* Reset fading for mobile - all fade left to right */
+  .bottomRightPoints .pointCard {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 50%,
+      rgba(255, 255, 255, 0.7) 85%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border-left: 3px solid #A6223C;
+    border-right: none;
+    transform: translateX(-40px);
+  }
+
+  .bottomRightPoints .pointCard::before {
+    left: 0;
+    right: auto;
+    background: #A6223C;
+  }
+
+  .bottomRightPoints .pointCard:hover {
+    transform: translateX(-8px) !important;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.98) 60%,
+      rgba(255, 255, 255, 0.85) 90%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+  }
+
+  .imageTopRight::before,
+  .imageBottomLeft::before,
+  .imageTopRight::after,
+  .imageBottomLeft::after {
+    width: 45px;
+    height: 45px;
+    top: -10px;
+  }
+
+  .image::before,
+  .image::after {
+    width: 45px;
+    height: 45px;
+    bottom: -10px;
+  }
+
+  .pointCard {
+    padding: 1.4rem 1.6rem;
+    gap: 1.1rem;
+  }
+
+  .iconBadge {
+    width: 43px;
+    height: 43px;
+    font-size: 1.05rem;
+  }
+
+  .pointTitle {
+    font-size: 1.12rem;
+  }
+
+  .pointDescription {
+    font-size: 0.87rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .headerSection {
+    margin-bottom: 1.6rem;
+  }
+
+  .mainTitle,
+  .mainTitleHighlight {
+    font-size: 1.9rem;
+  }
+
+  .subTitle {
+    font-size: 1rem;
+  }
+
+  .gridLayout {
+    gap: 1.8rem;
+  }
+
+  .topLeftPoints,
+  .bottomRightPoints {
+    gap: 0.85rem;
+  }
+
+  .pointCard {
+    padding: 1.3rem 1.5rem;
+  }
+
+  .pointTitle {
+    font-size: 1.08rem;
+  }
+
+  .pointDescription {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 3rem 1px;
-    max-width: 90vw;
+    padding: 1.6rem 1rem;
   }
 
-  .grid {
-    gap: 2rem;
+  .headerSection {
+    margin-bottom: 1.5rem;
   }
 
-  .gridItem {
-    gap: 1rem;
+  .gridLayout {
+    gap: 1.6rem;
   }
 
-  .numberWrapper {
-    width: 45px;
-    height: 45px;
+  .topLeftPoints,
+  .bottomRightPoints {
+    gap: 0.8rem;
   }
 
-  .number {
-    font-size: 1.2rem;
+  .imageTopRight::before,
+  .imageBottomLeft::before,
+  .imageTopRight::after,
+  .imageBottomLeft::after {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
   }
 
-  .itemTitle {
-    font-size: 1.05rem;
+  .image::before,
+  .image::after {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
   }
 
-  .description {
-    font-size: 0.85rem;
-    line-height: 1.55;
+  .pointCard {
+    padding: 1.2rem 1.4rem;
   }
 
-  .mainTitle {
-    font-size: 2rem;
-  }
-
-  .subTitle {
-    font-size: 0.95rem;
-    margin-bottom: 3rem;
+  .iconBadge {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 2.5rem 1px;
+    padding: 1.5rem 0.75rem;
   }
 
-  .grid {
-    gap: 1.75rem;
-  }
-
-  .gridItem {
-    gap: 0.875rem;
-  }
-
-  .numberWrapper {
-    width: 42px;
-    height: 42px;
-  }
-
-  .number {
-    font-size: 1.1rem;
-  }
-
-  .itemTitle {
-    font-size: 1rem;
-  }
-
-  .description {
-    font-size: 0.8rem;
-    line-height: 1.5;
-  }
-
-  .mainTitle {
-    font-size: 1.75rem;
-    margin-bottom: 2.5rem;
+  .mainTitle,
+  .mainTitleHighlight {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
   }
 
   .subTitle {
-    font-size: 0.875rem;
-    margin-bottom: 2.5rem;
-    margin-top: -1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .gridLayout {
+    gap: 1.5rem;
+  }
+
+  .topLeftPoints,
+  .bottomRightPoints {
+    gap: 0.75rem;
+  }
+
+  .imageTopRight::before,
+  .imageBottomLeft::before,
+  .imageTopRight::after,
+  .imageBottomLeft::after {
+    width: 35px;
+    height: 35px;
+    top: -8px;
+    border-width: 3px;
+  }
+
+  .image::before,
+  .image::after {
+    width: 35px;
+    height: 35px;
+    bottom: -8px;
+    border-width: 3px;
+  }
+
+  .pointCard {
+    padding: 1.1rem 1.3rem;
+    gap: 1rem;
+  }
+
+  .iconBadge {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .pointTitle {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .pointDescription {
+    font-size: 0.82rem;
   }
 }

@@ -5,16 +5,51 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [visibleThumbnailStart, setVisibleThumbnailStart] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const autoPlayIntervalRef = useRef(null);
+  const sectionRef = useRef(null);
 
   // Generate image paths
-  const images = Array.from({ length: 15 }, (_, i) => ({
-    id: i,
-    src: `/Gallery/Gallery${i + 1}.webp`,
-    alt: `Gallery Image ${i + 1}`
-  }));
+ const images = [
+  { id: 0, src: "/Gallery/Gallery1.webp", alt: "Gallery Image 1" },
+  { id: 1, src: "/KsaGallery/Gallery1.webp", alt: "KSA Gallery Image 1" },
+  { id: 2, src: "/Gallery/Gallery2.webp", alt: "Gallery Image 2" },
+  { id: 3, src: "/KsaGallery/Gallery2.webp", alt: "KSA Gallery Image 2" },
+  { id: 4, src: "/Gallery/Gallery3.webp", alt: "Gallery Image 3" },
+  { id: 5, src: "/KsaGallery/Gallery3.webp", alt: "KSA Gallery Image 3" },
+  { id: 6, src: "/Gallery/Gallery4.webp", alt: "Gallery Image 4" },
+  { id: 7, src: "/KsaGallery/Gallery4.webp", alt: "KSA Gallery Image 4" },
+  { id: 8, src: "/KsaGallery/Gallery5.webp", alt: "KSA Gallery Image 4" },
+  { id: 9, src: "/KsaGallery/Gallery6.webp", alt: "KSA Gallery Image 4" },
+  { id: 10, src: "/KsaGallery/Gallery7.webp", alt: "KSA Gallery Image 4" },
+  { id: 11, src: "/KsaGallery/Gallery8.webp", alt: "KSA Gallery Image 4" },
+  { id: 12, src: "/KsaGallery/Gallery9.webp", alt: "KSA Gallery Image 4" },
+  { id: 13, src: "/KsaGallery/Gallery10.webp", alt: "KSA Gallery Image 4" },
+  { id: 14, src: "/KsaGallery/Gallery11.webp", alt: "KSA Gallery Image 4" },
+  { id: 15, src: "/KsaGallery/Gallery12.webp", alt: "KSA Gallery Image 4" },
+
+];
+
 
   const VISIBLE_THUMBNAILS = 4;
+
+  // Scroll animation observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Auto-play functionality
   useEffect(() => {
@@ -84,7 +119,7 @@ const Gallery = () => {
   );
 
   return (
-    <section className={styles.gallerySection}>
+    <section ref={sectionRef} className={`${styles.gallerySection} ${isVisible ? styles.visible : ''}`}>
       <div className={styles.container}>
         {/* Section Heading */}
         <div className={styles.headingWrapper}>

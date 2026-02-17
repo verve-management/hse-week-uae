@@ -1,77 +1,65 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./WhoMeet.module.css";
 
-const professionals = [
-  {
-    role: "Chief Procurement Officers",
-    image: "/Gallery/Gallery1.webp"
-  },
-  {
-    role: "Heads Of Supply Chain & Logistics",
-    image: "/Gallery/Gallery2.webp"
-  },
-  {
-    role: "Chief Logistics Officer",
-    image: "/Gallery/Gallery3.webp"
-  },
-  {
-    role: "Head of Strategic Sourcing",
-    image: "/Gallery/Gallery4.webp"
-  },
-  {
-    role: "Head of Warehouse",
-    image: "/Gallery/Gallery5.webp"
-  },
-  {
-    role: "Chief Financial Officer",
-    image: "/Gallery/Gallery6.webp"
-  },
-  {
-    role: "Chief Information Officer",
-    image: "/Gallery/Gallery7.webp"
-  },
-  {
-    role: "Head of Inventory System",
-    image: "/Gallery/Gallery8.webp"
-  }
+const roles = [
+  "Chief Procurement Officers",
+  "Heads Of Supply Chain & Logistics",
+  "Chief Logistics Officer",
+  "Head of Strategic Sourcing",
+  "Head of Warehouse",
+  "Chief Financial Officer",
+  "Chief Information Officer",
+  "Head of Inventory System"
 ];
 
 const WhoMeet = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className={styles.section}>
+    <section ref={sectionRef} className={`${styles.section} ${isVisible ? styles.visible : ""}`}>
       <div className={styles.container}>
 
-        {/* Luxury Header */}
+        {/* Header */}
         <div className={styles.headerWrapper}>
-          <div className={styles.headerLine}></div>
-          <h2 className={styles.mainHeading}>
-            WHO WILL <span className={styles.highlightText}>YOU MEET</span>
-          </h2>
-          <p className={styles.subHeading}>
-            Connect with industry-leading executives shaping the future of procurement and supply chain excellence
-          </p>
+          <h2 className={styles.mainHeading}>Who Will <span>You Meet</span></h2>
+          <p className={styles.subHeading}>Meet the key professionals who shape the industry</p>
         </div>
 
-        {/* Premium Grid with Images */}
-        <div className={styles.professionalsGrid}>
-          {professionals.map((professional, index) => (
-            <div key={index} className={styles.professionalCard}>
-              <div className={styles.imageWrapper}>
-                <img 
-                  src={professional.image} 
-                  alt={professional.role}
-                  className={styles.professionalImage}
-                />
-                <div className={styles.overlay}></div>
-              </div>
-              <div className={styles.cardContent}>
-                <div className={styles.numberTag}>
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className={styles.roleTitle}>{professional.role}</h3>
-              </div>
-            </div>
-          ))}
+        {/* List Container with Corner Borders */}
+        <div className={styles.listContainer}>
+          {/* Top-left corner border */}
+          <div className={styles.cornerBorder} data-corner="top-left"></div>
+          
+          {/* Bottom-right corner border */}
+          <div className={styles.cornerBorder} data-corner="bottom-right"></div>
+
+          {/* Roles List */}
+          <ul className={styles.rolesList}>
+            {roles.map((role, index) => (
+              <li key={index} className={styles.roleItem}>
+                <span className={styles.roleNumber}>{String(index + 1).padStart(2, '0')}</span>
+                <span className={styles.roleText}>{role}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>

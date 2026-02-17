@@ -5,6 +5,15 @@
   padding: 100px 20px 80px;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partners-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .partners-container {
@@ -18,11 +27,19 @@
 .partners-header {
   text-align: center;
   margin-bottom: 80px;
-  animation: fadeInDown 0.8s ease-out both;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.partners-section.visible .partners-header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .partners-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #A6223C;
   margin-bottom: 0.5rem;
@@ -48,6 +65,15 @@
   position: relative;
   width: 100%;
   padding: 40px 0;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.partners-section.visible .film-reel-container {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Film Strip */
@@ -77,16 +103,24 @@
     transparent 35px
   );
   z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.partners-section.visible .film-perforations {
+  opacity: 1;
 }
 
 .film-perforations-top {
   top: 0;
   border-bottom: 2px solid #8a1c31;
+  transition-delay: 0.5s;
 }
 
 .film-perforations-bottom {
   bottom: 0;
   border-top: 2px solid #8a1c31;
+  transition-delay: 0.6s;
 }
 
 /* Film Frames Container */
@@ -97,8 +131,14 @@
   display: flex;
   gap: 25px;
   height: 160px;
-  animation: scrollFilmReel 80s linear infinite;
   will-change: transform;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.7s;
+}
+
+.partners-section.visible .film-frames {
+  opacity: 1;
+  animation: scrollFilmReel 80s linear infinite;
 }
 
 /* Individual Film Frame */
@@ -146,23 +186,20 @@
   }
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* View All Button */
 .partners-view-all {
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.9s;
+}
+
+.partners-section.visible .partners-view-all {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .partners-view-all button {

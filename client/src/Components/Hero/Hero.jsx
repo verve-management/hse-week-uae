@@ -75,7 +75,7 @@ export default function Hero() {
       </div>
 
       {/* ── Right gutter ── */}
-      <div className={styles.rightGutter}>
+      {/* <div className={styles.rightGutter}>
         <div className={styles.rightGutterContent}>
           {stats.map((s) => (
             <div key={s.label} className={styles.rightStat}>
@@ -85,7 +85,7 @@ export default function Hero() {
           ))}
         </div>
         <div className={styles.rightVLine} />
-      </div>
+      </div> */}
 
       {/* ── Main Content ── */}
       <div className={styles.content}>
@@ -100,27 +100,17 @@ export default function Hero() {
         </div>
 
         {/* Edition label */}
-        <div className={styles.edition}>
-          <span className={styles.editionNum}>2nd</span>
-          <span className={styles.editionText}>Annual Edition</span>
-        </div>
+      <div className={styles.edition}>
+  <span>2nd <span>Edition</span></span>
+</div>
 
         {/* Giant title */}
         <div className={styles.titleWrap}>
           <h1 className={styles.title}>
-            <span className={styles.titleHSE}>HSE</span>
-            <span className={styles.titleWeek}>
-              <span className={styles.titleWeekText}>WEEK</span>
-              <span className={styles.titleFlag}>
-                <span className={styles.flagBar1} />
-                <span className={styles.flagBar2} />
-                <span className={styles.flagBar3} />
-              </span>
-            </span>
-            <span className={styles.titleUAE}>UAE</span>
+            <span className={styles.titleUnified}>HSE WEEK UAE</span>
           </h1>
           <div className={styles.titleSub}>
-            Health &nbsp;·&nbsp; Safety &nbsp;·&nbsp; Environment &nbsp;·&nbsp;
+            Health &nbsp;·&nbsp; Safety &nbsp;·&nbsp; Environment&nbsp;
           </div>
         </div>
 
@@ -142,12 +132,6 @@ export default function Hero() {
               <div className={styles.venueName}>Abu Dhabi</div>
               <div className={styles.venueCity}>United Arab Emirates</div>
             </div>
-          </div>
-          <div className={styles.dateDivider} />
-          <div className={styles.categoryPills}>
-            {["HSE", "Safety Tech", "Green Energy", "Training"].map((tag) => (
-              <span key={tag} className={styles.pill}>{tag}</span>
-            ))}
           </div>
         </div>
 

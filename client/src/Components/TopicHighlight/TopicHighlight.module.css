@@ -4,9 +4,18 @@
 
 .topicHighlight {
   position: relative;
-  padding: 4rem 2rem ;
+  padding: 4rem 2rem;
   background: #ffffff;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ================= CONTAINER ================= */
@@ -21,8 +30,17 @@
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   position: relative;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.topicHighlight.visible .sectionHeader {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .decorativeLine {
@@ -30,6 +48,12 @@
   height: 3px;
   background: #A6223C;
   margin: 0 auto 2rem;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.topicHighlight.visible .decorativeLine {
+  transform: scaleX(1);
 }
 
 .sectionTitle {
@@ -55,21 +79,23 @@
   letter-spacing: 0.5px;
 }
 
-/* ================= TOPICS GRID ================= */
+/* ================= TOPICS GRID — navy background ================= */
 
 .topicsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem 2.5rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
   margin: 0 auto;
+  background: #ffffff;
+  padding: 3rem 2.5rem;
 }
 
 /* ================= TOPIC CARD ================= */
 
 .topicCard {
-  background: transparent;
-  padding: 0;
+  background: #102147;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +104,62 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.topicHighlight.visible .topicCard {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered animations for cards */
+.topicHighlight.visible .topicCard:nth-child(1) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(2) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(3) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(4) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(5) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(6) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(7) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topicHighlight.visible .topicCard:nth-child(8) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.1s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.1s,
+              all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .topicCard::after {
@@ -97,7 +179,7 @@
 }
 
 .topicCard:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) !important;
 }
 
 /* ================= ICON WRAPPER ================= */
@@ -108,21 +190,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #102147;
+  border: 2px solid #ffffff;
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #ffffff;
+  background: transparent;
 }
 
 .iconWrapper svg {
   font-size: 2rem;
-  color: #102147;
+  color: #ffffff;
   transition: all 0.4s ease;
 }
 
 .topicCard:hover .iconWrapper {
   border-color: #A6223C;
-  background: #102147;
+  background: #A6223C;
   transform: rotateY(360deg);
 }
 
@@ -135,7 +217,7 @@
 .topicTitle {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #102147;
+  color: #ffffff;
   margin: 0;
   line-height: 1.5;
   letter-spacing: 0.5px;
@@ -155,12 +237,13 @@
     max-width: 1200px;
   }
 
-  .sectionTitle {
-    font-size: 3.2rem;
+  .topicsGrid {
+    max-width: 1200px;
+    padding: 2.5rem 2rem;
   }
 
-  .topicsGrid {
-    gap: 2.5rem 2rem;
+  .sectionTitle {
+    font-size: 3.2rem;
   }
 
   .iconWrapper {
@@ -201,7 +284,7 @@
   }
 
   .topicsGrid {
-    gap: 2.25rem 2rem;
+    padding: 2.5rem 1.75rem;
   }
 
   .iconWrapper {
@@ -238,7 +321,8 @@
   }
 
   .topicsGrid {
-    gap: 2rem 1.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 1.5rem;
   }
 
   .iconWrapper {
@@ -283,7 +367,7 @@
 
   .topicsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem 2rem;
+    padding: 2rem 1.25rem;
   }
 
   .iconWrapper {
@@ -320,8 +404,8 @@
   }
 
   .topicsGrid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.75rem 1rem;
   }
 
   .topicCard {
@@ -366,7 +450,7 @@
   }
 
   .topicsGrid {
-    gap: 2.25rem;
+    padding: 1.5rem 0.75rem;
   }
 
   .iconWrapper {
@@ -402,7 +486,7 @@
   }
 
   .topicsGrid {
-    gap: 2rem;
+    padding: 1.25rem 0.5rem;
   }
 
   .topicCard {
@@ -438,7 +522,7 @@
   }
 
   .topicsGrid {
-    gap: 1.75rem;
+    padding: 1rem 0.5rem;
   }
 
   .iconWrapper {

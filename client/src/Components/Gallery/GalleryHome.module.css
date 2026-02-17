@@ -4,6 +4,15 @@
   padding: 80px 20px;
   background: #ffffff;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallerySection.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .container {
@@ -15,6 +24,15 @@
 .headingWrapper {
   text-align: center;
   margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.gallerySection.visible .headingWrapper {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .sectionHeading {
@@ -32,6 +50,23 @@
   color: #666666;
   margin: 0;
   font-weight: 400;
+}
+
+.galleryBackground {
+  background: #A6223C;
+  padding: 52px;
+  border-radius: 2px;
+  margin-top: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.gallerySection.visible .galleryBackground {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Gallery Layout - REVERSED: Main Image LEFT, Thumbnails RIGHT */
@@ -64,44 +99,44 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 3px solid transparent;
-  /* animation: slideIn 0.4s ease-out; */
+  opacity: 0;
+  transform: translateX(30px);
 }
 
-/* @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-} */
+.gallerySection.visible .thumbnail {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-/* .thumbnail:hover {
-  transform: translateX(-8px) scale(1.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-} */
+/* Staggered animations for thumbnails */
+.gallerySection.visible .thumbnail:nth-child(1) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s,
+              all 0.3s ease;
+}
 
-/* .thumbnailActive {
-  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
-  transform: translateX(-8px) scale(1.05);
-} */
+.gallerySection.visible .thumbnail:nth-child(2) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+              all 0.3s ease;
+}
+
+.gallerySection.visible .thumbnail:nth-child(3) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s,
+              all 0.3s ease;
+}
+
+.gallerySection.visible .thumbnail:nth-child(4) {
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.9s,
+              all 0.3s ease;
+}
 
 .thumbnailImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* transition: transform 0.3s ease; */
-}
-.galleryBackground {
-  background: #A6223C;
-  padding: 52px;
-  border-radius: 2px;
-  margin-top: 20px;
-
-  /* optional shadow for depth */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
 .thumbnail:hover .thumbnailImage {
@@ -126,6 +161,15 @@
   border-radius:5px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+}
+
+.gallerySection.visible .mainImageWrapper {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .mainImageContainer {
@@ -296,6 +340,11 @@
   .mainImageWrapper {
     height: 500px;
     border-radius: 16px;
+    transform: translateX(0);
+  }
+
+  .gallerySection.visible .mainImageWrapper {
+    transform: translateX(0);
   }
 
   /* Show mobile thumbnail strip */
@@ -308,6 +357,15 @@
     margin-top: 20px;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s,
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s;
+  }
+
+  .gallerySection.visible .mobileThumbnailStrip {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .mobileThumbnailStrip::-webkit-scrollbar {

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './InnovationOverview.module.css';
 
 const InnovationOverview = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   const statsCards = [
     { value: '$7.8B', label: '2024 Market Size', icon: '◈' },
     { value: '$19.9B', label: '2033 Projection', icon: '◉' },
@@ -10,20 +13,38 @@ const InnovationOverview = () => {
 
   const industries = [
     { name: 'Corporate Events', percentage: 34, color: '#A6223C' },
-    { name: 'Oil & Gas', percentage: 28, color: '#102147' },
+    { name: 'Oil & Gas', percentage: 28, color: '#E8B4BE' },
     { name: 'Mining', percentage: 10, color: '#C8435E' },
     { name: 'Aviation', percentage: 6, color: '#D4758A' },
-    { name: 'Transportation', percentage: 20, color: '#2C3E6B' },
+    { name: 'Transportation', percentage: 20, color: '#F5E6E9' },
     { name: 'Other', percentage: 2, color: '#8C9BB5' }
   ];
 
   const severityData = [
-    { level: 'Mild / Moderate', count: 37601, percentage: 98.5, color: '#102147' },
-    { level: 'Severe (non-fatal)', count: 506, percentage: 1.3, color: '#A6223C' },
-    { level: 'Fatal', count: 50, percentage: 0.1, color: '#6B0E20' }
+    { level: 'Mild / Moderate', count: 37601, percentage: 98.5, color: '#E8B4BE' },
+    { level: 'Severe (non-fatal)', count: 506, percentage: 1.3, color: '#C8435E' },
+    { level: 'Fatal', count: 50, percentage: 0.1, color: '#A6223C' }
   ];
 
   const maxCount = Math.max(...severityData.map(d => d.count));
+
+  // Scroll animation observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Pie chart calculations
   const pieSlices = industries.reduce((acc, industry, index) => {
@@ -49,7 +70,7 @@ const InnovationOverview = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div ref={sectionRef} className={`${styles.container} ${isVisible ? styles.visible : ''}`}>
 
       {/* Decorative background elements */}
       <div className={styles.bgAccent1}></div>
@@ -94,14 +115,14 @@ const InnovationOverview = () => {
           <div className={styles.pieWrapper}>
             <svg className={styles.pieChart} viewBox="0 0 200 200">
               {/* Outer ring decoration */}
-              <circle cx="100" cy="100" r="92" fill="none" stroke="#F5E6E9" strokeWidth="2" strokeDasharray="4 3"/>
+              <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeDasharray="4 3"/>
               {pieSlices.map((slice, i) => (
                 <path
                   key={i}
                   d={slice.path}
                   fill={slice.color}
                   className={styles.pieSlice}
-                  stroke="#ffffff"
+                  stroke="#102147"
                   strokeWidth="1.5"
                 />
               ))}
@@ -109,7 +130,7 @@ const InnovationOverview = () => {
               <circle cx="100" cy="100" r="46" fill="#ffffff"/>
               {/* Center label */}
               <text x="100" y="96" textAnchor="middle" fill="#102147" fontSize="9" fontWeight="600" letterSpacing="1" fontFamily="Montserrat, sans-serif">TOTAL</text>
-              <text x="100" y="109" textAnchor="middle" fill="#A6223C" fontSize="14" fontWeight="700" fontFamily="Cormorant Garamond, serif">100%</text>
+              <text x="100" y="109" textAnchor="middle" fill="#102147" fontSize="14" fontWeight="700" fontFamily="Cormorant Garamond, serif">100%</text>
             </svg>
 
             {/* Floating % labels */}

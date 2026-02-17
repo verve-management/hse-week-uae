@@ -1,22 +1,34 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Partners.css";
 
 const Partners = () => {
-  const ref = useRef(null);
+  const sectionRef = useRef(null);
   const navigate = useNavigate();
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const [isVisible, setIsVisible] = useState(false);
   
   const partners = Array.from({ length: 20 }, (_, i) => `/MediaPartner/MediaPartner${i + 1}.webp`);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="partners-section" ref={ref}>
-      <motion.div
-        className="partners-container"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-      >
+    <section className={`partners-section ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
+      <div className="partners-container">
         {/* Header */}
         <div className="partners-header">
           <h2 className="partners-title">
@@ -48,7 +60,7 @@ const Partners = () => {
             View All Sponsors →
           </button>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

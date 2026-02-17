@@ -164,28 +164,28 @@ const Event = () => {
           <div className={styles.imageGrid}>
             <div className={styles.imageBox}>
               <img
-                src="/Gallery/Gallery27.webp"
+                src="/KsaGallery/Gallery22.webp"
                 alt="Event Gallery 1"
                 className={styles.gridImage}
               />
             </div>
             <div className={styles.imageBox}>
               <img
-                src="/Gallery/Gallery29.webp"
+                src="/KsaGallery/Gallery13.webp"
                 alt="Event Gallery 2"
                 className={styles.gridImage}
               />
             </div>
             <div className={styles.imageBox}>
               <img
-                src="/Gallery/Gallery34.webp"
+                src="/KsaGallery/Gallery29.webp"
                 alt="Event Gallery 3"
                 className={styles.gridImage}
               />
             </div>
             <div className={styles.imageBox}>
               <img
-                src="/Gallery/Gallery43.webp"
+                src="/KsaGallery/Gallery28.webp"
                 alt="Event Gallery 4"
                 className={styles.gridImage}
               />

@@ -1,4 +1,3 @@
-
 /* ─── Design Tokens ─────────────────────────────────────── */
 :root {
   --crimson:       #A6223C;
@@ -17,13 +16,22 @@
 /* ─── Container ─────────────────────────────────────────── */
 .container {
   background-color: var(--off-white);
-  padding: 4rem 2.5rem;
+  padding: 5rem 2rem;
   font-family: 'Montserrat', sans-serif;
   color: var(--navy);
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Decorative background shapes */
@@ -37,6 +45,15 @@
   background: radial-gradient(circle, rgba(166,34,60,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.container.visible .bgAccent1 {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .bgAccent2 {
@@ -49,6 +66,15 @@
   background: radial-gradient(circle, rgba(16,33,71,0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.container.visible .bgAccent2 {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ─── Header ────────────────────────────────────────────── */
@@ -57,6 +83,15 @@
   margin-bottom: 3rem;
   position: relative;
   z-index: 1;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.container.visible .header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tagline {
@@ -73,7 +108,7 @@
 }
 
 .title {
- font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #A6223C;
   margin-bottom: 2rem;
@@ -123,8 +158,6 @@
   cursor: default;
 }
 
-
-
 .statCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 28px rgba(166,34,60,0.15);
@@ -151,7 +184,7 @@
 }
 
 .statValue {
-  font-family:  serif;
+  font-family: serif;
   font-size: 2.75rem;
   font-weight: 700;
   color: var(--crimson);
@@ -191,19 +224,45 @@
 
 /* ─── Chart Card ────────────────────────────────────────── */
 .chartCard {
-  background: var(--white);
+  background: #102147;
   border: 2px solid #102147;
   padding: 2rem;
   position: relative;
-  box-shadow: 0 2px 16px rgba(16,33,71,0.08);
+  box-shadow: 0 2px 16px rgba(16,33,71,0.3);
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+}
+
+.container.visible .chartCard {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s ease;
+}
+
+.container.visible .chartCard:nth-child(1) {
+  transition-delay: 0.4s;
+}
+
+.container.visible .chartCard:nth-child(2) {
+  transition-delay: 0.5s;
 }
 
 .chartCard:hover {
-  box-shadow: 0 6px 30px rgba(16,33,71,0.13);
+  box-shadow: 0 6px 30px rgba(16,33,71,0.4);
 }
 
+.cardAccentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--crimson), var(--crimson-light));
+}
 
 .chartHeader {
   display: flex;
@@ -211,7 +270,7 @@
   gap: 0.875rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--smoke);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .chartIconWrap {
@@ -230,7 +289,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--white);
   margin: 0 0 0.2rem 0;
   letter-spacing: 0.01em;
   line-height: 1.3;
@@ -239,7 +298,7 @@
 .chartDescription {
   font-size: 0.888rem;
   font-weight: 400;
-  color: var(--muted);
+  color: rgba(255,255,255,0.7);
   margin: 0;
   letter-spacing: 0.03em;
 }
@@ -256,7 +315,7 @@
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 4px 12px rgba(16,33,71,0.25));
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
 }
 
 .pieSlice {
@@ -278,10 +337,10 @@
 .percentageLabel {
   position: absolute;
   transform: translate(-50%, -50%);
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: #102147;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  font-size: 0.688rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8);
   letter-spacing: 0.03em;
 }
 
@@ -290,7 +349,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.4rem 1rem;
-  margin-top:3rem;
+  margin-top: 3rem;
 }
 
 .legendItem {
@@ -310,7 +369,7 @@
 .legendText {
   font-size: 0.888rem;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--white);
   flex: 1;
   line-height: 1.3;
 }
@@ -319,7 +378,7 @@
   font-family: serif;
   font-size: 0.813rem;
   font-weight: 700;
-  color: var(--crimson);
+  color: #F5E6E9;
 }
 
 /* ─── Bar Chart ─────────────────────────────────────────── */
@@ -350,7 +409,7 @@
 .gridLabel {
   font-size: 0.763rem;
   font-weight: 600;
-  color: var(--muted);
+  color: rgba(255,255,255,0.6);
   letter-spacing: 0.04em;
   min-width: 0;
   text-align: right;
@@ -362,7 +421,7 @@
 .gridLineRule {
   flex: 1;
   height: 1px;
-  background: var(--smoke);
+  background: rgba(255,255,255,0.1);
 }
 
 .barsArea {
@@ -408,17 +467,17 @@
 .barTopValue {
   position: absolute;
   top: -18px;
-  font-family:  serif;
+  font-family: serif;
   font-size: 0.813rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--white);
   white-space: nowrap;
 }
 
 .barLabel {
   font-size: 0.763rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.7);
   text-align: center;
   margin-top: 0.4rem;
   line-height: 1.4;
@@ -432,11 +491,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--smoke);
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .severityStat {
-  background: var(--off-white);
+  background: rgba(255,255,255,0.08);
   padding: 0.875rem 0.75rem;
   position: relative;
   border-radius: 2px;
@@ -468,17 +527,17 @@
 .severityLabel {
   font-size: 0.763rem;
   font-weight: 700;
-  color: var(--text-light);
+  color: rgba(255,255,255,0.8);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   line-height: 1.3;
 }
 
 .severityCount {
-  font-family:  serif;
+  font-family: serif;
   font-size: 1.625rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--white);
   line-height: 1;
   margin-bottom: 0.25rem;
   letter-spacing: -0.01em;
@@ -487,14 +546,14 @@
 .severityPct {
   font-size: 0.763rem;
   font-weight: 400;
-  color: var(--muted);
+  color: rgba(255,255,255,0.6);
   letter-spacing: 0.03em;
   margin-bottom: 0.5rem;
 }
 
 .severityBar {
   height: 3px;
-  background: var(--smoke);
+  background: rgba(255,255,255,0.15);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -506,19 +565,84 @@
 }
 
 /* ─── Responsive ────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .chartsGrid {
-    grid-template-columns: 1fr;
+
+/* Large Desktop */
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+    padding: 5rem 2rem;
   }
 }
 
+/* 14-inch laptop / 1200px */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 4rem 2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .chartsGrid {
+    gap: 1.5rem;
+  }
+
+  .chartCard {
+    padding: 1.75rem;
+  }
+
+  .chartTitle {
+    font-size: 1.1rem;
+  }
+
+  .barChartContainer {
+    height: 200px;
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+  .container {
+    padding: 4rem 2rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .chartsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .statsGrid {
+    gap: 1.2rem;
+  }
+
+  .statValue {
+    font-size: 2.4rem;
+  }
+
+  .barChartContainer {
+    height: 200px;
+  }
+}
+
+/* Tablet Portrait */
 @media (max-width: 768px) {
   .container {
-    padding: 2.5rem 1.25rem;
+    padding: 3rem 1.5rem;
   }
 
   .title {
     font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
   }
 
   .statsGrid {
@@ -526,12 +650,25 @@
     gap: 1rem;
   }
 
+  .statCard {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .statValue {
+    font-size: 2.25rem;
+  }
+
   .chartCard {
     padding: 1.5rem;
   }
 
+  .chartTitle {
+    font-size: 1.05rem;
+  }
+
   .legend {
     grid-template-columns: 1fr;
+    margin-top: 1.5rem;
   }
 
   .barChartContainer {
@@ -542,10 +679,145 @@
     grid-template-columns: 1fr;
     gap: 0.6rem;
   }
+
+  .severityCount {
+    font-size: 1.4rem;
+  }
 }
 
+/* Mobile Landscape */
+@media (max-width: 600px) {
+  .container {
+    padding: 2.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .chartsGrid {
+    gap: 1.2rem;
+  }
+
+  .chartCard {
+    padding: 1.25rem;
+  }
+
+  .chartHeader {
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .chartIconWrap {
+    width: 30px;
+    height: 30px;
+  }
+
+  .barChartContainer {
+    height: 160px;
+  }
+
+  .barTopValue {
+    font-size: 0.7rem;
+    top: -16px;
+  }
+
+  .barLabel {
+    font-size: 0.688rem;
+  }
+
+  .severityStats {
+    grid-template-columns: 1fr;
+  }
+
+  .severityStat {
+    padding: 0.75rem 0.625rem;
+  }
+
+  .severityCount {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile Portrait */
 @media (max-width: 480px) {
-  .title { font-size: 1.6rem; }
-  .statValue { font-size: 2.25rem; }
-  .chartTitle { font-size: 1.05rem; }
+  .container {
+    padding: 2rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .statValue {
+    font-size: 2rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+
+  .chartTitle {
+    font-size: 1rem;
+  }
+
+  .chartDescription {
+    font-size: 0.8rem;
+  }
+
+  .pieWrapper {
+    max-width: 180px;
+  }
+
+  .legendText {
+    font-size: 0.813rem;
+  }
+
+  .barChartContainer {
+    height: 150px;
+  }
+
+  .gridLabel {
+    font-size: 0.688rem;
+  }
+
+  .severityLabel {
+    font-size: 0.688rem;
+  }
+
+  .severityCount {
+    font-size: 1.125rem;
+  }
+
+  .severityPct {
+    font-size: 0.688rem;
+  }
+}
+
+/* Extra Small */
+@media (max-width: 400px) {
+  .container {
+    padding: 2rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .chartCard {
+    padding: 1rem;
+  }
+
+  .barChartContainer {
+    height: 140px;
+  }
+
+  .severityStats {
+    gap: 0.5rem;
+  }
+
+  .severityStat {
+    padding: 0.625rem 0.5rem;
+  }
 }
