@@ -1,5 +1,6 @@
 /* Hero.module.css — DESIGN 1: Full-video bg, maximalist luxury event */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rajdhani:wght@400;500;600;700&family=Fira+Sans+Condensed:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap');
 .hero {
   --red: #A6223C;
   --navy: #102147;
@@ -227,20 +228,17 @@
   align-items: center;
   justify-content: center;
 
-  font-family: 'Abril Fatface', serif;
-  font-size: clamp(1.2rem, 1.5vw, 2rem);
+ font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.2rem, 2vw, 2.8rem);
   line-height: 1;
-
   color: #A6223C;
   text-shadow: 0 0 25px rgba(166, 34, 60, 0.6);
-
   margin-bottom: 0.8rem;
-
   padding: 8px 22px;
   background: rgba(166, 34, 60, 0.12);
   border: 1px solid rgba(166, 34, 60, 0.35);
   backdrop-filter: blur(8px);
-
+ font-weight: 600;
   width: fit-content;
 }
 
@@ -278,8 +276,8 @@
 
 /* NEW UNIFIED TITLE STYLE */
 .titleUnified {
-  font-family: 'Abril Fatface', serif;
-  font-size: clamp(3.5rem, 10vw, 6.5rem);
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 9rem);
   color: #ffffff;
   letter-spacing: 0.05em;
   text-shadow: 0 8px 60px rgba(0,0,0,0.5);
@@ -483,6 +481,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: white;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 .btnMainIcon {
   position: relative;
@@ -504,7 +503,7 @@
   border: 1px solid rgba(201,168,76,0.5);
   color: #C9A84C;
   text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
+ font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -523,7 +522,7 @@
   border: 1px solid rgba(255,255,255,0.15);
   color: rgba(255,255,255,0.55);
   text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
+ font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;

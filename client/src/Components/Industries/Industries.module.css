@@ -42,11 +42,19 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #A6223C;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
+  font-family:'Work Sans', sans-serif;
+  padding-bottom:1.5rem;
+}
+.subTitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
 }
 
 .title span {

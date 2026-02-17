@@ -92,8 +92,8 @@
 
 /* HERO TITLE */
 .sponsors-hero-main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8rem;
   font-weight: 700;
   margin: 0 0 20px;
   letter-spacing: 2px;
@@ -121,8 +121,8 @@
 
 /* SUBTITLE */
 .sponsors-hero-main-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
   color: #ffffff;
   margin: 0 0 30px;
   font-weight: 300;
@@ -182,7 +182,7 @@
   line-height: 1.2;
   margin: 0 0 15px 0;
   letter-spacing: -1px;
-  font-family: 'Playfair Display', serif;
+  font-family:'Work Sans', sans-serif;
 }
 
 .sponsors-series-highlight {
@@ -435,7 +435,7 @@
   line-height: 1.2;
   margin: 0 0 15px 0;
   letter-spacing: -1px;
-  font-family: 'Playfair Display', serif;
+ font-family:'Work Sans', sans-serif;
 }
 
 .sponsors-media-highlight {

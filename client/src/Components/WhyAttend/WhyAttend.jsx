@@ -65,7 +65,7 @@ const WhyAttend = () => {
         {/* HEADER */}
         <div className={styles.headerSection}>
           <h1 className={styles.mainTitle}>
-            WHY <span className={styles.mainTitleHighlight}>ATTEND</span>
+            Why <span className={styles.mainTitleHighlight}>Attend</span>
           </h1>
           <p className={styles.subTitle}>
             Empower Your Safety & Excellence Journey

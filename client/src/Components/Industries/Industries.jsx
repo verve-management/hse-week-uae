@@ -83,7 +83,10 @@ const Industries = () => {
     <section ref={sectionRef} className={`${styles.section} ${isVisible ? styles.visible : ""}`}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>INDUSTRIES <span>COVERED</span></h2>
+          <h2 className={styles.title}>Industries <span>Covered</span></h2>
+           <p className={styles.subTitle}>
+                      Empower Your Safety & Excellence Journey
+                    </p>
         </div>
 
         <div className={styles.grid}>

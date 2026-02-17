@@ -57,12 +57,12 @@
 }
 
 .sectionTitle {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 800;
   margin: 0 0 1.5rem;
   letter-spacing: 4px;
-  text-transform: uppercase;
   color: #A6223C;
+  font-family:'Work Sans', sans-serif;
 }
 
 .sectionTitle span {

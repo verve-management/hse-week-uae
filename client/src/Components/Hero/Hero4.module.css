@@ -1,6 +1,7 @@
 /* Hero3.module.css — DESIGN 3: Magazine editorial, dark ultra-premium, shaped video */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&display=swap');
 
 .hero {
   --red: #A6223C;
@@ -158,13 +159,14 @@
 }
 
 .titleWord {
-   font-family: Abril Fatface, serif;
-  font-size: clamp(4rem, 12vw, 6rem);
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(4rem, 12vw, 7rem);
   color: #fff;
   letter-spacing: 0.06em;
   line-height: 0.9;
   text-shadow: 0 10px 80px rgba(166,34,60,0.25);
   position: relative;
+   font-weight: 700;
 }
 
 .titleSubline {
@@ -318,7 +320,8 @@
   padding-left: 1rem;
 }
 .dateMegaMonth {
-  font-family: 'Abril Fatface', sans-serif;
+font-family: 'Barlow Condensed', sans-serif;
+ font-weight: 800;
   font-size: clamp(1rem, 2vw, 1.6rem);
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.12em;
@@ -425,7 +428,8 @@
   align-items: center;
   justify-content: center;
 
-  font-family: 'Abril Fatface', serif;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
   font-size: clamp(1.2rem, 1.9vw, 2.8rem);
   line-height: 1;
 
@@ -477,15 +481,15 @@
   font-weight: 600;
 }
 .factValue {
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.85rem, 1.1vw, 1.2rem);
   font-weight: 700;
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.02em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+   font-family: 'Barlow Condensed', sans-serif;
 }
-
 /* CTA stack */
 .ctaStack {
   display: flex;
@@ -516,8 +520,8 @@
   justify-content: center;
 }
 .btnRegLabel {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.88rem;
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -540,8 +544,8 @@
   background: rgba(200,168,75,0.05);
   color: #C8A84B;
   text-decoration: none;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.88rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -642,21 +646,37 @@
   .subWord { font-size: 0.65rem; }
   .cdRow { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
   .cdItemInner { padding: 0.6rem 0.4rem; }
-  .cdItemVal { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .cdItemVal { font-size: clamp(1.2em, 5vw, 2rem); }
   .cdItemLabel { font-size: 0.6rem; }
   .factsGrid { gap: 0.5rem; }
   .factCard { padding: 0.7rem 0.6rem; }
   .factIconWrapper { width: 30px; height: 30px; }
   .factIcon { font-size: 1rem; }
+  .btnRegLabel{ font-size: 1rem;}
+  .btnBooth{font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
   .hbLeft { justify-content: center; }
   .titleLine { justify-content: center; }
-  .titleWord { font-size: clamp(2.5rem, 18vw, 4.5rem); }
+  .titleWord { font-size: clamp(2.5rem, 12vw, 4.5rem); }
   .titleSubline { justify-content: center; }
   .factsGrid { grid-template-columns: 1fr; }
-  .dateMegaNum { font-size: 2.5rem; }
+  .dateMegaNum { font-size: 2rem; }
   .cdRow { grid-template-columns: repeat(2, 1fr); }
   .cdItemInner { padding: 0.8rem 0.5rem; }
+}
+@media (max-width: 768px) {
+  .editionLine {
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    width: 100%;
+  }
+
+  .editionTitle {
+    text-align: center;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1350px) {
+  .titleWord{ font-size: 5rem}
 }

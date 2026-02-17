@@ -93,20 +93,32 @@ import UpdateSoon from "../Elements/UpdateSoon";
 const Sponsors = () => {
   const heroTextRef = useRef(null);
 
-  useEffect(() => {
-    const text = heroTextRef.current;
-    if (text) {
-      const letters = text.textContent.split("");
-      text.textContent = "";
-      letters.forEach((letter, index) => {
+useEffect(() => {
+  const text = heroTextRef.current;
+  if (text) {
+    const words = text.textContent.split(" ");
+    text.textContent = "";
+
+    words.forEach((word, wordIndex) => {
+      const wordSpan = document.createElement("span");
+      wordSpan.style.display = "inline-block";
+
+      word.split("").forEach((letter, index) => {
         const span = document.createElement("span");
         span.textContent = letter;
         span.className = "sponsors-hero-letter";
-        span.style.animationDelay = `${index * 0.05}s`;
-        text.appendChild(span);
+        span.style.animationDelay = `${(wordIndex * 10 + index) * 0.04}s`;
+        wordSpan.appendChild(span);
       });
-    }
-  }, []);
+
+      text.appendChild(wordSpan);
+
+      // Add space between words properly
+      text.appendChild(document.createTextNode(" "));
+    });
+  }
+}, []);
+
 
   const seriesSponsors = [
     { id: 1, logo: sponsor1, link: "https://elit.ai/contact-us/" },
@@ -205,7 +217,8 @@ const Sponsors = () => {
 
     {/* ANIMATED TITLE */}
     <h1 className="sponsors-hero-main-title">
-      <span ref={heroTextRef}>Sponsors&nbsp; and&nbsp; Partners</span>
+      <span ref={heroTextRef}>Sponsors&nbsp;and&nbsp;
+        Partners</span>
     </h1>
 
     {/* SUBTITLE */}

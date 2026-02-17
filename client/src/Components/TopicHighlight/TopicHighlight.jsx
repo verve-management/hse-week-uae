@@ -41,7 +41,7 @@ const TopicHighlight = () => {
         {/* Section Header */}
         <div className={styles.sectionHeader}>
           {/* <div className={styles.decorativeLine}></div> */}
-          <h2 className={styles.sectionTitle}>TOPIC <span>HIGHLIGHTS</span></h2>
+          <h2 className={styles.sectionTitle}>Topic <span>Highlights</span></h2>
           <p className={styles.sectionSubtitle}>
             Explore the cutting-edge topics that will shape the future of HSE and procurement excellence
           </p>

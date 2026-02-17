@@ -21,19 +21,22 @@
 }
 
 .why-sponsor-title {
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #A6223C;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
+  font-family:'Work Sans', sans-serif;
 }
 
 .why-sponsor-highlight {
-  font-size: 2.5rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #102147;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
+  font-family:'Work Sans', sans-serif;
+
 }
 
 .why-sponsor-subtitle {

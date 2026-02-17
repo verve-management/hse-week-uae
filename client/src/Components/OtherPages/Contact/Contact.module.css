@@ -1,6 +1,5 @@
 /* ==================== IMPORTS - PREMIUM FONTS ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
-
 /* ==================== GLOBAL FIX ==================== */
 *,
 *::before,
@@ -101,8 +100,8 @@
 }
 
 .heroMainTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8rem;
   font-weight: 700;
   margin: 0 0 20px 0;
   letter-spacing: 2px;
@@ -129,8 +128,8 @@
 }
 
 .heroMainSubtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.8rem;
   color: #ffffff;
   margin: 0 0 30px 0;
   font-weight: 300;
@@ -298,6 +297,7 @@
   color: #102147;
   margin: 0 0 12px 0;
   letter-spacing: 0.5px;
+  font-family:'Work Sans', sans-serif;
 }
 
 .infoText {
@@ -387,6 +387,7 @@
   color: #A6223C;
   margin: 0 0 12px 0;
   letter-spacing: 1px;
+  font-family:'Work Sans', sans-serif;
 }
 
 .formHighlight {
@@ -394,7 +395,7 @@
 }
 
 .formSubtitle {
-  font-family: 'Cormorant Garamond', serif;
+   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.1rem;
   color: #666;
   margin: 0;
@@ -477,7 +478,7 @@
   border: none;
   border-radius: 0;
   color: #ffffff;
-  font-family: 'Playfair Display', serif;
+   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -581,7 +582,7 @@
 }
 
 .mapTitle {
-  font-family: 'Playfair Display', serif;
+   font-family: 'Barlow Condensed', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #102147;
@@ -590,7 +591,7 @@
 }
 
 .mapSubtitle {
-  font-family: 'Cormorant Garamond', serif;
+   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.05rem;
   color: #666;
   margin: 0;
@@ -628,7 +629,7 @@
   height: 50px;
   background: linear-gradient(135deg, #102147 0%, #1a2a5e 100%);
   color: #ffffff;
-  font-family: 'Playfair Display', serif;
+   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1.5px;

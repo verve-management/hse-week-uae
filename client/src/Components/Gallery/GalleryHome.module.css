@@ -36,11 +36,12 @@
 }
 
 .sectionHeading {
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #A6223C;
   margin: 0 0 16px 0;
   letter-spacing: -0.5px;
+  font-family:'Work Sans', sans-serif;
 }
 .sectionHeading span{
   color: #102147;

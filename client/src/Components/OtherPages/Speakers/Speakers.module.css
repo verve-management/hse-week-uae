@@ -86,8 +86,8 @@
 
 /******** HERO TITLE ********/
 .heroMainTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
+   font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8rem;
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: 2px;
@@ -125,8 +125,8 @@
 
 /******** SUBTITLE ********/
 .heroMainSubtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
   color: #ffffff;
   font-weight: 300;
   letter-spacing: 3px;
@@ -180,7 +180,7 @@
 }
 
 .heroMainSubtitle {
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 28px 0;
@@ -256,6 +256,7 @@
   letter-spacing: -1.5px;
   line-height: 1.15;
   text-transform: uppercase;
+  font-family:'Work Sans', sans-serif;
 }
 
 .sectionHighlight {

@@ -382,3 +382,17 @@
     font-size: 0.95rem;
   }
 }
+@media (min-width: 1010px) and (max-width: 1090px) {
+
+.nav-menu {
+  gap: 1rem;
+}
+}
+@media 
+  (min-width: 1010px) and (max-width: 1110px) and
+  (min-height: 600px) and (max-height: 700px) {
+
+.nav-menu {
+  gap: 1rem;
+}
+}

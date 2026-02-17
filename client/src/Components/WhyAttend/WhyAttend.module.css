@@ -41,19 +41,21 @@
 }
 
 .mainTitle {
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #A6223C;
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
   display: inline;
+  font-family:'Work Sans', sans-serif;
 }
 
 .mainTitleHighlight {
-  font-size: 3rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #102147;
   letter-spacing: 2px;
+  font-family:'Work Sans', sans-serif;
 }
 
 .subTitle {
