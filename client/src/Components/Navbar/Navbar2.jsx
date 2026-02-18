@@ -154,7 +154,7 @@ const Navbar2 = () => {
         {/* CTA */}
         <div className={styles.navCtaGroup}>
   <Link
-    to="/"
+    to="/registration"
     className={styles.navCta}
     onClick={closeMobileMenu}
   >

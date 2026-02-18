@@ -162,7 +162,7 @@ const Navbar = () => {
 
         {/* CTA */}
         <div className="nav-cta-group">
-  <Link to="/" className="nav-cta" onClick={closeMobileMenu}>
+  <Link to="/registration" className="nav-cta" onClick={closeMobileMenu}>
     Register Now
   </Link>
 

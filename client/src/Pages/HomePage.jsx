@@ -24,10 +24,10 @@ function HomePage() {
   return (
     <>
     <Navbar></Navbar>
-     {/* <Hero></Hero> */}
+     <Hero></Hero>
      {/* <Hero3></Hero3> */}
      {/* <Hero2></Hero2> */}
-     <Hero4></Hero4>
+     {/* <Hero4></Hero4> */}
      <Event></Event>
      <InnovationOverview></InnovationOverview>
      {/* <MarketInsights></MarketInsights> */}

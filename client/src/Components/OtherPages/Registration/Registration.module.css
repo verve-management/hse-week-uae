@@ -1,28 +1,30 @@
-/* Registration Page Wrapper */
+/* ==================== PAGE WRAPPER ==================== */
 .registrationPageWrapper {
   width: 100%;
   overflow-x: hidden;
-   background: #f5f7fa;
-  color: #1a1a1a; /* Default dark text */
+  background: #f5f7fa;
+  color: #1a1a1a;
 }
-/* ==================== HERO SECTION ==================== */
+
+/* ==================== HERO SECTION (mirrors Speakers) ==================== */
 .heroSection {
   position: relative;
-  min-height: 60vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top:60px;
+  margin-top: 50px;
 }
 
 .heroBgImage {
   position: absolute;
   inset: 0;
-  background-image: url('/HeroImages/12.jpg');
+  background-image: url('/KsaGallery/Gallery5.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  filter: brightness(0.6);
   z-index: 0;
 }
 
@@ -31,20 +33,24 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 14, 39, 0.80) 0%,
-    rgba(26, 31, 58, 0.74) 50%,
-    rgba(10, 14, 39, 0.75) 100%
+    rgba(166, 34, 60, 0.75) 0%,
+    rgba(16, 33, 71, 0.65) 50%,
+    rgba(166, 34, 60, 0.70) 100%
   );
   z-index: 1;
 }
 
 .heroOverlay::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 30% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 70% 50%, rgba(247, 147, 30, 0.08) 0%, transparent 50%);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
 }
 
 .heroContentWrapper {
@@ -52,75 +58,131 @@
   z-index: 2;
   text-align: center;
   max-width: 900px;
-  padding: 80px 20px;
+  padding: 60px 40px;
 }
 
+/* Decorative lines */
+.heroDecoLine {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.heroDecoLine::before,
+.heroDecoLine::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.heroDecoLine::before { left: -4px; }
+.heroDecoLine::after  { right: -4px; }
+
+.heroDecoLine:last-of-type {
+  margin-top: 45px;
+}
+
+/* Hero title */
 .heroMainTitle {
-  font-size: 5rem;
-  font-weight: 900;
-  margin: 0 0 20px 0;
-  letter-spacing: -2px;
-  line-height: 1.1;
-  color: #273272;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
+.heroMainTitle span {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.heroMainTitle.animated span {
+  white-space: normal;
+}
+
+/* Letter animation */
 .heroLetter {
   display: inline-block;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: registrationLetterFloat 0.8s ease forwards;
+  animation: heroLetterFloat 0.8s ease forwards;
   opacity: 0;
   transform: translateY(30px);
 }
 
-@keyframes registrationLetterFloat {
+@keyframes heroLetterFloat {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* Subtitle */
 .heroMainSubtitle {
-  font-size: 1.5rem;
-  color: #e2e8f0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
   font-weight: 300;
-  margin: 0 0 25px 0;
-  animation: registrationHeroFadeUp 1s ease 0.3s forwards;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+  animation: heroFadeUp 1s ease 0.3s forwards;
   opacity: 0;
 }
 
-.heroDividerLine {
-  width: 100px;
-  height: 3px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  margin: 0 auto;
-  border-radius: 50px;
-  animation: registrationHeroDividerExpand 1s ease 0.6s forwards;
-  transform: scaleX(0);
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+@keyframes heroFadeUp {
+  to { opacity: 0.95; transform: translateY(0); }
 }
 
-@keyframes registrationHeroFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* CTA button */
+.heroButton {
+  background: #ffffff;
+  padding: 14px 36px;
+  color: #A6223C;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
-@keyframes registrationHeroDividerExpand {
-  to {
-    transform: scaleX(1);
-  }
+.heroButton:hover {
+  background: #f5f5f5;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* ==================== DELEGATE SECTION ==================== */
 .delegateSection {
   width: 100%;
   background: #ffffff;
-  padding: 150px 20px 50px;
+  padding: 100px 20px 70px;
   position: relative;
+}
+
+.delegateSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #A6223C, transparent);
 }
 
 .delegateContainer {
@@ -128,223 +190,224 @@
   margin: 0 auto;
 }
 
+/* Section Header */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 80px;
-  animation: registrationSectionHeaderFade 0.8s ease-out both;
+  margin-bottom: 70px;
+  animation: sectionHeaderFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes registrationSectionHeaderFade {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes sectionHeaderFade {
+  0%   { opacity: 0; transform: translateY(-24px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .sectionTitle {
-  font-size: 3.8rem;
+  font-size: 3.6rem;
   font-weight: 900;
-  color: #273272;
-  margin: 0 0 15px 0;
-  letter-spacing: -1px;
-  line-height: 1.2;
+  color: #A6223C;
+  margin: 0 0 14px 0;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .sectionHighlight {
-  background: linear-gradient(135deg, #ff6b35 0%, #ff985c 100%);
+  background: #102147;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .sectionSubtitle {
-  font-size: 1.2rem;
-  color: #2d3748;
+  font-size: 1.15rem;
+  color: #4a5568;
   margin: 0;
   font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
-/* ==================== PRICING GRID ==================== */
+/* ==================== PRICING GRID (3 cols) ==================== */
 .pricingGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto 80px auto;
-  animation: registrationPricingFadeIn 0.8s ease-out 0.3s both;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto 70px auto;
+  animation: pricingFadeIn 0.9s ease-out 0.3s both;
 }
 
-@keyframes registrationPricingFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes pricingFadeIn {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ==================== PRICING CARD ==================== */
 .pricingCard {
-   background: rgba(255, 255, 255, 0.15) !important; /* Transparent glass */
-  backdrop-filter: blur(20px);
-  border: 2px solid #ff6b35;
-  border-radius: 24px;
-  padding: 45px 40px;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: #102147;
+  border: 2px solid #A6223C;
+  border-radius: 16px;
+  padding: 0 0 32px 0;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.pricingCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.cardTopAccent {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #A6223C, #D93F63, #A6223C);
+  border-radius: 16px 16px 0 0;
+  flex-shrink: 0;
 }
 
 .pricingCard:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255, 107, 53, 0.4);
+  transform: translateY(-12px);
+  border-color: #D93F63;
+  box-shadow: 0 24px 60px rgba(166,34,60,0.4), 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.pricingCard:hover::before {
-  opacity: 1;
+/* Featured card (group) */
+.featuredCard {
+  border-color: #D93F63;
+  background: linear-gradient(160deg, #1a1e3a 0%, #102147 60%);
 }
 
-.pricingCard::before {
-  display: none !important;
-}
-
-.featureItem {
-  color: #374151 !important;
-}
-
-.pricingCard:hover .featureItem {
-  color: #111827 !important;
-}
-/* Group Card Special Styling */
-.groupCard {
-  border-color: #ff6b35;
-}
-
-.groupCard::before {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(247, 147, 30, 0.08));
-  opacity: 1;
-}
-
-/* Exclusive Badge */
-.exclusiveBadge {
+.featuredBadge {
   position: absolute;
-  top: -2px;
-  right: -2px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  padding: 10px 30px;
-  border-radius: 0 24px 0 24px;
-  z-index: 2;
-}
-
-.exclusiveBadge span {
-  font-size: 0.75rem;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, #A6223C, #D93F63);
+  padding: 8px 20px;
+  border-radius: 0 14px 0 14px;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #fff;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+  z-index: 3;
 }
 
-/* Card Header */
+/* Note card */
+.noteCard {
+  background: linear-gradient(160deg, #0d1b36 0%, #102147 100%);
+  border-color: #A6223C;
+}
+
+/* Card header */
 .cardHeader {
   text-align: center;
-  margin-bottom: 40px;
+  padding: 36px 28px 20px;
   position: relative;
   z-index: 1;
 }
 
-.passType {
+.passIconWrap {
+  width: 52px;
+  height: 52px;
+  background: rgba(166, 34, 60, 0.15);
+  border: 1.5px solid rgba(166, 34, 60, 0.4);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 25px;
+  margin: 0 auto 18px;
+  transition: background 0.3s ease;
 }
 
-.passIcon {
-  width: 28px;
-  height: 28px;
-  color: #ff6b35;
+.passIconWrap svg {
+  width: 24px;
+  height: 24px;
+  color: #D93F63;
 }
 
-.passType span {
-  font-size: 1.1rem;
+.noteIconWrap {
+  background: rgba(16, 33, 71, 0.4);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.noteIconWrap svg {
+  color: #a0aec0;
+}
+
+.pricingCard:hover .passIconWrap {
+  background: rgba(166, 34, 60, 0.3);
+}
+
+.passLabel {
+  display: block;
+  font-size: 0.85rem;
   font-weight: 800;
-  color: #ff6b35;
-  letter-spacing: 2px;
+  color: #D93F63;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .priceWrapper {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin-bottom: 10px;
-  gap: 5px;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .currency {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   margin-top: 10px;
 }
 
 .price {
   font-size: 5rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   line-height: 1;
 }
 
 .quoteText {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.sponsorText {
   font-size: 2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   line-height: 1.2;
   text-align: center;
 }
 
 .vatNote {
-  font-size: 0.95rem;
-  color: #2d3748;
-  font-weight: 500;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
   margin: 0;
   font-style: italic;
 }
 
-/* Card Body */
+/* Divider */
+.cardDivider {
+  width: calc(100% - 48px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(166,34,60,0.5), transparent);
+  margin: 0 24px 24px;
+  flex-shrink: 0;
+}
+
+/* Card body */
 .cardBody {
   flex: 1;
-  margin-bottom: 35px;
+  padding: 0 28px;
   position: relative;
   z-index: 1;
 }
@@ -355,140 +418,199 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .featureItem {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
-  color: #cbd5e1;
-  font-size: 1rem;
+  gap: 14px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
   line-height: 1.6;
-  transition: all 0.3s ease;
 }
 
-.pricingCard:hover .featureItem {
-  color: #e2e8f0;
+.checkDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A6223C, #D93F63);
+  margin-top: 7px;
 }
 
-.checkIcon {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  color: #ff6b35;
-  margin-top: 2px;
+/* Note card body */
+.noteContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Card Footer */
+.noteText {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.noteText strong {
+  color: #D93F63;
+}
+
+.noteText em {
+  font-style: italic;
+  color: #ffffff;
+}
+
+/* Card footer */
 .cardFooter {
+  padding: 28px 28px 0;
   position: relative;
   z-index: 1;
 }
 
 .buyButton {
   width: 100%;
-  padding: 18px 40px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #A6223C 0%, #D93F63 100%);
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  transition: all 0.4s ease;
+  gap: 10px;
+  transition: all 0.35s ease;
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
 
-.buyButton:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
-}
-
-.buyButton:active {
-  transform: translateY(-1px);
-}
-
-.buttonText {
-  flex: 1;
-  text-align: center;
-}
-
-.buttonIcon {
-  width: 20px;
-  height: 20px;
+.buyButton svg {
+  width: 18px;
+  height: 18px;
   transition: transform 0.3s ease;
 }
 
-.buyButton:hover .buttonIcon {
+.buyButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #c0294a 0%, #e84a6a 100%);
+  box-shadow: 0 8px 24px rgba(166,34,60,0.5);
+}
+
+.buyButton:hover svg {
   transform: translateX(5px);
+}
+
+/* Email button (note card) */
+.emailButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: transparent;
+  border: 2px solid rgba(166,34,60,0.7);
+  border-radius: 10px;
+  color: #D93F63;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.35s ease;
+  margin-bottom: 12px;
+}
+
+.emailButton svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.emailButton:hover {
+  background: rgba(166,34,60,0.15);
+  border-color: #D93F63;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(166,34,60,0.3);
+}
+
+.emailAddress {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+  letter-spacing: 0.3px;
 }
 
 /* ==================== CONTACT PROMPT ==================== */
 .contactPrompt {
   text-align: center;
-  animation: registrationContactFadeIn 0.8s ease-out 0.5s both;
+  padding-top: 10px;
+  animation: contactFadeIn 0.8s ease-out 0.5s both;
 }
 
-@keyframes registrationContactFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes contactFadeIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .contactText {
-  font-size: 1.15rem;
-  color: #2d3748;
-  margin: 0 0 25px 0;
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin: 0 0 22px 0;
   line-height: 1.6;
 }
 
 .contactButton {
-  padding: 16px 45px;
-  background: rgba(255, 255, 255, 0.05);
-  /* backdrop-filter: blur(10px); */
-  border: 2px solid #ff6b35;
-  border-radius: 12px;
-  color: #ff6b35;
-  font-size: 1rem;
+  padding: 14px 40px;
+  background: transparent;
+  border: 2px solid #A6223C;
+  border-radius: 10px;
+  color: #A6223C;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  transition: all 0.4s ease;
+  gap: 10px;
+  transition: all 0.35s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.contactButton:hover {
-  background: rgba(255, 107, 53, 0.1);
-  border-color: #ff6b35;
-  transform: translateY(-3px);
+.contactButton svg {
+  width: 18px;
+  height: 18px;
 }
 
-.contactIcon {
-  width: 20px;
-  height: 20px;
-  color: #ff6b35;
+.contactButton:hover {
+  background: rgba(166, 34, 60, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(166,34,60,0.2);
 }
 
 /* ==================== BOOK SEAT SECTION ==================== */
 .bookSeatSection {
   width: 100%;
-  background: #ffffff;
+  background: #102147;
   padding: 100px 20px;
   position: relative;
+}
+
+.bookSeatSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #A6223C, transparent);
 }
 
 .bookSeatContainer {
@@ -499,28 +621,23 @@
 .bookSeatContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 70px;
   align-items: center;
-  animation: registrationBookSeatFadeIn 0.8s ease-out both;
+  animation: bookSeatFade 0.9s ease-out both;
 }
 
-@keyframes registrationBookSeatFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes bookSeatFade {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Book Seat Image */
+/* Image */
 .bookSeatImage {
   position: relative;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 4/3;
+  border: 2px solid rgba(166,34,60,0.3);
 }
 
 .seatImage {
@@ -537,7 +654,7 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
+  background: linear-gradient(135deg, rgba(166,34,60,0.15), rgba(16,33,71,0.15));
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -546,61 +663,60 @@
   opacity: 1;
 }
 
-/* Book Seat Info */
+/* Info */
 .bookSeatInfo {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 28px;
 }
 
 .bookSeatBadge {
   display: inline-block;
   align-self: flex-start;
-  padding: 10px 25px;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(247, 147, 30, 0.15));
-  border: 2px solid #ff6b35;
+  padding: 8px 22px;
+  background: rgba(166,34,60,0.15);
+  border: 1.5px solid #A6223C;
   border-radius: 50px;
 }
 
 .bookSeatBadge span {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  color: #ff6b35;
+  color: #D93F63;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .bookSeatTitle {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 900;
   color: #ffffff;
   margin: 0;
   line-height: 1.2;
   letter-spacing: -1px;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
 }
 
 .bookSeatHighlight {
-  background: #273272;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #D93F63;
 }
 
 .bookSeatDescription {
-  font-size: 1.1rem;
-  color: #2d3748;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
   line-height: 1.8;
   margin: 0;
 }
 
 .registerButton {
   align-self: flex-start;
-  padding: 20px 50px;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  padding: 18px 48px;
+  background: linear-gradient(135deg, #A6223C 0%, #D93F63 100%);
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
@@ -611,216 +727,74 @@
   letter-spacing: 1.5px;
 }
 
-.registerButton:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #ff7d4d 0%, #ff9e36 100%);
-}
-
-.registerButton:active {
-  transform: translateY(-1px);
-}
-
-.registerButtonText {
-  text-align: center;
-}
-
-.registerButtonIcon {
-  width: 22px;
-  height: 22px;
+.registerButton svg {
+  width: 20px;
+  height: 20px;
   transition: transform 0.3s ease;
 }
 
-.registerButton:hover .registerButtonIcon {
+.registerButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #c0294a 0%, #e84a6a 100%);
+  box-shadow: 0 10px 30px rgba(166,34,60,0.5);
+}
+
+.registerButton:hover svg {
   transform: translateX(5px);
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
-@media (max-width: 1024px) {
-  .heroMainTitle {
-    font-size: 4rem;
-  }
-
-  .sectionTitle {
-    font-size: 3.2rem;
-  }
-
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1200px) {
   .pricingGrid {
-    gap: 35px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
+}
 
-  .bookSeatContent {
-    gap: 50px;
-  }
-
-  .bookSeatTitle {
-    font-size: 2.8rem;
-  }
+@media (max-width: 1024px) {
+  .heroMainTitle { font-size: 5rem; }
+  .sectionTitle   { font-size: 3rem; }
+  .pricingGrid    { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .bookSeatContent { gap: 50px; }
+  .bookSeatTitle  { font-size: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-  .heroSection {
-    min-height: 40vh;
-  }
-  .exclusiveBadge {
-  padding: 10px 15px;
-
-}
-
-  .heroMainTitle {
-    font-size: 3rem;
-  }
-
-  .heroMainSubtitle {
-    font-size: 1.2rem;
-  }
+  .heroSection    { min-height: 50vh; margin-top: 5px; }
+  .heroMainTitle  { font-size: 3.5rem; }
+  .heroMainSubtitle { font-size: 1.2rem; letter-spacing: 1px; }
 
   .delegateSection,
-  .bookSeatSection {
-    padding: 60px 15px;
-  }
+  .bookSeatSection { padding: 60px 16px; }
 
-  .sectionHeader {
-    margin-bottom: 60px;
-  }
+  .sectionHeader  { margin-bottom: 50px; }
+  .sectionTitle   { font-size: 2.4rem; }
 
-  .sectionTitle {
-    font-size: 2.5rem;
-  }
+  .pricingGrid    { grid-template-columns: 1fr; gap: 24px; }
 
-  .sectionSubtitle {
-    font-size: 1.05rem;
-  }
-
-  .pricingGrid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-bottom: 60px;
-  }
-
-  .pricingCard {
-    padding: 40px 35px;
-  }
-
-  .price {
-    font-size: 4rem;
-  }
-
-  .quoteText {
-    font-size: 1.7rem;
-  }
-
-  .bookSeatContent {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .bookSeatTitle {
-    font-size: 2.2rem;
-  }
-
-  .bookSeatDescription {
-    font-size: 1rem;
-  }
+  .bookSeatContent { grid-template-columns: 1fr; gap: 40px; }
+  .bookSeatTitle  { font-size: 2.2rem; }
 }
 
 @media (max-width: 480px) {
-  .heroMainTitle {
-    font-size: 2.2rem;
-  }
-
-  .heroMainSubtitle {
-    font-size: 1rem;
-  }
+  .heroMainTitle  { font-size: 2.4rem; }
+  .heroDecoLine   { width: 80px; }
+  .heroMainSubtitle { font-size: 1rem; letter-spacing: 0.5px; }
 
   .delegateSection,
-  .bookSeatSection {
-    padding: 40px 15px;
-  }
+  .bookSeatSection { padding: 40px 14px; }
 
-  .sectionHeader {
-    margin-bottom: 45px;
-  }
+  .sectionTitle   { font-size: 1.9rem; }
+  .pricingGrid    { gap: 20px; }
 
-  .sectionTitle {
-    font-size: 2rem;
-  }
+  .cardHeader     { padding: 28px 20px 16px; }
+  .cardBody       { padding: 0 20px; }
+  .cardFooter     { padding: 24px 20px 0; }
 
-  .sectionSubtitle {
-    font-size: 1rem;
-  }
+  .price          { font-size: 4rem; }
+  .quoteText,
+  .sponsorText    { font-size: 1.5rem; }
 
-  .pricingCard {
-    padding: 35px 25px;
-  }
-
-  .passType {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .passIcon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .passType span {
-    font-size: 1rem;
-  }
-
-  .currency {
-    font-size: 2rem;
-  }
-
-  .price {
-    font-size: 3.5rem;
-  }
-
-  .quoteText {
-    font-size: 1.5rem;
-  }
-
-  .vatNote {
-    font-size: 0.85rem;
-  }
-
-  .featureItem {
-    font-size: 0.95rem;
-    gap: 12px;
-  }
-
-  .checkIcon {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-  }
-
-  .buyButton {
-    padding: 16px 30px;
-    font-size: 1rem;
-  }
-
-  .contactText {
-    font-size: 1rem;
-  }
-
-  .contactButton {
-    padding: 14px 35px;
-    font-size: 0.95rem;
-  }
-
-  .bookSeatTitle {
-    font-size: 1.8rem;
-  }
-
-  .bookSeatDescription {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .registerButton {
-    padding: 16px 40px;
-    font-size: 1rem;
-    width: 100%;
-    justify-content: center;
-  }
+  .bookSeatTitle  { font-size: 1.8rem; }
+  .registerButton { width: 100%; justify-content: center; padding: 16px 32px; }
 }
