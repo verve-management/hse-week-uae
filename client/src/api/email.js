@@ -1,8 +1,6 @@
-import axios from "axios";
-
 export const sendContactForm = async (data) => {
   return axios.post(
-    "https://api.nexanglobal.com/send-email",
+    "http://51.20.72.238:5000/send-email",
     data
   );
 };
