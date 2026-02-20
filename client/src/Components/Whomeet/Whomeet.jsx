@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./WhoMeet.module.css";
 
 const roles = [
-  "Chief Procurement Officers",
-  "Heads Of Supply Chain & Logistics",
-  "Chief Logistics Officer",
-  "Head of Strategic Sourcing",
-  "Head of Warehouse",
-  "Chief Financial Officer",
-  "Chief Information Officer",
-  "Head of Inventory System"
+  "CEOs/MDs/Chairman/Directors",
+  "Heads of Health, Safety & Environment",
+  "Chief Risk Officers",
+  "Heads of Compliance & Regulations",
+  "Safety Engineers & Specialists",
+  "Environmental Managers",
+  "Facility Managers",
+  "Operations Managers"
 ];
 
 const WhoMeet = () => {

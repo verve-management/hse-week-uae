@@ -23,7 +23,7 @@ function useCountdown(target) {
 }
 
 const stats = [
-  { num: "500+", label: "Delegates" },
+  { num: "350+", label: "Delegates" },
   { num: "95+", label: "Attendance" },
   { num: "96%", label: "Satisfaction" },
   { num: "30+", label: "Speakers" },
@@ -31,7 +31,7 @@ const stats = [
 
 const sponsors = ["Gold Sponsor", "Platinum Partner", "Official Media", "Strategic Partner"];
 
-export default function Hero() {
+export default function FFHero() {
   const { days, hours, minutes, seconds } = useCountdown(TARGET_DATE);
   const videoRef = useRef(null);
 
@@ -74,35 +74,21 @@ export default function Hero() {
         <div className={styles.gutterVLine} />
       </div>
 
-      {/* ── Right gutter ── */}
-      {/* <div className={styles.rightGutter}>
-        <div className={styles.rightGutterContent}>
-          {stats.map((s) => (
-            <div key={s.label} className={styles.rightStat}>
-              <span className={styles.rightStatNum}>{s.num}</span>
-              <span className={styles.rightStatLabel}>{s.label}</span>
-            </div>
-          ))}
-        </div>
-        <div className={styles.rightVLine} />
-      </div> */}
-
       {/* ── Main Content ── */}
       <div className={styles.content}>
         {/* Top ribbon */}
         <div className={styles.ribbon}>
           <div className={styles.ribbonLine} />
           <div className={styles.ribbonBadge}>
-            {/* <span className={styles.liveIcon} /> */}
-            <span>FLAGSHIP EVENT &nbsp;·&nbsp; ABU DHABI 2026</span>
+            <span>Navigating the Future of Health, Safety, and Environment</span>
           </div>
           <div className={styles.ribbonLine} />
         </div>
 
         {/* Edition label */}
-      <div className={styles.edition}>
-  <span>2nd <span>Edition</span></span>
-</div>
+        <div className={styles.edition}>
+          <span>2nd <span>Annual</span></span>
+        </div>
 
         {/* Giant title */}
         <div className={styles.titleWrap}>
@@ -160,6 +146,7 @@ export default function Hero() {
         <div className={styles.ctaRow}>
           <a href="#register" className={styles.btnMain}>
             <span className={styles.btnMainBg} />
+            <span className={styles.btnMainGlow} />
             <span className={styles.btnMainText}>Register Now</span>
             <span className={styles.btnMainIcon}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -168,6 +155,7 @@ export default function Hero() {
             </span>
           </a>
           <a href="#booth" className={styles.btnAlt}>
+            <span className={styles.btnAltGlow} />
             <span className={styles.btnAltIcon}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" />

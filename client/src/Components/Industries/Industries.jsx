@@ -20,49 +20,49 @@ const Industries = () => {
       image: "/IndstriesCoveredImages/IndstriesCoveredImages2.webp",
       title: "Transportation & Logistics",
       description:
-        "Optimizing end-to-end logistics operations using procurement intelligence that boosts efficiency, improves vendor management, and strengthens supply chains.",
+        "Enhancing transportation and logistics operations with comprehensive safety protocols to ensure secure, efficient, and compliant movement of goods and people.",
     },
     {
       id: "03",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages3.webp",
       title: "Mining & Resources",
       description:
-        "Enabling mining and resource companies with data-driven procurement strategies to improve safety, reduce costs, and maximize resource utilization.",
+        "Advancing mining and resources industries with rigorous safety standards to protect workforce wellbeing, environmental integrity, and operational continuity.",
     },
     {
       id: "04",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages10.webp",
-      title: "Public Sector / Government",
+      title: "Public Sector / Government Organizations",
       description:
-        "Driving transparency, compliance, and efficiency across public sector procurement with modern digital sourcing and governance solutions.",
+        "Supporting public sector and government organizations with structured HSE frameworks to promote workplace safety, policy alignment, and community protection.",
     },
     {
       id: "05",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages5.webp",
       title: "Oil & Gas",
       description:
-        "Supporting Oil & Gas enterprises with next-gen procurement tools that strengthen asset management, operational safety, and supply chain reliability.",
+        "Empowering oil and gas industries with advanced HSE strategies to strengthen operational safety, environmental stewardship, and regulatory compliance.",
     },
     {
       id: "06",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages6.webp",
       title: "Healthcare",
       description:
-        "Transforming healthcare procurement with intelligent sourcing, improving compliance, patient care quality, and inventory optimization.",
+        "Supporting healthcare institutions with robust safety and risk management frameworks to ensure patient wellbeing and workplace protection.",
     },
     {
       id: "07",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages7.webp",
-      title: "Manufacturing",
+      title: "Construction & Engineering",
       description:
-        "Enhancing manufacturing performance through optimized procurement, improved automation, and streamlined supplier ecosystems.",
+        "Empowering construction and engineering industries with modern safety practices to improve site compliance, risk mitigation, and project excellence.",
     },
     {
       id: "08",
       image: "/IndstriesCoveredImages/IndstriesCoveredImages9.jpg",
       title: "Utilities",
       description:
-        "Empowering utility providers with smart procurement insights that improve infrastructure reliability, cost efficiency, and service performance.",
+        "Strengthening utilities sectors with integrated HSE solutions to ensure infrastructure reliability, public safety, and sustainable service delivery.",
     },
   ]
 

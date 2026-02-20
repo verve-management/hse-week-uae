@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import styles from "./Navbar2.module.css";
-import logo from "../../assets/logo71.webp";
+import logo from "../../assets/logo81.png";
 import { IoChevronDown } from "react-icons/io5";
 import Booth from "../OtherPages/Booth"
 

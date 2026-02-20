@@ -23,7 +23,7 @@ function useCountdown(target) {
 }
 
 const stats = [
-  { num: "500+", label: "Delegates" },
+  { num: "350+", label: "Delegates" },
   { num: "95+", label: "Attendance" },
   { num: "96%", label: "Satisfaction" },
   { num: "30+", label: "Speakers" },

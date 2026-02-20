@@ -65,29 +65,34 @@ const Cta = () => {
           Secure Your Place – Register Now Before It's Gone
         </h2>
 
-        <button
-          style={{
-            padding: "0.9rem 2.2rem",
-            backgroundColor: "#ffffff",
-            color: "#A6223C",
-            borderRadius: "6px",
-            fontSize: "1.05rem",
-            fontWeight: "700",
-            border: "none",
-            cursor: "pointer",
-            transition: "0.3s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#A6223C";
-            e.target.style.color = "#ffffff";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "#ffffff";
-            e.target.style.color = "#A6223C";
-          }}
-        >
-          REGISTER
-        </button>
+       <button
+  style={{
+    padding: "0.9rem 2.2rem",
+    backgroundColor: "#ffffff",
+    color: "#A6223C",
+    borderRadius: "6px",
+    fontSize: "1.05rem",
+    fontWeight: "700",
+    border: "none",
+    cursor: "pointer",
+    transition: "0.3s ease",
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = "#A6223C";
+    e.target.style.color = "#ffffff";
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = "#ffffff";
+    e.target.style.color = "#A6223C";
+  }}
+  onClick={() => {
+    window.location.href = "/registration"; // ✅ works in all cases
+  }}
+>
+  REGISTER
+</button>
+
+
       </div>
     </section>
   );

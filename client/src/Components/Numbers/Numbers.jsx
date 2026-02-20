@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Numbers.module.css";
 
 const stats = [
-  { value: 500, label: "Delegates", image: "Gallery/Gallery1.webp" },
+  { value: 350, label: "Delegates", image: "Gallery/Gallery1.webp" },
   { value: 95, label: "Attendance", image: "Gallery/Gallery2.webp" },
   { value:96, label: "Satisfaction", image: "Gallery/Gallery8.webp" },
   { value:30, label: "Speakers", image: "Gallery/Gallery6.webp" },

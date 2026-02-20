@@ -30,103 +30,117 @@ const ScheduleWithoutImages = () => {
     },
     {
       time: '10:00 - 10:05',
-      title: 'Opening Note by Summit Chairperson',
+      title: 'Welcome Note by Conference Producer',
       type: 'keynote'
     },
     {
-      time: '10:05 – 10:25',
-      title: 'Global Supply Chain Hubs: Catalysts for Resilience and Digital Trade',
+      time: '10:05 - 10:15',
+      title: 'Special Remarks by the Guest of Honour',
+      type: 'keynote'
+    },
+    {
+      time: '10:15 - 10:20',
+      title: 'Opening Remarks by the Chairperson',
+      type: 'keynote'
+    },
+    {
+      time: '10:20 - 10:40',
+      title: 'Driving a Safe, Sustainable, and Innovative UAE: Shaping the Future of Health, Safety, and Excellence',
       points: [
-        'How strategic hubs are reshaping global competitiveness.',
-        'Government-industry collaboration for smart logistics and trade facilitation.',
-        'Implications for CPOs in regional sourcing and global expansion.'
+        'Demonstrating how HSE excellence supports the UAE\'s Vision 2030/2031, including sustainable development, economic diversification, and global competitiveness.',
+        'Showcasing how digital solutions, AI, and smart infrastructure are enhancing workplace safety and environmental management in alignment with UAE government initiatives.',
+        'Emphasizing the importance of mental health, employee engagement, and cultural awareness in creating resilient, productive, and safe workplaces.'
       ]
     },
     {
-      time: '10:25 – 10:45',
-      title: 'AI-Powered Procurement - Unlocking Predictive Intelligence & Automation',
+      time: '10:40 - 11:00',
+      title: 'Zero LTI: Driving a Culture of Incident-Free Operations in the UAE – Strategies, Leadership, and Workforce Engagement for a Safer Future',
       points: [
-        'Leveraging AI/ML for spend forecasting, supplier risk scoring, and autonomous sourcing.',
-        'Real-time data exchange and intelligent supplier portals.',
-        'Future-ready procurement operating models.'
+        'How can organizations in the UAE foster a proactive safety culture that prevents incidents before they occur?',
+        'What role does leadership play in embedding Zero LTI principles across diverse workforces?',
+        'How can technology and employee engagement be leveraged together to achieve and sustain Zero LTI outcomes?'
       ]
     },
     {
-      time: '10:45 - 11:30',
-      title: 'Panel | Building Resilient Supply Networks in a Fragmented World',
+      time: '11:00 - 11:20',
+      title: 'Safety Culture Transformation: Aligning Leadership, Workforce, and Organizational Practices for Lasting Impact in the UAE',
+      points: [
+        'How can leaders effectively influence and model a safety-first mindset across all levels of the organization?',
+        'What strategies can be implemented to ensure workforce engagement and ownership of safety practices?',
+        'How can organizations measure and sustain a strong safety culture over time in high-risk industries?'
+      ]
+    },
+    {
+      time: '11:20 - 12:05',
+      title: 'Panel Discussion | Behavioral Safety in Action: Reducing Human Error Through Awareness, Engagement, and Smart Practices',
       type: 'panel',
       points: [
-        'Strategic supplier diversification vs. deep partnerships.',
-        'Multi-tier visibility and proactive risk sensing.',
-        'Scenario planning and dynamic forecasting for disruption readiness.'
+        'How can behavioral insights be used to predict and prevent workplace incidents?',
+        'What strategies effectively engage employees to take personal responsibility for safety?',
+        'How can organizations integrate behavioral safety into daily operations and long-term culture?'
       ]
     },
     {
-      time: '11:30 – 11:50',
-      title: 'Category Management 2.0 - Driving Enterprise Value Beyond Cost',
+      time: '12:05 - 12:25',
+      title: 'Thriving Under Pressure: Mental Health & Well-Being for a Resilient Workforce in the UAE',
       points: [
-        'Aligning procurement categories with business growth levers.',
-        'Supplier innovation, ESG alignment, and total value creation.',
-        'Advanced analytics for segmentation and strategic sourcing.'
+        'How can organizations proactively support mental health to boost productivity and safety?',
+        'What practical strategies help employees manage stress and maintain resilience in high-pressure environments?',
+        'How can UAE workplaces build a culture of psychological safety and well-being for all staff?'
       ]
     },
     {
-      time: '11:50 – 12:20',
-      title: 'Networking & Coffee Break',
+      time: '12:25 - 12:55',
+      title: 'Networking & Prayer Break',
       type: 'break'
     },
     {
-      time: '12:20 – 12:40',
-      title: 'Fireside Chat | Reskilling Procurement for the Age of Automation',
+      time: '12:55 - 13:05',
+      title: 'Innovation Session (Tekmon)',
+      type: 'keynote'
+    },
+    {
+      time: '13:05 - 13:15',
+      title: 'Innovation Session (Dualroots AI)',
+      type: 'keynote'
+    },
+    {
+      time: '13:15 - 13:45',
+      title: 'Fireside Chat | The Power of Attitudes: Driving Safety Excellence Through the ABR Cycle – Awareness, Behavior, Results',
       type: 'fireside',
       points: [
-        'Strategic workforce planning for digital fluency and innovation.',
-        'Transitioning teams from tactical execution to strategic enablement.',
-        'Talent development ecosystems and public-private partnerships.'
+        'How can organizations create awareness that truly influences safe behaviors across all teams?',
+        'What are the most effective ways to translate positive safety behaviors into measurable results?',
+        'How can leaders sustain long-term engagement with the ABR Cycle in high-risk industries?'
       ]
     },
     {
-      time: '12:40 – 13:00',
-      title: 'Securing the Digital Supply Chain - Cybersecurity, Blockchain & Resilience',
+      time: '13:45 - 14:05',
+      title: 'Proactive Risk Management in UAE Operations: From Assessment to Mitigation for Safer, Smarter Workplaces',
       points: [
-        'Cyber threats in procurement ecosystems.',
-        'Implementing supplier-wide security frameworks.',
-        'Blockchain for traceability and trust.'
+        'How can organizations identify and prioritize risks before they escalate into incidents?',
+        'What strategies and tools are most effective for mitigating risks in complex UAE operations?',
+        'How can risk management practices be integrated into daily operations to drive a culture of continuous safety improvement?'
       ]
     },
     {
-      time: '13:00 – 13:45',
-      title: 'Panel | Unlocking Strategic Insights from Procurement Analytics',
-      type: 'panel',
+      time: '14:05 - 14:25',
+      title: 'Empowering Leaders, Engaging Teams: Driving HSE Excellence Through Leadership and Workforce Collaboration',
       points: [
-        'Predictive spend intelligence and cost optimization.',
-        'Supplier performance dashboards and compliance metrics.',
-        'Market behavior forecasting for agile decision-making.'
+        'How can leaders inspire a culture of safety ownership and accountability across all levels of the organization?',
+        'What strategies foster meaningful employee engagement in HSE initiatives and continuous improvement?',
+        'How can organizations measure the impact of leadership and engagement on safety performance and outcomes?'
       ]
     },
     {
-      time: '13:45 – 14:05',
-      title: 'Transparency as a Strategic Lever - Efficiency, Risk & Trust',
-      points: [
-        'Real-time visibility across the value chain.',
-        'Technologies enabling transparency and control.',
-        'Impact on risk mitigation and stakeholder confidence.'
-      ]
-    },
-    {
-      time: '14:05 – 15:05',
-      title: 'Networking Luncheon',
-      type: 'break'
-    },
-    {
-      time: '15:05 – 15:15',
+      time: '14:25 - 14:35',
       title: 'Closing Remarks – Day One',
       type: 'keynote'
     },
     {
-      time: '15:15 – 16:15',
-      title: 'Procurement & Supply Chain Leadership Awards 2026',
-      type: 'awards'
+      time: '14:35 - 15:35',
+      title: 'Networking Luncheon & End of Day One',
+      type: 'break'
     }
   ];
 
@@ -137,98 +151,89 @@ const ScheduleWithoutImages = () => {
       type: 'break'
     },
     {
-      time: '10:00 - 10:05',
-      title: 'Opening Note',
+      time: '10:00 - 10:10',
+      title: 'Opening Remarks by the Chairperson',
       type: 'keynote'
     },
     {
-      time: '10:05 – 10:25',
-      title: 'Cloud-Driven Procurement - Agility, Scalability & Innovation',
+      time: '10:10 - 10:30',
+      title: 'Safety Leadership for a Visionary UAE: Engaging Teams to Drive Compliance, Innovation, and National HSE Excellence',
       points: [
-        'Cloud vs. on-premise: strategic considerations for CPOs.',
-        'Real-world examples of cloud-native procurement ecosystems.',
-        'Data governance and security in cloud transformation.'
+        'How can leaders align organizational safety strategies with UAE government priorities and Vision 2031 goals?',
+        'What approaches effectively engage diverse teams to embrace compliance while fostering innovation in safety practices?',
+        'How can leadership drive a culture where safety excellence becomes both a business and national objective?'
       ]
     },
     {
-      time: '10:25 – 10:45',
-      title: 'Global Risk Intelligence - Mitigation Strategies for Procurement Leaders',
+      time: '10:30 - 10:50',
+      title: 'Smart Safety: Leveraging AI, IoT, and Real-Time Monitoring to Transform HSE in the UAE',
       points: [
-        'Navigating geopolitical, financial, and cyber risks.',
-        'Building resilient supplier ecosystems.',
-        'Role of procurement in enterprise risk governance.'
+        'How can AI and IoT technologies predict and prevent workplace incidents before they occur?',
+        'What are the best practices for integrating real-time risk monitoring into daily operations?',
+        'How can digital transformation enhance both safety performance and organizational decision-making?'
       ]
     },
     {
-      time: '10:45 – 11:30',
-      title: 'Panel | Co-Creation & Innovation Through Strategic Supplier Partnerships',
+      time: '10:50 - 11:20',
+      title: 'Fireside Chat | Building Safely: UAE Best Practices for Construction and Industrial Safety in High-Risk Projects',
+      type: 'fireside',
+      points: [
+        'How can UAE construction and industrial projects implement proactive measures to prevent accidents and incidents?',
+        'What innovative safety practices have proven most effective in managing risks on high-risk sites?',
+        'How can lessons learned from UAE projects be scaled and adapted across different sectors for maximum impact?'
+      ]
+    },
+    {
+      time: '11:20 - 12:05',
+      title: 'Panel Discussion | Ready for Anything: Emergency Preparedness and Crisis Management Lessons from UAE Case Studies',
       type: 'panel',
       points: [
-        'Procurement as a driver of innovation and growth.',
-        'Collaborative product development and process redesign.',
-        'Managing IP, cost-sharing, and speed-to-market.'
+        'How can organizations in the UAE build robust emergency response plans for high-risk operations?',
+        'What lessons can be learned from past UAE incidents to improve crisis management strategies?',
+        'How can teams effectively coordinate, communicate, and respond under pressure to minimize impact?'
       ]
     },
     {
-      time: '11:30 – 11:50',
-      title: 'Technology-Enabled Collaboration - Internal & External Synergies',
+      time: '12:05 - 12:25',
+      title: 'Sustainable Safety: Integrating Environmental Health and Safety Practices for a Greener, Safer UAE',
       points: [
-        'Digital tools for sourcing, tendering, and auctions.',
-        'Cross-functional alignment with finance and operations.',
-        'Supplier engagement for long-term value.'
+        'How can organizations align HSE programs with UAE sustainability and environmental goals?',
+        'What practical strategies help reduce environmental impact while maintaining safety and operational excellence?',
+        'How can sustainability initiatives be embedded into corporate culture to drive long-term HSE success?'
       ]
     },
     {
-      time: '11:50 – 12:20',
-      title: 'Networking & Coffee Break',
+      time: '12:25 - 12:55',
+      title: 'Networking & Prayer Break',
       type: 'break'
     },
     {
-      time: '12:20 – 12:50',
-      title: 'Fireside Chat | Talent Transformation for Supply Chain Excellence',
-      type: 'fireside',
-      points: [
-        'Building high-performing procurement teams.',
-        'Leadership strategies for workforce innovation.',
-        'Culture of continuous learning and agility.'
-      ]
-    },
-    {
-      time: '12:50 – 13:10',
-      title: 'Strategic Supplier Management: Cost, Value & Relationships',
-      points: [
-        'Total Cost of Ownership (TCO) frameworks.',
-        'Supplier evaluation beyond price.',
-        'Negotiation strategies for long-term value.'
-      ]
-    },
-    {
-      time: '13:10 – 13:55',
-      title: 'Panel | Lessons in Resilience – Navigating Global Disruptions',
+      time: '12:55 - 13:40',
+      title: 'Panel Discussion | Shaping the Future of HSE in the UAE: Leadership, Innovation, and People-First Safety Strategies',
       type: 'panel',
       points: [
-        'Case studies on supply chain stress testing.',
-        'Nearshoring, multi-sourcing, and network agility.',
-        'Strategic playbooks for crisis response.'
+        'How can UAE organizations leverage innovation and technology to redefine safety standards for the future?',
+        'What leadership approaches are most effective in fostering a culture of continuous HSE improvement?',
+        'How can workforce engagement and people-focused strategies drive sustainable safety outcomes?'
       ]
     },
     {
-      time: '13:55 – 14:15',
-      title: 'Sustainability in Action- Innovations in Green Procurement',
+      time: '13:40 - 14:00',
+      title: 'Surviving the Heat: Ensuring Safety for Outdoor Workers in the UAE\'s Extreme Climate',
       points: [
-        'Circular supply chains and carbon reduction strategies.',
-        'Supplier collaboration for ESG compliance.',
-        'Technology for sustainable logistics and operations.'
+        'How can organizations protect outdoor workers from heat stress and related hazards in UAE conditions?',
+        'What practical strategies and technologies help maintain productivity while ensuring worker safety?',
+        'How can awareness, training, and culture drive compliance with desert and heat safety measures?'
       ]
     },
     {
-      time: '14:15 – 14:25',
+      time: '14:00 - 14:10',
       title: 'Closing Remarks – End of Summit',
       type: 'keynote'
     },
     {
-      time: '14:25 – 15:25',
-      title: 'Leadership Networking Luncheon',
+      time: '14:10 - 15:10',
+      title: 'Networking Luncheon & End of Day Two',
       type: 'break'
     }
   ];

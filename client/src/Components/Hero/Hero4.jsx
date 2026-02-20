@@ -25,7 +25,7 @@ function useCountdown(target) {
 
 const keyFacts = [
   { icon: <MdLocationOn />, label: "Venue", value: "Abu Dhabi" },
-  { icon: <MdPeople />, label: "Delegates", value: "500+" },
+  { icon: <MdPeople />, label: "Delegates", value: "350+" },
   { icon: <MdTrendingUp />, label: "Attendance", value: "95+" },
   { icon: <MdStars />, label: "Satisfaction", value: "96%" },
   { icon: <MdEco />, label: "Sustainability Focus", value: "ESG & Net Zero" },

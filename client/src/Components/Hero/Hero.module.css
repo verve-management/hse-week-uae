@@ -211,13 +211,9 @@
 }
 
 /* ─────────────────────────────── EDITION ─── */
-
-
 .editionNum {
   font-family: 'Abril Fatface', serif;
   font-size: clamp(2.2rem, 4.5vw, 3rem);
-
-  /* CHANGED */
   color: #A6223C;
   text-shadow: 0 0 25px rgba(166, 34, 60, 0.6);
   line-height: 1;
@@ -227,8 +223,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
- font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(1.2rem, 2vw, 2.8rem);
   line-height: 1;
   color: #A6223C;
@@ -238,7 +233,7 @@
   background: rgba(166, 34, 60, 0.12);
   border: 1px solid rgba(166, 34, 60, 0.35);
   backdrop-filter: blur(8px);
- font-weight: 600;
+  font-weight: 600;
   width: fit-content;
 }
 
@@ -247,13 +242,10 @@
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-         font-family: "Abril Fatface", serif;
+  font-family: "Abril Fatface", serif;
   transform: translateY(-4px);
-  /* CHANGED */
   color: rgba(255,255,255,0.85);
-  
 }
-
 
 /* ─────────────────────────────── TITLE ─── */
 .titleWrap {
@@ -274,9 +266,8 @@
   margin: 0 0 0.5rem;
 }
 
-/* NEW UNIFIED TITLE STYLE */
 .titleUnified {
-   font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(3.5rem, 10vw, 9rem);
   color: #ffffff;
   letter-spacing: 0.05em;
@@ -438,8 +429,6 @@
   color: #A6223C;
   padding: 0 0.4rem;
   line-height: 1;
-
-  /* FIX */
   align-self: center;
   display: flex;
   align-items: center;
@@ -455,6 +444,8 @@
   flex-wrap: wrap;
   animation: fadeUp 0.9s 0.4s ease both;
 }
+
+/* ── Register Now ── */
 .btnMain {
   position: relative;
   display: inline-flex;
@@ -465,6 +456,25 @@
   border-radius: 2px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
+  box-shadow:
+    0 0 0 1px rgba(166, 34, 60, 0.8),
+    0 0 18px rgba(166, 34, 60, 0.55),
+    0 0 40px rgba(166, 34, 60, 0.25);
+  animation: pulseRed 2.8s ease-in-out infinite;
+}
+@keyframes pulseRed {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(166, 34, 60, 0.8),
+      0 0 18px rgba(166, 34, 60, 0.55),
+      0 0 40px rgba(166, 34, 60, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(166, 34, 60, 1),
+      0 0 28px rgba(166, 34, 60, 0.85),
+      0 0 60px rgba(166, 34, 60, 0.45);
+  }
 }
 .btnMainBg {
   position: absolute; inset: 0;
@@ -473,6 +483,27 @@
   transform-origin: left;
 }
 .btnMain:hover .btnMainBg { transform: scaleX(1.05); }
+
+/* shimmer sweep on Register Now */
+.btnMainGlow {
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0%   { left: -75%; }
+  60%, 100% { left: 130%; }
+}
+
 .btnMainText {
   position: relative;
   padding: 13px 22px;
@@ -495,26 +526,54 @@
 }
 .btnMain:hover .btnMainIcon { padding-right: 18px; }
 
+/* ── Book a Booth ── */
 .btnAlt {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 13px 20px;
-  border: 1px solid rgba(201,168,76,0.5);
+  border: 1px solid rgba(201,168,76,0.85);
   color: #C9A84C;
   text-decoration: none;
- font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: 2px;
-  background: rgba(201,168,76,0.05);
+  background: rgba(201,168,76,0.08);
+  overflow: hidden;
   transition: all 0.3s;
-}
-.btnAlt:hover { background: rgba(201,168,76,0.12); border-color: #C9A84C; }
-.btnAltIcon { display:flex; align-items:center; }
 
+  animation: pulseGold 2.8s ease-in-out infinite;
+}
+
+.btnAlt:hover {
+  background: rgba(201,168,76,0.16);
+  border-color: #C9A84C;
+  color: #e0be6a;
+}
+
+/* shimmer sweep on Book a Booth */
+.btnAltGlow {
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2.8s 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btnAltIcon { position: relative; display:flex; align-items:center; }
+
+/* ── Ghost buttons ── */
 .btnGhost {
   display: inline-flex;
   align-items: center;
@@ -522,7 +581,7 @@
   border: 1px solid rgba(255,255,255,0.15);
   color: rgba(255,255,255,0.55);
   text-decoration: none;
- font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -604,29 +663,13 @@
 }
 
 @media (max-width: 768px) {
- .ribbonBadge{
-      font-size: 0.52rem;
- }
- .titleUnified { font-size: clamp(2.5rem, 10vw, 5rem); }
- .cdBot{
-   font-size: 0.52rem;
- }
- .countdownEyebrow{
-   font-size: 0.72rem;
- }
- .editionText{
- font-size: 0.62rem;
- }
- .editionNum{
-  font-size: 1rem;
- }
- .cdTop {
-   font-size: 1.5rem;
- }
- .titleSub{
-  font-size: 0.62rem;
- }
- .dateBlockDay{
-  font-size: 1.6rem;
- }
+  .ribbonBadge { font-size: 0.52rem; }
+  .titleUnified { font-size: clamp(2.5rem, 10vw, 5rem); }
+  .cdBot { font-size: 0.52rem; }
+  .countdownEyebrow { font-size: 0.72rem; }
+  .editionText { font-size: 0.62rem; }
+  .editionNum { font-size: 1rem; }
+  .cdTop { font-size: 1.5rem; }
+  .titleSub { font-size: 0.62rem; }
+  .dateBlockDay { font-size: 1.6rem; }
 }

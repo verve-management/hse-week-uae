@@ -29,7 +29,7 @@ function HomePage() {
      {/* <Hero2></Hero2> */}
      {/* <Hero4></Hero4> */}
      <Event></Event>
-     <InnovationOverview></InnovationOverview>
+     {/* <InnovationOverview></InnovationOverview> */}
      {/* <MarketInsights></MarketInsights> */}
      {/* <Numbers></Numbers> */}
      <Industries></Industries>

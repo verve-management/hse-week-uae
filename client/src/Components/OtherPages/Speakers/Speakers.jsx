@@ -203,14 +203,7 @@ useEffect(() => {
     image: "/Speakers/Speaker22.webp",
     linkedin: ""
   },
-  {
-    id: 23,
-    name: "Faisal Osama",
-    designation: "Head of HSE",
-    company: "M.M. Alharbi & Partners Co.",
-    image: "/Speakers/Speaker23.webp",
-    linkedin: "https://www.linkedin.com/in/faisal-osama/"
-  },
+
   {
     id: 24,
     name: "Mohamed Ramadan Zaki",
@@ -331,14 +324,7 @@ useEffect(() => {
     image: "/Speakers/Speaker40.webp",
     linkedin: ""
   },
-  {
-    id: 39,
-    name: "Faisal H. Al-Daihani",
-    designation: "Managing Director",
-    company: "SADA",
-    image: "/Speakers/Speaker41.webp",
-    linkedin: ""
-  },
+
   {
     id: 40,
     name: "Santanu Choudhury",
@@ -417,7 +403,7 @@ useEffect(() => {
     designation: "Head — HSE",
     company: "Mofarreh Al Harbi Co.",
     image: "/Speakers/Speaker51.webp",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/faisal-osama/"
   },
   {
     id: 50,
