@@ -91,7 +91,7 @@ const Navbar = () => {
         isActive ? "nav-link active" : "nav-link"
       }
     >
-      Sponsors
+      Sponsors & Partners
     </NavLink>
   </li>
 {/* <li className="nav-dropdown">

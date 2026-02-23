@@ -5,6 +5,7 @@ const PostEventForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [countryInput, setCountryInput] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Controlled form states
   const [firstName, setFirstName] = useState("");
@@ -49,54 +50,54 @@ const PostEventForm = () => {
   );
 
   const handleSubmit = async () => {
-  // Build payload with automatic fields
-  const now = new Date();
-  const date = now.toLocaleDateString();
-  const time = now.toLocaleTimeString();
-  const pageUrl = window.location.href;
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    const time = now.toLocaleTimeString();
+    const pageUrl = window.location.href;
 
-const payload = {
-  formType: "Post Event Report",
-  formHeading: "Post Event Report"
-};
+    const payload = {
+      formType: "Post Event Report",
+      formHeading: "Post Event Report"
+    };
 
-if (firstName) payload.firstName = firstName;
-if (lastName) payload.lastName = lastName;
-if (companyName) payload.companyName = companyName;
-if (jobTitle) payload.jobTitle = jobTitle;
-if (phone) payload.phone = phone;
-if (email) payload.email = email;
-if (countryInput) payload.country = countryInput;
+    if (firstName) payload.firstName = firstName;
+    if (lastName) payload.lastName = lastName;
+    if (companyName) payload.companyName = companyName;
+    if (jobTitle) payload.jobTitle = jobTitle;
+    if (phone) payload.phone = phone;
+    if (email) payload.email = email;
+    if (countryInput) payload.country = countryInput;
 
-// Meta fields LAST (so they appear LAST in email)
-payload.date = date;
-payload.time = time;
-payload.pageUrl = pageUrl;
+    payload.date = date;
+    payload.time = time;
+    payload.pageUrl = pageUrl;
 
+    try {
+      await sendContactForm(payload);
 
-  try {
-    await sendContactForm(payload);
-    alert("Form submitted successfully!");
+      // Clear fields
+      setFirstName("");
+      setLastName("");
+      setCompanyName("");
+      setJobTitle("");
+      setPhone("");
+      setEmail("");
+      setCountryInput("");
+      setCaptcha(false);
+      setIsOpen(false);
+      setShowSuccess(true);
 
-    // Clear fields
-    setFirstName("");
-    setLastName("");
-    setCompanyName("");
-    setJobTitle("");
-    setPhone("");
-    setEmail("");
-    setCountryInput("");
-    setCaptcha(false);
+    } catch (error) {
+      alert("Failed to submit form. Please try again.");
+      console.error("Form submission error:", error);
+    }
+  };
 
-   const previous = window._previousRoute || "/";
-window.history.pushState({}, "", previous);
-setIsOpen(false);
-
-  } catch (error) {
-    alert("Failed to submit form. Please try again.");
-    console.error("Form submission error:", error);
-  }
-};
+  const handleSuccessClose = () => {
+    setShowSuccess(false);
+    const previous = window._previousRoute || "/";
+    window.history.pushState({}, "", previous);
+  };
 
   // Inline styles
   const buttonStyle = {
@@ -213,21 +214,119 @@ setIsOpen(false);
     marginTop: "10px",
   };
 
+  // Success Modal styles
+  const successModalStyle = {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(45, 55, 72, 0.75)",
+    backdropFilter: "blur(4px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 100000,
+    padding: "20px",
+    animation: "fadeIn 0.3s ease"
+  };
+
+  const successContainerStyle = {
+    background: "#ffffff",
+    width: "100%",
+    maxWidth: "500px",
+    borderRadius: "12px",
+    padding: "40px",
+    border: "2px solid #A6223C",
+    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
+    textAlign: "center",
+    position: "relative",
+    animation: "slideUp 0.4s ease"
+  };
+
+  const successTitleStyle = {
+    fontSize: "22px",
+    fontWeight: "900",
+    color: "#2d3748",
+    margin: "0 0 15px 0",
+    letterSpacing: "-0.5px"
+  };
+
+  const successSubtitleStyle = {
+    fontSize: "15px",
+    color: "#64748b",
+    margin: "0 0 10px 0",
+    fontWeight: "500"
+  };
+
+  const successTextStyle = {
+    fontSize: "14px",
+    color: "#64748b",
+    margin: "0 0 25px 0",
+    fontWeight: "400"
+  };
+
+  const socialIconsStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px",
+    marginBottom: "30px"
+  };
+
+  const iconStyle = {
+    fontSize: "28px",
+    color: "#A6223C",
+    cursor: "pointer",
+    transition: "transform 0.3s ease"
+  };
+
+  const closeSuccessButtonStyle = {
+    background: "#A6223C",
+    color: "#ffffff",
+    padding: "12px 30px",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "700",
+    border: "none",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    boxShadow: "0 4px 15px rgba(166, 34, 60, 0.3)"
+  };
+
   return (
     <>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes slideUp {
+            from { 
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+
       {/* Floating Button */}
       <button
         style={buttonStyle}
-     onClick={() => {
-  window._previousRoute = window.location.pathname;  // Save current page
-  window.history.pushState({}, "", "/post-event-report"); // Temporary URL
-  setIsOpen(true);
-}}
-
+        onClick={() => {
+          window._previousRoute = window.location.pathname;
+          window.history.pushState({}, "", "/post-event-report");
+          setIsOpen(true);
+        }}
         onMouseEnter={(e) => (e.target.style.transform = "scale(1.1)")}
         onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
       >
-        2025 Post- Event Report
+        Download 2025 Post - Event Report
       </button>
 
       {/* Popup Modal */}
@@ -236,12 +335,11 @@ setIsOpen(false);
           <div style={modalStyle}>
             <button
               style={closeBtnStyle}
-           onClick={() => {
-  const previous = window._previousRoute || "/";
-  window.history.pushState({}, "", previous);
-  setIsOpen(false);
-}}
-
+              onClick={() => {
+                const previous = window._previousRoute || "/";
+                window.history.pushState({}, "", previous);
+                setIsOpen(false);
+              }}
             >
               ×
             </button>
@@ -377,23 +475,61 @@ setIsOpen(false);
                 </div>
               </div>
 
-              {/* CAPTCHA */}
-              {/* <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <input 
-                  type="checkbox" 
-                  required 
-                  checked={captcha}
-                  onChange={(e) => setCaptcha(e.target.checked)}
-                />
-                <span>I'm not a robot</span>
-              </div> */}
-
               {/* SUBMIT BUTTON */}
               <button type="button" style={submitBtn} onClick={handleSubmit}>
                 Submit
               </button>
 
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <div style={successModalStyle} onClick={handleSuccessClose}>
+          <div style={successContainerStyle} onClick={(e) => e.stopPropagation()}>
+            <h2 style={successTitleStyle}>Thank you for requesting for our global Report.</h2>
+            <p style={successSubtitleStyle}>Your download is on its way! Our team will be reaching out soon to share the report and walk you through the key takeaways.</p>
+            <p style={successTextStyle}>Meanwhile, stay connected with us on LinkedIn, Facebook, X, Instagram for more updates.</p>
+
+            <div style={socialIconsStyle}>
+              <a href="https://www.linkedin.com/company/verve-management/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-linkedin" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://www.facebook.com/vervemanagementuae/" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-facebook" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://x.com/vervemgmtuae" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-x-twitter" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://www.instagram.com/vervemanagement/" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-instagram" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+            </div>
+
+            <button
+              onClick={handleSuccessClose}
+              style={closeSuccessButtonStyle}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-3px)";
+                e.target.style.boxShadow = "0 8px 25px rgba(166, 34, 60, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 4px 15px rgba(166, 34, 60, 0.3)";
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}

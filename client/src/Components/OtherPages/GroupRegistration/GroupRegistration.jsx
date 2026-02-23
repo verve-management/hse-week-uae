@@ -7,6 +7,7 @@ const GroupRegistration = () => {
   const heroTextRef = useRef(null);
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -95,16 +96,163 @@ const GroupRegistration = () => {
 
     try {
       await sendContactForm(payload);
-      alert("Group registration submitted successfully!");
       setFormData({ firstName: '', lastName: '', jobTitle: '', companyName: '', country: '', contactNumber: '', email: '', numberOfAttendees: '' });
+      setShowSuccess(true);
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Submission failed. Please try again.");
     }
   };
 
+  // Success Modal styles
+  const successModalStyle = {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(45, 55, 72, 0.75)",
+    backdropFilter: "blur(4px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 10000,
+    padding: "20px",
+    animation: "fadeIn 0.3s ease"
+  };
+
+  const successContainerStyle = {
+    background: "#ffffff",
+    width: "100%",
+    maxWidth: "500px",
+    borderRadius: "12px",
+    padding: "40px",
+    border: "2px solid #A6223C",
+    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
+    textAlign: "center",
+    position: "relative",
+    animation: "slideUp 0.4s ease"
+  };
+
+  const successTitleStyle = {
+    fontSize: "24px",
+    fontWeight: "900",
+    color: "#2d3748",
+    margin: "0 0 15px 0",
+    letterSpacing: "-0.5px"
+  };
+
+  const successSubtitleStyle = {
+    fontSize: "16px",
+    color: "#64748b",
+    margin: "0 0 10px 0",
+    fontWeight: "500"
+  };
+
+  const successTextStyle = {
+    fontSize: "14px",
+    color: "#64748b",
+    margin: "0 0 25px 0",
+    fontWeight: "400"
+  };
+
+  const socialIconsStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px",
+    marginBottom: "30px"
+  };
+
+  const iconStyle = {
+    fontSize: "28px",
+    color: "#A6223C",
+    cursor: "pointer",
+    transition: "transform 0.3s ease"
+  };
+
+  const closeSuccessButtonStyle = {
+    background: "#A6223C",
+    color: "#ffffff",
+    padding: "12px 30px",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "700",
+    border: "none",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    boxShadow: "0 4px 15px rgba(166, 34, 60, 0.3)"
+  };
+
   return (
     <div className={styles.groupRegistrationWrapper}>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes slideUp {
+            from { 
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <div style={successModalStyle} onClick={() => setShowSuccess(false)}>
+          <div style={successContainerStyle} onClick={(e) => e.stopPropagation()}>
+            <h2 style={successTitleStyle}>Thank you for submitting your enquiry.</h2>
+            <p style={successSubtitleStyle}>Our account manager will be in touch with you soon.</p>
+            <p style={successTextStyle}>Meanwhile, stay connected with us on LinkedIn, Facebook, X, Instagram for more updates.</p>
+
+            <div style={socialIconsStyle}>
+              <a href="https://www.linkedin.com/company/verve-management/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-linkedin" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://www.facebook.com/vervemanagementuae/" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-facebook" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://x.com/vervemgmtuae" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-x-twitter" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+              <a href="https://www.instagram.com/vervemanagement/" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-instagram" style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}></i>
+              </a>
+            </div>
+
+            <button
+              onClick={() => setShowSuccess(false)}
+              style={closeSuccessButtonStyle}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-3px)";
+                e.target.style.boxShadow = "0 8px 25px rgba(166, 34, 60, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 4px 15px rgba(166, 34, 60, 0.3)";
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── Hero Section ── */}
       <section className={styles.heroSection}>

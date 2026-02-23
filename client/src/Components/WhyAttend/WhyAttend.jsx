@@ -10,31 +10,31 @@ const WhyAttend = () => {
 
   const topLeftPoints = [
     {
-      title: "AI & Digital Safety Innovations",
-      description: "Discover cutting-edge technologies including AI-driven risk management and predictive analytics."
+      title: "Learn from Industry Leaders ",
+      description: "Gain insights from top HSE professionals, government authorities, and safety innovators shaping the future of workplace safety in the UAE and worldwide."
     },
     {
-      title: "UAE HSE Regulations",
-      description: "Stay updated on the latest UAE safety laws and Net Zero 2050 sustainability guidelines."
+      title: "Cutting-Edge Best Practices",
+      description: "Discover practical strategies, tools, and technologies to enhance safety, sustainability, and operational excellence in your organization."
     },
     {
-      title: "Heat Stress Prevention",
-      description: "Learn effective strategies for managing heat risks in extreme UAE climate conditions."
+      title: "Global Networking Opportunities",
+      description: "Connect with peers, regulators, and HSE experts from across the Middle East, Europe, and beyond to share experiences and solutions."
     }
   ];
 
   const bottomRightPoints = [
     {
-      title: "Emergency & Fire Safety",
-      description: "Strengthen incident response and fire prevention management capabilities for industrial safety excellence."
+      title: "Regulatory Updates & Compliance",
+      description: "Stay informed on the latest UAE safety regulations, international standards, and industry trends to ensure compliance and proactive risk management."
     },
     {
-      title: "Industry Leadership Networking",
-      description: "Connect with policymakers, HSE directors, and leading safety experts globally from across industries."
+      title: "Explore Innovative Products & Solutions",
+      description: "Visit sponsor booths to see the latest HSE technologies, equipment, and services that can transform safety and operational efficiency in your workplace."
     },
     {
-      title: "Mega Project Safety",
-      description: "Explore innovative and sustainable solutions for Etihad Rail and ADNOC infrastructure expansions."
+      title: "Career Growth & Professional Development",
+      description: "Strengthen your skills, earn recognition in the field, and explore new opportunities."
     }
   ];
 

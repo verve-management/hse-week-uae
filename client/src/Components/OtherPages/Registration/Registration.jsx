@@ -232,7 +232,7 @@ const Registration = () => {
                   </svg>
                   Email Us Now
                 </a>
-                <p className={styles.emailAddress}>info@verve-management.com</p>
+                {/* <p className={styles.emailAddress}>info@verve-management.com</p> */}
               </div>
             </div>
 

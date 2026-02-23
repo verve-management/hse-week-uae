@@ -378,7 +378,7 @@
   animation: fadeUp 0.9s 0.35s ease both;
 }
 .countdownEyebrow {
-  font-size: 0.98rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -390,6 +390,7 @@
   align-items: center;
   gap: 0;
 }
+
 .cdUnit {
   display: flex;
   flex-direction: column;
@@ -410,13 +411,13 @@
 .cdUnit:last-child { border-right: 1px solid rgba(255,255,255,0.1); }
 .cdTop {
   font-family: 'Abril Fatface', serif;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1rem, 2vw, 2rem);
   color: #fff;
   line-height: 1;
   letter-spacing: -0.02em;
 }
 .cdBot {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;

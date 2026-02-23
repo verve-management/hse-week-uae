@@ -293,7 +293,7 @@
   }
 
   .navMenu {
-    gap: 1.4rem; /* default 2.2rem was too big */
+    gap: 1rem; /* default 2.2rem was too big */
   }
 
   .navLink,
@@ -314,4 +314,7 @@
   .dropdownMenu {
     min-width: 180px;
   }
+}
+@media (min-width: 1090px) and (max-width: 1300px) {
+  /* Your styles here */
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { sendContactForm } from "../../api/email";
 
 console.log("sendContactForm:", sendContactForm);
@@ -12,8 +12,15 @@ const SpeakingOpportunity = ({ open, setOpen }) => {
   const [email, setEmail] = useState("");
   const [countryInput, setCountryInput] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  if (!open) return null;
+  useEffect(() => {
+    if (!open) {
+      setShowSuccess(false);
+    }
+  }, [open]);
+
+  if (!open && !showSuccess) return null;
 
   const allCountries = [
     "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina",
@@ -47,10 +54,12 @@ const SpeakingOpportunity = ({ open, setOpen }) => {
   const filteredCountries = allCountries.filter(country =>
     country.toLowerCase().includes(countryInput.toLowerCase())
   );
+
 const handleClose = () => {
   const previous = window._previousRoute || "/";
   window.history.pushState({}, "", previous);
   setOpen(false);
+  setShowSuccess(false);
 };
 
 const handleSubmit = async (e) => {
@@ -86,38 +95,49 @@ const handleSubmit = async (e) => {
     const res = await sendContactForm(payload);
 
     if (res?.success) {
-      alert("Speaking opportunity request submitted!");
+      setFirstName("");
+      setLastName("");
+      setCompanyName("");
+      setJobTitle("");
+      setPhone("");
+      setEmail("");
+      setCountryInput("");
+      setShowSuccess(true);
     } else {
-      alert("Speaking opportunity request submitted!");
+      setFirstName("");
+      setLastName("");
+      setCompanyName("");
+      setJobTitle("");
+      setPhone("");
+      setEmail("");
+      setCountryInput("");
+      setShowSuccess(true);
     }
-
-    // Clear form fields
-    setFirstName("");
-    setLastName("");
-    setCompanyName("");
-    setJobTitle("");
-    setPhone("");
-    setEmail("");
-    setCountryInput("");
-
-    // Close modal and return to previous route
-    const previous = window._previousRoute || "/";
-    window.history.pushState({}, "", previous);
-    setOpen(false);
 
   } catch (error) {
 
     if (error.response?.status === 200) {
-      alert("Speaking opportunity request submitted!");
-      const previous = window._previousRoute || "/";
-      window.history.pushState({}, "", previous);
-      setOpen(false);
+      setFirstName("");
+      setLastName("");
+      setCompanyName("");
+      setJobTitle("");
+      setPhone("");
+      setEmail("");
+      setCountryInput("");
+      setShowSuccess(true);
       return;
     }
 
     console.error("Submission error:", error);
     alert("Failed to submit. Please try again.");
   }
+};
+
+const handleSuccessClose = () => {
+  setShowSuccess(false);
+  const previous = window._previousRoute || "/";
+  window.history.pushState({}, "", previous);
+  setOpen(false);
 };
 
   const modalStyle = {
@@ -265,8 +285,87 @@ const handleSubmit = async (e) => {
     boxShadow: "0 4px 15px rgba(255, 107, 53, 0.3)"
   };
 
+  const successModalStyle = {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(45, 55, 72, 0.75)",
+    backdropFilter: "blur(4px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 10000,
+    padding: "20px",
+    animation: "fadeIn 0.3s ease"
+  };
+
+  const successContainerStyle = {
+    background: "#ffffff",
+    width: "100%",
+    maxWidth: "500px",
+    borderRadius: "12px",
+    padding: "40px",
+    border: "2px solid #A6223C",
+    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
+    textAlign: "center",
+    position: "relative",
+    animation: "slideUp 0.4s ease"
+  };
+
+  const successTitleStyle = {
+    fontSize: "24px",
+    fontWeight: "900",
+    color: "#2d3748",
+    margin: "0 0 15px 0",
+    letterSpacing: "-0.5px"
+  };
+
+  const successSubtitleStyle = {
+    fontSize: "16px",
+    color: "#64748b",
+    margin: "0 0 10px 0",
+    fontWeight: "500"
+  };
+
+  const successTextStyle = {
+    fontSize: "14px",
+    color: "#64748b",
+    margin: "0 0 25px 0",
+    fontWeight: "400"
+  };
+
+  const socialIconsStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px",
+    marginBottom: "30px"
+  };
+
+  const iconStyle = {
+    fontSize: "28px",
+    color: "#A6223C",
+    cursor: "pointer",
+    transition: "transform 0.3s ease"
+  };
+
+  const closeSuccessButtonStyle = {
+    background: "#A6223C",
+    color: "#ffffff",
+    padding: "12px 30px",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "700",
+    border: "none",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    boxShadow: "0 4px 15px rgba(166, 34, 60, 0.3)"
+  };
+
   return (
     <>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
       <style>
         {`
           @keyframes fadeIn {
@@ -285,214 +384,292 @@ const handleSubmit = async (e) => {
           }
         `}
       </style>
-  <div style={modalStyle} onClick={handleClose}>
 
-        <div style={containerStyle} onClick={(e) => e.stopPropagation()}>
-          <button 
-            style={closeButtonStyle}
-          onClick={handleClose}
+      {showSuccess ? (
+        <div style={successModalStyle} onClick={handleSuccessClose}>
+          <div style={successContainerStyle} onClick={(e) => e.stopPropagation()}>
+            <h2 style={successTitleStyle}>Thank you for submitting your enquiry.</h2>
+            <p style={successSubtitleStyle}>Our account manager will be in touch with you soon.</p>
+            <p style={successTextStyle}>Meanwhile, stay connected with us on LinkedIn, Facebook, X, Instagram for more updates.</p>
 
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "#f1f5f9";
-              e.target.style.color = "#A6223C";
-              e.target.style.transform = "rotate(90deg)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = "transparent";
-              e.target.style.color = "#2d3748";
-              e.target.style.transform = "rotate(0deg)";
-            }}
-          >
-            ×
-          </button>
+            <div style={socialIconsStyle}>
+              <a
+                href="https://www.linkedin.com/company/verve-management/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  className="fa-brands fa-linkedin"
+                  style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+                ></i>
+              </a>
 
-          <div style={headerStyle}>
-            <h2 style={titleStyle}>
-              Speaking <span style={highlightStyle}>Opportunity</span>
-            </h2>
-            <p style={subtitleStyle}>Share your expertise and inspire our audience</p>
-          </div>
+              <a
+                href="https://www.facebook.com/vervemanagementuae/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  className="fa-brands fa-facebook"
+                  style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+                ></i>
+              </a>
 
-          <div>
-            <div style={rowStyle}>
-              <div style={colStyle}>
-                <label style={labelStyle}>First Name *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Enter First Name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
-              <div style={colStyle}>
-                <label style={labelStyle}>Last Name *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Enter Last Name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
+              <a
+                href="https://x.com/vervemgmtuae"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  className="fa-brands fa-x-twitter"
+                  style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+                ></i>
+              </a>
+
+              <a
+                href="https://www.instagram.com/vervemanagement/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  className="fa-brands fa-instagram"
+                  style={iconStyle}
+                  onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                  onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+                ></i>
+              </a>
             </div>
 
-            <div style={rowStyle}>
-              <div style={colStyle}>
-                <label style={labelStyle}>Company Name *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Enter Company Name"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
-              <div style={colStyle}>
-                <label style={labelStyle}>Job Title *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Enter Job Title"
-                  value={jobTitle}
-                  onChange={(e) => setJobTitle(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
-            </div>
-
-            <div style={rowStyle}>
-              <div style={colStyle}>
-                <label style={labelStyle}>Phone *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
-              <div style={colStyle}>
-                <label style={labelStyle}>Email *</label>
-                <input 
-                  style={inputStyle} 
-                  placeholder="Email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#A6223C";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#e2e8f0";
-                    e.target.style.boxShadow = "none";
-                  }}
-                />
-              </div>
-            </div>
-
-            <label style={labelStyle}>Country *</label>
-            <div style={{ position: "relative", marginBottom: "20px" }}>
-              <input
-                type="text"
-                style={{
-                  ...inputStyle,
-                  marginBottom: 0,
-                  borderRadius: showDropdown && filteredCountries.length > 0 ? "8px 8px 0 0" : "8px"
-                }}
-                placeholder="Type or select your country"
-                value={countryInput}
-                onChange={(e) => {
-                  setCountryInput(e.target.value);
-                  setShowDropdown(true);
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "#A6223C";
-                  e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
-                  setShowDropdown(true);
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "#e2e8f0";
-                  e.target.style.boxShadow = "none";
-                  setTimeout(() => setShowDropdown(false), 200);
-                }}
-              />
-              {showDropdown && filteredCountries.length > 0 && (
-                <div style={dropdownStyle}>
-                  {filteredCountries.map((country) => (
-                    <div
-                      key={country}
-                      style={dropdownItemStyle}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = "#fff5f2";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = "#ffffff";
-                      }}
-                      onMouseDown={() => {
-                        setCountryInput(country);
-                        setShowDropdown(false);
-                      }}
-                    >
-                      {country}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <button 
-              onClick={handleSubmit}
-              style={buttonStyle}
+            <button
+              onClick={handleSuccessClose}
+              style={closeSuccessButtonStyle}
               onMouseEnter={(e) => {
                 e.target.style.transform = "translateY(-3px)";
-                e.target.style.boxShadow = "0 8px 25px rgba(255, 107, 53, 0.4)";
+                e.target.style.boxShadow = "0 8px 25px rgba(166, 34, 60, 0.4)";
               }}
               onMouseLeave={(e) => {
                 e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = "0 4px 15px rgba(255, 107, 53, 0.3)";
+                e.target.style.boxShadow = "0 4px 15px rgba(166, 34, 60, 0.3)";
               }}
             >
-              Submit Request
+              Close
             </button>
           </div>
         </div>
-      </div>
+      ) : (
+        <div style={modalStyle} onClick={handleClose}>
+          <div style={containerStyle} onClick={(e) => e.stopPropagation()}>
+            <button
+              style={closeButtonStyle}
+              onClick={handleClose}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#f1f5f9";
+                e.target.style.color = "#A6223C";
+                e.target.style.transform = "rotate(90deg)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "transparent";
+                e.target.style.color = "#2d3748";
+                e.target.style.transform = "rotate(0deg)";
+              }}
+            >
+              ×
+            </button>
+
+            <div style={headerStyle}>
+              <h2 style={titleStyle}>
+                Speaking <span style={highlightStyle}>Opportunity</span>
+              </h2>
+              <p style={subtitleStyle}>Share your expertise and inspire our audience</p>
+            </div>
+
+            <div>
+              <div style={rowStyle}>
+                <div style={colStyle}>
+                  <label style={labelStyle}>First Name *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Enter First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+                <div style={colStyle}>
+                  <label style={labelStyle}>Last Name *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Enter Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={rowStyle}>
+                <div style={colStyle}>
+                  <label style={labelStyle}>Company Name *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Enter Company Name"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+                <div style={colStyle}>
+                  <label style={labelStyle}>Job Title *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Enter Job Title"
+                    value={jobTitle}
+                    onChange={(e) => setJobTitle(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={rowStyle}>
+                <div style={colStyle}>
+                  <label style={labelStyle}>Phone *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+                <div style={colStyle}>
+                  <label style={labelStyle}>Email *</label>
+                  <input
+                    style={inputStyle}
+                    placeholder="Email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#A6223C";
+                      e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e2e8f0";
+                      e.target.style.boxShadow = "none";
+                    }}
+                  />
+                </div>
+              </div>
+
+              <label style={labelStyle}>Country *</label>
+              <div style={{ position: "relative", marginBottom: "20px" }}>
+                <input
+                  type="text"
+                  style={{
+                    ...inputStyle,
+                    marginBottom: 0,
+                    borderRadius: showDropdown && filteredCountries.length > 0 ? "8px 8px 0 0" : "8px"
+                  }}
+                  placeholder="Type or select your country"
+                  value={countryInput}
+                  onChange={(e) => {
+                    setCountryInput(e.target.value);
+                    setShowDropdown(true);
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#A6223C";
+                    e.target.style.boxShadow = "0 0 0 4px rgba(255, 107, 53, 0.1)";
+                    setShowDropdown(true);
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e2e8f0";
+                    e.target.style.boxShadow = "none";
+                    setTimeout(() => setShowDropdown(false), 200);
+                  }}
+                />
+                {showDropdown && filteredCountries.length > 0 && (
+                  <div style={dropdownStyle}>
+                    {filteredCountries.map((country) => (
+                      <div
+                        key={country}
+                        style={dropdownItemStyle}
+                        onMouseEnter={(e) => {
+                          e.target.style.backgroundColor = "#fff5f2";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.backgroundColor = "#ffffff";
+                        }}
+                        onMouseDown={() => {
+                          setCountryInput(country);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        {country}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <button
+                onClick={handleSubmit}
+                style={buttonStyle}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-3px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(255, 107, 53, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "0 4px 15px rgba(255, 107, 53, 0.3)";
+                }}
+              >
+                Submit Request
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

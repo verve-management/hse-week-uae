@@ -20,7 +20,7 @@
 .sponsors-hero-bg-image {
   position: absolute;
   inset: 0;
-  background-image: url('/Gallery/Gallery8.webp');
+  background-image: url('KsaGallery/Gallery23.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -610,7 +610,30 @@
     gap: 30px;
   }
 }
+/* Center the 3 support partner logos */
+.support-center-track {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 40px !important;
+  animation: none !important; /* disable scrolling */
+  transform: none !important;
+}
+/* Center support partner logos */
+.support-static {
+  animation: none !important;
+}
 
+.support-center-track {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  animation: none !important;
+  transform: none !important;
+}
 @media (max-width: 768px) {
   .sponsors-hero-section {
     min-height: 50vh;

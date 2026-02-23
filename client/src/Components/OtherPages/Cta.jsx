@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cta = () => {
   return (
@@ -62,36 +63,35 @@ const Cta = () => {
             marginBottom: "1.2rem",
           }}
         >
-          Secure Your Place – Register Now Before It's Gone
+         Be in the room where HSE decisions are shaped
         </h2>
 
-       <button
-  style={{
-    padding: "0.9rem 2.2rem",
-    backgroundColor: "#ffffff",
-    color: "#A6223C",
-    borderRadius: "6px",
-    fontSize: "1.05rem",
-    fontWeight: "700",
-    border: "none",
-    cursor: "pointer",
-    transition: "0.3s ease",
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.backgroundColor = "#A6223C";
-    e.target.style.color = "#ffffff";
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.backgroundColor = "#ffffff";
-    e.target.style.color = "#A6223C";
-  }}
-  onClick={() => {
-    window.location.href = "/registration"; // ✅ works in all cases
-  }}
->
-  REGISTER
-</button>
-
+        <Link
+          to="/registration"
+          style={{
+            display: "inline-block",
+            padding: "0.9rem 2.2rem",
+            backgroundColor: "#ffffff",
+            color: "#A6223C",
+            borderRadius: "6px",
+            fontSize: "1.05rem",
+            fontWeight: "700",
+            border: "none",
+            cursor: "pointer",
+            transition: "0.3s ease",
+            textDecoration: "none",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = "#A6223C";
+            e.target.style.color = "#ffffff";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = "#ffffff";
+            e.target.style.color = "#A6223C";
+          }}
+        >
+          Join the Leaders
+        </Link>
 
       </div>
     </section>

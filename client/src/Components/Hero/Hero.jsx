@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Hero.module.css";
+import Booth from "../OtherPages/Booth";
 
 const TARGET_DATE = new Date("2026-09-08T09:00:00");
 
@@ -34,12 +35,14 @@ const sponsors = ["Gold Sponsor", "Platinum Partner", "Official Media", "Strateg
 export default function FFHero() {
   const { days, hours, minutes, seconds } = useCountdown(TARGET_DATE);
   const videoRef = useRef(null);
+  const [openBooth, setOpenBooth] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = 0.6;
   }, []);
 
   return (
+    <>
     <section className={styles.hero}>
       {/* ── Video BG ── */}
       <div className={styles.videoBg}>
@@ -144,7 +147,7 @@ export default function FFHero() {
 
         {/* CTA row */}
         <div className={styles.ctaRow}>
-          <a href="#register" className={styles.btnMain}>
+          <a href="registration" className={styles.btnMain}>
             <span className={styles.btnMainBg} />
             <span className={styles.btnMainGlow} />
             <span className={styles.btnMainText}>Register Now</span>
@@ -154,7 +157,16 @@ export default function FFHero() {
               </svg>
             </span>
           </a>
-          <a href="#booth" className={styles.btnAlt}>
+          <a
+            href="#booth"
+            className={styles.btnAlt}
+            onClick={(e) => {
+              e.preventDefault();
+              window._previousRoute = window.location.pathname;
+              window.history.pushState({}, "", "/book-a-booth");
+              setOpenBooth(true);
+            }}
+          >
             <span className={styles.btnAltGlow} />
             <span className={styles.btnAltIcon}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -195,5 +207,7 @@ export default function FFHero() {
         </div>
       </div>
     </section>
+    <Booth open={openBooth} setOpen={setOpenBooth} />
+    </>
   );
 }

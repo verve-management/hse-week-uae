@@ -4,6 +4,8 @@ import styles from './Schedule.module.css';
 const ScheduleWithoutImages = () => {
   const heroTextRef = useRef(null);
   const [activeDay, setActiveDay] = useState('day1');
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const topRef = useRef(null);
 
   useEffect(() => {
     const text = heroTextRef.current;
@@ -21,6 +23,21 @@ const ScheduleWithoutImages = () => {
       text.appendChild(span);
     });
   }, []);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToDay2 = () => {
+    setActiveDay('day2');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const day1Schedule = [
     {
@@ -106,12 +123,12 @@ const ScheduleWithoutImages = () => {
     },
     {
       time: '13:15 - 13:45',
-      title: 'Fireside Chat | The Power of Attitudes: Driving Safety Excellence Through the ABR Cycle – Awareness, Behavior, Results',
+      title: 'FIRESIDE CHAT | FIRE SAFETY AND EMERGENCY PREPAREDNESS IN HIGH-RISK AND CRITICAL ENVIRONMENTS',
       type: 'fireside',
       points: [
-        'How can organizations create awareness that truly influences safe behaviors across all teams?',
-        'What are the most effective ways to translate positive safety behaviors into measurable results?',
-        'How can leaders sustain long-term engagement with the ABR Cycle in high-risk industries?'
+        'How can organizations build resilient emergency response frameworks for complex and high-risk operations?',
+        'How can technology enhance situational awareness and decision-making during fire emergencies?',
+        'How can public and private sectors collaborate effectively to manage large-scale emergencies?'
       ]
     },
     {
@@ -279,7 +296,7 @@ const ScheduleWithoutImages = () => {
   );
 
   return (
-    <div className={styles.schedulePageWrapper}>
+    <div className={styles.schedulePageWrapper} ref={topRef}>
       <section className={styles.heroSection}>
         <div className={styles.heroBgImage}></div>
         <div className={styles.heroOverlay}></div>
@@ -326,8 +343,79 @@ const ScheduleWithoutImages = () => {
             {activeDay === 'day2' && day2Schedule.map((item, index) => renderScheduleItem(item, index))}
           </div>
 
+          {/* ── Go to Day 2 button — shown only at end of Day 1 ── */}
+          {activeDay === 'day1' && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+              <button
+                onClick={goToDay2}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '14px 36px',
+                  backgroundColor: '#102147',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '2px',
+                  fontSize: '0.82rem',
+                  fontWeight: '700',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  cursor: 'pointer',
+                  transition: 'background 0.3s ease',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#A6223C'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#102147'}
+              >
+                Continue to Day 2
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
+          )}
+
         </div>
       </section>
+
+      {/* ── Back to Top floating button ── */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          title="Back to top"
+          style={{
+            position: 'fixed',
+            bottom: '32px',
+            right: '32px',
+            width: '48px',
+            height: '48px',
+            backgroundColor: '#A6223C',
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: '2px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 999,
+            boxShadow: '0 4px 20px rgba(166,34,60,0.35)',
+            transition: 'background 0.3s ease, transform 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#102147';
+            e.currentTarget.style.transform = 'translateY(-3px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#A6223C';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 };

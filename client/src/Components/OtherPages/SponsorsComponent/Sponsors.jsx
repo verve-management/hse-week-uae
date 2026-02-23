@@ -84,6 +84,9 @@ import mediaPartner38 from "../../../assets/MediaPartner/MediaPartner38.webp";
 import mediaPartner39 from "../../../assets/MediaPartner/MediaPartner39.webp";
 import mediaPartner40 from "../../../assets/MediaPartner/MediaPartner40.webp";
 import mediaPartner41 from "../../../assets/MediaPartner/MediaPartner41.webp";
+import spSupport1 from "../../../../src/assets/sponcors/seriessupport1.webp";
+import spSupport2 from "../../../../src/assets/sponcors/seriessupport2.webp";
+import spSupport3 from "../../../../src/assets/sponcors/seriessupport3.webp"
 
 
 
@@ -119,7 +122,11 @@ useEffect(() => {
   }
 }, []);
 
-
+const supportPartners = [
+  { id: 1, logo: spSupport1, link: "https://sfma.sa/en" },
+  { id: 2, logo: spSupport2, link: "https://www.ciob.org/" },
+  { id: 3, logo: spSupport3, link: "https://www.iirsm.org/" },
+];
   const seriesSponsors = [
     { id: 1, logo: sponsor1, link: "https://elit.ai/contact-us/" },
     { id: 2, logo: sponsor2, link: "https://www.aerchain.io/" },
@@ -237,7 +244,7 @@ useEffect(() => {
         <div className="sponsors-series-container">
           <div className="sponsors-series-header">
             <h2 className="sponsors-series-title">
-              Global <span className="sponsors-series-highlight">Sponsors</span>
+              Global Sponsors<span className="sponsors-series-highlight"> & Partners</span>
             </h2>
             <p className="sponsors-series-subtitle">
               Trusted by Industry Leaders
@@ -307,7 +314,7 @@ useEffect(() => {
           </div>
 
           {/* BOTTOM CAROUSEL - Left to Right (Delayed) */}
-          <div className="sponsors-carousel-wrapper">
+          <div className="sponsors-carousel-wrapper support-center-track">
             <div className="sponsors-carousel sponsors-carousel-ltr sponsors-carousel-delayed">
               <div className="sponsors-carousel-track">
                 {seriesSponsors.map((sponsor) => (
@@ -505,7 +512,58 @@ useEffect(() => {
               </div>
             </div>
           </div>
+{/* ==================== SERIES SUPPORT PARTNERS ==================== */}
+<section className="sponsors-series-section">
+  <div className="sponsors-series-container">
 
+    <div className="sponsors-series-header">
+      <h2 className="sponsors-series-title">
+        Series <span className="sponsors-series-highlight">Support Partners</span>
+      </h2>
+      <p className="sponsors-series-subtitle">
+        Contributing to the Success of the Event
+      </p>
+    </div>
+
+    <div className="sponsors-carousel-wrapper">
+ <div className="sponsors-carousel support-static">
+      <div className="support-center-track">
+
+          {supportPartners.map((partner) => (
+            <div key={`support-${partner.id}`} className="sponsors-carousel-item">
+              <div className="sponsors-series-card-wrapper">
+                <div className="sponsors-series-card-inner">
+                  <img
+                    src={partner.logo}
+                    alt={`Support Partner ${partner.id}`}
+                    className="sponsors-series-logo"
+                  />
+                </div>
+                <a
+                  href={partner.link || "#"}
+                  className="spnsr-crd-lrnmr-actn-btn-wrpr-elmt-v2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!partner.link) e.preventDefault();
+                  }}
+                >
+                  <span>Learn More</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+
+        </div>
+      </div>
+    </div>
+
+    <div className="sponsors-series-decoration"></div>
+  </div>
+</section>
           <div className="sponsors-media-decoration"></div>
         </div>
       </section>

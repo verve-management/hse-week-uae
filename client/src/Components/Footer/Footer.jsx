@@ -72,7 +72,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className={styles.bottomBar}>
         <p className={styles.copyright}>
-          © 2026 Asia ProcureTech & Supply Chain Innovation Summit. All rights reserved.
+          © 2026 HSE WEEK UAE. All rights reserved.
         </p>
       </div>
     </footer>

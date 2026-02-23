@@ -87,7 +87,7 @@ const Navbar2 = () => {
                 isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
               }
             >
-              Sponsors
+              Sponsors & Partners
             </NavLink>
           </li>
 

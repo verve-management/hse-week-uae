@@ -396,3 +396,12 @@
   gap: 1rem;
 }
 }
+@media (min-width: 1090px) and (max-width: 1300px) {
+ .nav-cta {
+ padding: 0.7rem 0.7rem;
+font-size: 0.8rem;
+}
+.nav-menu a {
+     font-size: 0.8rem; 
+}
+}
