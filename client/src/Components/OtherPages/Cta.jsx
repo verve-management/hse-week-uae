@@ -14,7 +14,7 @@ const Cta = () => {
         alignItems: "center",
         justifyContent: "center",
         padding: "3rem 1.5rem",
-        backgroundImage: "url('/Gallery/Gallery7.webp')",
+        backgroundImage: "url('/Gallery/Gallery9.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
